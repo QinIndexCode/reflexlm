@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net" agent="reflexlm-paper-figures;drawio-skill-compatible" version="26.0.0">
+  <diagram id="evidence-ladder" name="Evidence Ladder and Claim Boundary DAG">
+    <mxGraphModel dx="3940" dy="2070" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="3940" pageHeight="2070" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="figure_subtitle" value="Positive evidence can&lt;br&gt;support bounded claims only&lt;br&gt;while preserved failures&lt;br&gt;constrain overclaiming" style="text;html=1;strokeColor=none;fillColor=none;fontSize=14;fontColor=#333333;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="100" y="40" width="3740" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="lane_evidence" value="Positive evidence ladder" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff0f0;strokeColor=#d62728;opacity=18;dashed=1;strokeWidth=1;fontSize=14;fontStyle=1;align=left;verticalAlign=middle;spacingLeft=16;" vertex="1" parent="1">
+          <mxGeometry x="20" y="250" width="3900" height="320" as="geometry" />
+        </mxCell>
+        <mxCell id="lane_synthesis" value="Claim synthesis" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ecfbfb;strokeColor=#17becf;opacity=18;dashed=1;strokeWidth=1;fontSize=14;fontStyle=1;align=left;verticalAlign=middle;spacingLeft=16;" vertex="1" parent="1">
+          <mxGeometry x="20" y="580" width="3900" height="540" as="geometry" />
+        </mxCell>
+        <mxCell id="lane_boundary" value="Negative evidence and&lt;br&gt;unsupported scope" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f7f7f7;strokeColor=#555555;opacity=18;dashed=1;strokeWidth=1;fontSize=14;fontStyle=1;align=left;verticalAlign=middle;spacingLeft=16;" vertex="1" parent="1">
+          <mxGeometry x="20" y="1120" width="3900" height="710" as="geometry" />
+        </mxCell>
+        <mxCell id="p2m" value="Phase2M-v2&lt;br&gt;relation-key public split" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff0f0;strokeColor=#d62728;strokeWidth=2;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="690" y="380" width="260" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="p2p" value="Phase2P&lt;br&gt;sealed cross-model transfer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff0f0;strokeColor=#d62728;strokeWidth=2;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="1390" y="380" width="270" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="p2q" value="Phase2Q&lt;br&gt;public trace breadth" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff0f0;strokeColor=#d62728;strokeWidth=2;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="2120" y="380" width="220" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="p2r" value="Phase2R&lt;br&gt;dynamic pytest traces" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff0f0;strokeColor=#d62728;strokeWidth=2;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="2820" y="380" width="230" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="p2s" value="Phase2S&lt;br&gt;public repair multiseed" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff0f0;strokeColor=#d62728;strokeWidth=2;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="3410" y="380" width="240" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="paperb" value="Paper B claim&lt;br&gt;bounded native nervous&lt;br&gt;command selection" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ecfbfb;strokeColor=#17becf;strokeWidth=2;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="2020" y="820" width="230" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="neg" value="Negative evidence&lt;br&gt;Phase2I K L failures&lt;br&gt;preserved" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f2ecff;strokeColor=#7f3fbf;strokeWidth=2;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="1180" y="1470" width="220" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="unsupported" value="Unsupported scope&lt;br&gt;production autonomy epoch-&lt;br&gt;making claims" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f7f7f7;strokeColor=#555555;strokeWidth=2;fontSize=13;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="2690" y="1470" width="260" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_1_p2m_p2p" value="E1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#4a4a4a;fontSize=12;labelBackgroundColor=#ffffff;labelBorderColor=#dddddd;labelPosition=center;verticalLabelPosition=middle;align=center;verticalAlign=middle;endArrow=block;endFill=1;" edge="1" parent="1" source="p2m" target="p2p">
+          <mxGeometry relative="1" x="0" y="0" as="geometry">
+            <mxPoint x="-30" y="0" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_2_p2p_p2q" value="E2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#4a4a4a;fontSize=12;labelBackgroundColor=#ffffff;labelBorderColor=#dddddd;labelPosition=center;verticalLabelPosition=middle;align=center;verticalAlign=middle;endArrow=block;endFill=1;" edge="1" parent="1" source="p2p" target="p2q">
+          <mxGeometry relative="1" x="0" y="0" as="geometry">
+            <mxPoint x="-20" y="0" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_3_p2q_p2r" value="E3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#4a4a4a;fontSize=12;labelBackgroundColor=#ffffff;labelBorderColor=#dddddd;labelPosition=center;verticalLabelPosition=middle;align=center;verticalAlign=middle;endArrow=block;endFill=1;" edge="1" parent="1" source="p2q" target="p2r">
+          <mxGeometry relative="1" x="0" y="0" as="geometry">
+            <mxPoint x="-80" y="0" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_4_p2r_p2s" value="E4" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#4a4a4a;fontSize=12;labelBackgroundColor=#ffffff;labelBorderColor=#dddddd;labelPosition=center;verticalLabelPosition=middle;align=center;verticalAlign=middle;endArrow=block;endFill=1;" edge="1" parent="1" source="p2r" target="p2s">
+          <mxGeometry relative="1" x="0" y="0" as="geometry">
+            <mxPoint x="-10" y="0" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_5_p2s_paperb" value="E5" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#4a4a4a;fontSize=12;labelBackgroundColor=#ffffff;labelBorderColor=#dddddd;labelPosition=center;verticalLabelPosition=middle;align=center;verticalAlign=middle;endArrow=block;endFill=1;" edge="1" parent="1" source="p2s" target="paperb">
+          <mxGeometry relative="1" x="0" y="0" as="geometry">
+            <mxPoint x="-230" y="70" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_6_neg_paperb" value="E6" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#4a4a4a;fontSize=12;labelBackgroundColor=#ffffff;labelBorderColor=#dddddd;labelPosition=center;verticalLabelPosition=middle;align=center;verticalAlign=middle;endArrow=block;endFill=1;" edge="1" parent="1" source="neg" target="paperb">
+          <mxGeometry relative="1" x="0" y="0" as="geometry">
+            <mxPoint x="-150" y="120" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_7_paperb_unsupported" value="E7" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#4a4a4a;fontSize=12;labelBackgroundColor=#ffffff;labelBorderColor=#dddddd;labelPosition=center;verticalLabelPosition=middle;align=center;verticalAlign=middle;endArrow=block;endFill=1;" edge="1" parent="1" source="paperb" target="unsupported">
+          <mxGeometry relative="1" x="0" y="0" as="geometry">
+            <mxPoint x="120" y="120" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="connection_label_legend" value="&lt;b&gt;Connection labels&lt;/b&gt;&lt;br&gt;E1: sealed transfer after non-sealed gate&lt;br&gt;E2: public breadth&lt;br&gt;E3: dynamic evidence&lt;br&gt;E4: repair-pressure reproduction&lt;br&gt;E5: supports bounded claim&lt;br&gt;E6: limits overclaim&lt;br&gt;E7: explicit boundary" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#777777;strokeWidth=1;fontSize=12;align=left;spacingLeft=10;spacingRight=10;spacingTop=8;spacingBottom=8;" vertex="1" parent="1">
+          <mxGeometry x="100" y="1810" width="1680" height="230" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

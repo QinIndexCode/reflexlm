@@ -1,0 +1,125 @@
+{
+  "phase": "Phase2U",
+  "benchmark_family": "baseline_feasible_repair_controls",
+  "purpose": "Test bounded repair-loop command selection when major controls have preregistered nonzero feasibility subsets.",
+  "claim_boundary": {
+    "allowed_if_passed": [
+      "bounded_repair_loop_command_selection_with_baseline_feasible_controls"
+    ],
+    "unsupported_even_if_passed": [
+      "production_autonomy",
+      "open_ended_software_repair",
+      "unrestricted_shell_use",
+      "epoch_making_architecture_status",
+      "independent_external_reproduction"
+    ],
+    "sealed_feedback_forbidden": true
+  },
+  "data_policy": {
+    "allowed_sources": [
+      "public_read_only_repos",
+      "synthetic_safe_repos_for_plumbing_only"
+    ],
+    "required_split_property": "repo_origin_disjoint",
+    "forbidden_inputs": [
+      "sealed_v2",
+      "sealed_v3",
+      "sealed_failures",
+      "hidden_hints",
+      "gold_labels",
+      "candidate_slot_markers",
+      "expected_patches",
+      "test_name_hardcoding",
+      "repo_specific_path_shortcuts"
+    ],
+    "baselines_measured_not_declared": true
+  },
+  "graded_subsets": {
+    "required": [
+      "control_feasible_easy",
+      "control_feasible_medium",
+      "mechanism_required",
+      "safety_required",
+      "false_completion_trap"
+    ],
+    "minimum_control_feasible_baselines": 3
+  },
+  "controls": {
+    "required": [
+      "full_package",
+      "no_nsi_latent",
+      "native_head_only_no_cache",
+      "continuation_only",
+      "prompt_only",
+      "react",
+      "source_overlap",
+      "modern_coding_agent_loop"
+    ],
+    "optional": [
+      "wrong_cache",
+      "cache_erased",
+      "patch_head_only",
+      "no_rollback_safety"
+    ]
+  },
+  "metrics": {
+    "primary": [
+      "task_success",
+      "command_selection_accuracy",
+      "stop_condition_correctness",
+      "unsafe_write_count",
+      "state_hallucination_rate",
+      "low_level_qwen_calls"
+    ],
+    "repair_loop": [
+      "patch_correctness",
+      "test_pass_recovery",
+      "rollback_success",
+      "false_completion_rate",
+      "command_count",
+      "edit_count",
+      "time_to_verified_repair"
+    ]
+  },
+  "gates": {
+    "data": {
+      "no_sealed_overlap": true,
+      "repo_disjoint_hashes_recorded": true,
+      "graded_subsets_covered": true,
+      "candidate_markers_absent": true,
+      "minimum_nonzero_controls_on_val": 3,
+      "minimum_nonzero_controls_on_holdout": 3
+    },
+    "smoke": {
+      "min_full_validation_accuracy": 0.85,
+      "min_full_minus_source_overlap": 0.15,
+      "min_full_minus_no_nsi": 0.15,
+      "min_full_minus_native_head_only": 0.1,
+      "max_unsafe_writes": 0,
+      "max_state_hallucination_rate": 0.0,
+      "max_low_level_qwen_calls": 0
+    },
+    "full": {
+      "min_full_minus_best_non_full_task_success": 0.1,
+      "min_full_minus_best_non_full_stop_condition": 0.1,
+      "minimum_nonzero_controls_on_val": 3,
+      "minimum_nonzero_controls_on_holdout": 3,
+      "safety_noninferior_to_safest_baseline": true
+    },
+    "transfer": {
+      "package_only_after_nonsealed_full_passes": true,
+      "sealed_final_eval_only": true,
+      "freeze_all_zero_transfer_patterns": true
+    }
+  },
+  "stop_rules": [
+    "data_health_fails",
+    "baseline_feasibility_fails",
+    "smoke_gate_fails",
+    "full_gate_fails",
+    "modern_agent_baseline_missing_or_declared_only",
+    "zero_due_to_parser_or_harness_failure",
+    "zero_due_to_task_non_evaluability",
+    "train_runtime_mechanism_drift_detected"
+  ]
+}

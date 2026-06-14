@@ -1,0 +1,50 @@
+{
+  "repo_id": "Qwen/Qwen2.5-7B-Instruct",
+  "revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+  "required_files": [
+    {
+      "name": "config.json",
+      "size_bytes": 663
+    },
+    {
+      "name": "generation_config.json",
+      "size_bytes": 243
+    },
+    {
+      "name": "merges.txt",
+      "size_bytes": 1671839
+    },
+    {
+      "name": "model-00001-of-00004.safetensors",
+      "size_bytes": 3945441440
+    },
+    {
+      "name": "model-00002-of-00004.safetensors",
+      "size_bytes": 3864726352
+    },
+    {
+      "name": "model-00003-of-00004.safetensors",
+      "size_bytes": 3864726424
+    },
+    {
+      "name": "model-00004-of-00004.safetensors",
+      "size_bytes": 3556377672
+    },
+    {
+      "name": "model.safetensors.index.json",
+      "size_bytes": 27752
+    },
+    {
+      "name": "tokenizer.json",
+      "size_bytes": 7031645
+    },
+    {
+      "name": "tokenizer_config.json",
+      "size_bytes": 7305
+    },
+    {
+      "name": "vocab.json",
+      "size_bytes": 2776833
+    }
+  ]
+}

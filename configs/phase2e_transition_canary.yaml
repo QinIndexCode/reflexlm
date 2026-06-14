@@ -1,0 +1,38 @@
+phase: phase2e_transition_canary
+frozen_at: "2026-05-17"
+inherits: configs/phase2e_transition_validation.yaml
+purpose: fast_non_leaking_debug_transition_capacity_check
+architecture:
+  direction: native_heads_single_policy_package
+  disallowed:
+    - json_sft_motor_output
+    - multi_adapter_route_expert
+    - free_shell_generation
+    - test_feedback_command_injection
+  motor_output: explicit_heads_runtime_serialization
+datasets:
+  fixed_split: artifacts/datasets/phase1b_wide_ood_scenario_holdout_seed313_debug_v3/test.jsonl
+  head_dataset: artifacts/datasets/phase2e_native_head_transition_canary
+  extra_train_profile: debug_transition_train
+  extra_val_profile: debug_transition_val
+  sealed_debug_ood_v2: artifacts/datasets/phase2d_debug_ood_v2/challenge.jsonl
+  sealed_quasi_real_terminal_v1: artifacts/datasets/phase2d_quasi_real_terminal_v1/challenge.jsonl
+training:
+  adapter_name: phase2e_native_heads_transition_canary_r16_alpha32_lr1e-4_len256_cap2048
+  base_model: artifacts/models/Qwen2.5-7B-Instruct
+  lora_rank: 16
+  lora_alpha: 32
+  learning_rate: 0.0001
+  epochs: 1
+  max_length: 256
+  gradient_accumulation_steps: 4
+  max_train_records: 2048
+  max_val_records: 512
+  command_intent_loss_weight: 1.0
+  command_slot_loss_weight: 1.5
+  balance_debug_command_intents: true
+overfit_guards:
+  final_test_sets_sealed: true
+  no_test_feedback_tuning: true
+  canary_not_final_claim_evidence: true
+  exact_final_command_hardcoding_forbidden: true

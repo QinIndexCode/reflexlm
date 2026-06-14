@@ -1,0 +1,223 @@
+{
+  "artifact_family": "phase2homeostasis_bounded_publication_dossier",
+  "passed": true,
+  "ready_for_bounded_homeostasis_publication_dossier_claim": true,
+  "ready_for_exact_cross_runtime_homeostatic_dynamics_claim": false,
+  "ready_for_unbounded_long_term_memory_claim": false,
+  "ready_for_general_runtime_interpreter_invariance_claim": false,
+  "ready_for_open_ended_native_perception_claim": false,
+  "ready_for_production_autonomy_claim": false,
+  "ready_for_epoch_making_architecture_claim": false,
+  "checks": {
+    "core_positive_reports_passed_and_bounded": true,
+    "state_artifacts_hmac_bounded_and_valid": true,
+    "missing_key_negative_control_failed_closed": true,
+    "exact_cross_runtime_limitation_recorded": true,
+    "fresh_limitations_report_links_cross_runtime_failure": true,
+    "forbidden_secret_scan_clean": true
+  },
+  "metrics": {
+    "core_positive_report_count": 7,
+    "state_artifact_count": 3,
+    "negative_control_count": 1,
+    "limitation_evidence_count": 1,
+    "threshold_drift_limit": 0.01,
+    "maximum_active_threshold_delta": 0.0089290106695335,
+    "hmac_state_artifact_count": 3,
+    "forbidden_secret_match_count": 0
+  },
+  "core_positive_evidence": [
+    {
+      "role": "runtime_generation1_py313",
+      "report_json": "artifacts\\reports\\phase2homeostasis\\phase2bq_hmac_v3_controller_v4_fresh_generation1_py313.json",
+      "readable": true,
+      "passed": true,
+      "artifact_family": "phase2ci_unified_package_open_task_family_repo_runtime",
+      "expected_family": "phase2ci_unified_package_open_task_family_repo_runtime",
+      "family_matches_expected": true,
+      "bounded_claim_ok": true,
+      "compact_metrics": {
+        "repositories": 3,
+        "episodes": 18,
+        "executed_actions": 114,
+        "task_completion_success_rate": 1.0
+      },
+      "next_required_experiment": "phase2cj_runtime_interpreter_invariance"
+    },
+    {
+      "role": "runtime_generation2_py313",
+      "report_json": "artifacts\\reports\\phase2homeostasis\\phase2bq_hmac_v3_controller_v4_fresh_generation2_py313.json",
+      "readable": true,
+      "passed": true,
+      "artifact_family": "phase2ci_unified_package_open_task_family_repo_runtime",
+      "expected_family": "phase2ci_unified_package_open_task_family_repo_runtime",
+      "family_matches_expected": true,
+      "bounded_claim_ok": true,
+      "compact_metrics": {
+        "repositories": 3,
+        "episodes": 18,
+        "executed_actions": 114,
+        "task_completion_success_rate": 1.0
+      },
+      "next_required_experiment": "phase2cj_runtime_interpreter_invariance"
+    },
+    {
+      "role": "runtime_generation2_py312",
+      "report_json": "artifacts\\reports\\phase2homeostasis\\phase2bq_hmac_v3_controller_v4_fresh_generation2_py312.json",
+      "readable": true,
+      "passed": true,
+      "artifact_family": "phase2ci_unified_package_open_task_family_repo_runtime",
+      "expected_family": "phase2ci_unified_package_open_task_family_repo_runtime",
+      "family_matches_expected": true,
+      "bounded_claim_ok": true,
+      "compact_metrics": {
+        "repositories": 3,
+        "episodes": 18,
+        "executed_actions": 114,
+        "task_completion_success_rate": 1.0
+      },
+      "next_required_experiment": "phase2cj_runtime_interpreter_invariance"
+    },
+    {
+      "role": "persistent_chain_py313",
+      "report_json": "artifacts\\reports\\phase2homeostasis\\phase2homeostasis_hmac_v3_controller_v4_fresh_persistent_state_chain_py313.json",
+      "readable": true,
+      "passed": true,
+      "artifact_family": "phase2homeostasis_persistent_state_chain",
+      "expected_family": "phase2homeostasis_persistent_state_chain",
+      "family_matches_expected": true,
+      "bounded_claim_ok": true,
+      "compact_metrics": {
+        "changed_episode_count": 1
+      },
+      "next_required_experiment": "cross_runtime_persistent_state_transfer"
+    },
+    {
+      "role": "persistent_chain_py313_to_py312",
+      "report_json": "artifacts\\reports\\phase2homeostasis\\phase2homeostasis_hmac_v3_controller_v4_fresh_persistent_state_chain_py313_to_py312.json",
+      "readable": true,
+      "passed": true,
+      "artifact_family": "phase2homeostasis_persistent_state_chain",
+      "expected_family": "phase2homeostasis_persistent_state_chain",
+      "family_matches_expected": true,
+      "bounded_claim_ok": true,
+      "compact_metrics": {
+        "changed_episode_count": 3
+      },
+      "next_required_experiment": "cross_runtime_persistent_state_transfer"
+    },
+    {
+      "role": "runtime_interpreter_invariance",
+      "report_json": "artifacts\\reports\\phase2homeostasis\\phase2cj_hmac_v3_controller_v4_fresh_persistent_state_invariance.json",
+      "readable": true,
+      "passed": true,
+      "artifact_family": "phase2cj_runtime_interpreter_invariance_audit",
+      "expected_family": "phase2cj_runtime_interpreter_invariance_audit",
+      "family_matches_expected": true,
+      "bounded_claim_ok": true,
+      "compact_metrics": {
+        "repositories": 3
+      },
+      "next_required_experiment": "phase2ck_cross_runtime_path_and_python_version_matrix"
+    },
+    {
+      "role": "fresh_rerun_limitations",
+      "report_json": "artifacts\\reports\\phase2homeostasis\\phase2homeostasis_hmac_v3_controller_v4_fresh_rerun_limitations.json",
+      "readable": true,
+      "passed": true,
+      "artifact_family": "phase2homeostasis_fresh_rerun_limitations",
+      "expected_family": "phase2homeostasis_fresh_rerun_limitations",
+      "family_matches_expected": true,
+      "bounded_claim_ok": true,
+      "compact_metrics": {
+        "maximum_active_threshold_delta": 0.0089290106695335,
+        "threshold_drift_limit": 0.01,
+        "side_effect_trace_rows": 18
+      },
+      "next_required_experiment": "narrow_publication_claim_boundary_or_add_deterministic_calibration"
+    }
+  ],
+  "state_artifacts": [
+    {
+      "state_json": "artifacts\\state\\phase2homeostasis\\hmac_v3_controller_v4_fresh_generation1.json",
+      "readable": true,
+      "schema_valid": true,
+      "bounded_state_keys_only": true,
+      "authenticator_algorithm": "hmac-sha256",
+      "key_fingerprint_sha256": "703b90d7416c131afb4f7a1b6d1d23cf92d784415aa02a16d6259a1be666b7ec",
+      "integrity_valid": true
+    },
+    {
+      "state_json": "artifacts\\state\\phase2homeostasis\\hmac_v3_controller_v4_fresh_generation2_py313.json",
+      "readable": true,
+      "schema_valid": true,
+      "bounded_state_keys_only": true,
+      "authenticator_algorithm": "hmac-sha256",
+      "key_fingerprint_sha256": "703b90d7416c131afb4f7a1b6d1d23cf92d784415aa02a16d6259a1be666b7ec",
+      "integrity_valid": true
+    },
+    {
+      "state_json": "artifacts\\state\\phase2homeostasis\\hmac_v3_controller_v4_fresh_generation2_py312.json",
+      "readable": true,
+      "schema_valid": true,
+      "bounded_state_keys_only": true,
+      "authenticator_algorithm": "hmac-sha256",
+      "key_fingerprint_sha256": "703b90d7416c131afb4f7a1b6d1d23cf92d784415aa02a16d6259a1be666b7ec",
+      "integrity_valid": true
+    }
+  ],
+  "negative_controls": [
+    {
+      "role": "hmac_missing_key_negative_control",
+      "report_json": "artifacts\\reports\\phase2homeostasis\\phase2homeostasis_hmac_v3_controller_v4_fresh_persistent_state_chain_no_key_negative.json",
+      "readable": true,
+      "passed": false,
+      "expected_failure_observed": true,
+      "artifact_family": "phase2homeostasis_persistent_state_chain",
+      "failed_check": "both_artifact_integrities_valid"
+    }
+  ],
+  "limitation_evidence": [
+    {
+      "role": "exact_cross_runtime_homeostatic_dynamics_limit",
+      "report_json": "artifacts\\reports\\phase2homeostasis\\phase2homeostasis_hmac_v3_controller_v4_fresh_cross_runtime_dynamics.json",
+      "readable": true,
+      "passed": false,
+      "artifact_family": "phase2homeostasis_cross_runtime_dynamics",
+      "expected_failure_observed": true,
+      "bounded_to_internal_dynamics": true,
+      "maximum_active_threshold_delta": 0.0089290106695335,
+      "threshold_drift_limit": 0.01,
+      "failed_exact_checks": [
+        "discrete_homeostatic_dynamics_match",
+        "active_threshold_deltas_within_tolerance",
+        "wake_reason_counts_match",
+        "runtime_normalized_executable_action_traces_match"
+      ]
+    }
+  ],
+  "forbidden_secret_scan": {
+    "enabled": true,
+    "matches": []
+  },
+  "claim_boundary": "Phase2Homeostasis supports a bounded HMAC-authenticated, package-scope, config-bound homeostatic persistent-state transfer mechanism over the recorded fresh rerun: task completion succeeds, HMAC state transfer is verified, the missing-key control fails closed, and side-effect traces are stable across Python 3.13/3.12. It does not support exact cross-runtime internal homeostatic microdynamics, unbounded or semantic long-term memory, free-form shell autonomy, open-ended native perception, production autonomy, or epoch-making architecture claims.",
+  "supported_claims": [
+    "bounded fresh behavioral mechanism evidence for HMAC-authenticated homeostatic persistent-state transfer with explicit internal cross-runtime microdynamics limitation"
+  ],
+  "unsupported_claims": [
+    "exact cross-runtime homeostatic microdynamics",
+    "unbounded or semantic long-term memory",
+    "free-form shell autonomy",
+    "general runtime interpreter invariance",
+    "open-ended native perception",
+    "production autonomy",
+    "epoch-making architecture"
+  ],
+  "next_required_experiment": "external_replay_or_deterministic_microdynamics_calibration",
+  "evidence": {
+    "output_markdown": "artifacts\\reports\\phase2homeostasis\\phase2homeostasis_hmac_v3_controller_v4_bounded_publication_dossier.md",
+    "auth_key_env_used": "PHASE2_HOMEOSTASIS_HMAC_KEY",
+    "cross_runtime_dynamics_report_json": "artifacts\\reports\\phase2homeostasis\\phase2homeostasis_hmac_v3_controller_v4_fresh_cross_runtime_dynamics.json",
+    "fresh_rerun_limitations_report_json": "artifacts\\reports\\phase2homeostasis\\phase2homeostasis_hmac_v3_controller_v4_fresh_rerun_limitations.json"
+  }
+}

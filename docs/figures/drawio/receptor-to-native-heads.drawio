@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net" agent="reflexlm-paper-figures;drawio-skill-compatible" version="26.0.0">
+  <diagram id="receptor-to-native-heads" name="Receptor-to-Native-Head Decision Path">
+    <mxGraphModel dx="3940" dy="2070" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="3940" pageHeight="2070" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="figure_subtitle" value="Observable runtime evidence&lt;br&gt;is converted into bounded&lt;br&gt;native action fields" style="text;html=1;strokeColor=none;fillColor=none;fontSize=14;fontColor=#333333;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="100" y="40" width="3740" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="lane_evidence" value="Runtime evidence" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e8f3ff;strokeColor=#1f77b4;opacity=18;dashed=1;strokeWidth=1;fontSize=14;fontStyle=1;align=left;verticalAlign=middle;spacingLeft=16;" vertex="1" parent="1">
+          <mxGeometry x="20" y="250" width="3900" height="310" as="geometry" />
+        </mxCell>
+        <mxCell id="lane_scrub" value="Leakage controls" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f2ecff;strokeColor=#7f3fbf;opacity=18;dashed=1;strokeWidth=1;fontSize=14;fontStyle=1;align=left;verticalAlign=middle;spacingLeft=16;" vertex="1" parent="1">
+          <mxGeometry x="20" y="570" width="3900" height="290" as="geometry" />
+        </mxCell>
+        <mxCell id="lane_latent" value="Latent and routing state" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#edf7ed;strokeColor=#2ca02c;opacity=18;dashed=1;strokeWidth=1;fontSize=14;fontStyle=1;align=left;verticalAlign=middle;spacingLeft=16;" vertex="1" parent="1">
+          <mxGeometry x="20" y="860" width="3900" height="300" as="geometry" />
+        </mxCell>
+        <mxCell id="lane_decision" value="Native decision heads" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff3df;strokeColor=#ff7f0e;opacity=18;dashed=1;strokeWidth=1;fontSize=14;fontStyle=1;align=left;verticalAlign=middle;spacingLeft=16;" vertex="1" parent="1">
+          <mxGeometry x="20" y="1150" width="3900" height="370" as="geometry" />
+        </mxCell>
+        <mxCell id="lane_boundary" value="Serialization boundary" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f7f7f7;strokeColor=#555555;opacity=18;dashed=1;strokeWidth=1;fontSize=14;fontStyle=1;align=left;verticalAlign=middle;spacingLeft=16;" vertex="1" parent="1">
+          <mxGeometry x="20" y="1520" width="3900" height="360" as="geometry" />
+        </mxCell>
+        <mxCell id="trace" value="Runtime trace&lt;br&gt;stderr changed files watched&lt;br&gt;paths" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e8f3ff;strokeColor=#1f77b4;strokeWidth=2;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="710" y="370" width="280" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="scrub" value="Leakage scrub&lt;br&gt;no gold hidden or candidate&lt;br&gt;markers" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f2ecff;strokeColor=#7f3fbf;strokeWidth=2;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="1360" y="650" width="270" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="features" value="Receptor features&lt;br&gt;observable state only" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e8f3ff;strokeColor=#1f77b4;strokeWidth=2;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="2020" y="660" width="230" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="nsi" value="NSI latent&lt;br&gt;identity relation stage&lt;br&gt;signals" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#edf7ed;strokeColor=#2ca02c;strokeWidth=2;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="1370" y="960" width="240" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="route" value="Route gate&lt;br&gt;Debug Cortex only when&lt;br&gt;needed" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff3df;strokeColor=#ff7f0e;strokeWidth=2;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="2020" y="960" width="230" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="slots" value="Command-slot head&lt;br&gt;same-intent candidates" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff3df;strokeColor=#ff7f0e;strokeWidth=2;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="2690" y="1290" width="230" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="action" value="Native action tuple&lt;br&gt;action route slot confidence" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ecfbfb;strokeColor=#17becf;strokeWidth=2;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="2000" y="1640" width="280" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="nojson" value="Serialization after decision&lt;br&gt;not model JSON output" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f7f7f7;strokeColor=#555555;strokeWidth=2;fontSize=13;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="1350" y="1640" width="280" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_1_trace_scrub" value="E1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#4a4a4a;fontSize=12;labelBackgroundColor=#ffffff;labelBorderColor=#dddddd;labelPosition=center;verticalLabelPosition=middle;align=center;verticalAlign=middle;endArrow=block;endFill=1;" edge="1" parent="1" source="trace" target="scrub">
+          <mxGeometry relative="1" x="0" y="0" as="geometry">
+            <mxPoint x="0" y="0" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_2_scrub_features" value="E2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#4a4a4a;fontSize=12;labelBackgroundColor=#ffffff;labelBorderColor=#dddddd;labelPosition=center;verticalLabelPosition=middle;align=center;verticalAlign=middle;endArrow=block;endFill=1;" edge="1" parent="1" source="scrub" target="features">
+          <mxGeometry relative="1" x="0" y="0" as="geometry">
+            <mxPoint x="-10" y="0" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_3_features_nsi" value="E3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#4a4a4a;fontSize=12;labelBackgroundColor=#ffffff;labelBorderColor=#dddddd;labelPosition=center;verticalLabelPosition=middle;align=center;verticalAlign=middle;endArrow=block;endFill=1;" edge="1" parent="1" source="features" target="nsi">
+          <mxGeometry relative="1" x="0" y="0" as="geometry">
+            <mxPoint x="-10" y="10" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_4_nsi_route" value="E4" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#4a4a4a;fontSize=12;labelBackgroundColor=#ffffff;labelBorderColor=#dddddd;labelPosition=center;verticalLabelPosition=middle;align=center;verticalAlign=middle;endArrow=block;endFill=1;" edge="1" parent="1" source="nsi" target="route">
+          <mxGeometry relative="1" x="0" y="0" as="geometry">
+            <mxPoint x="0" y="0" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_5_route_slots" value="E5" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#4a4a4a;fontSize=12;labelBackgroundColor=#ffffff;labelBorderColor=#dddddd;labelPosition=center;verticalLabelPosition=middle;align=center;verticalAlign=middle;endArrow=block;endFill=1;" edge="1" parent="1" source="route" target="slots">
+          <mxGeometry relative="1" x="0" y="0" as="geometry">
+            <mxPoint x="-20" y="-10" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_6_slots_action" value="E6" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#4a4a4a;fontSize=12;labelBackgroundColor=#ffffff;labelBorderColor=#dddddd;labelPosition=center;verticalLabelPosition=middle;align=center;verticalAlign=middle;endArrow=block;endFill=1;" edge="1" parent="1" source="slots" target="action">
+          <mxGeometry relative="1" x="0" y="0" as="geometry">
+            <mxPoint x="-20" y="10" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_7_action_nojson" value="E7" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#4a4a4a;fontSize=12;labelBackgroundColor=#ffffff;labelBorderColor=#dddddd;labelPosition=center;verticalLabelPosition=middle;align=center;verticalAlign=middle;endArrow=block;endFill=1;" edge="1" parent="1" source="action" target="nojson">
+          <mxGeometry relative="1" x="0" y="0" as="geometry">
+            <mxPoint x="0" y="0" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="connection_label_legend" value="&lt;b&gt;Connection labels&lt;/b&gt;&lt;br&gt;E1: public or synthetic-safe input&lt;br&gt;E2: visible fields&lt;br&gt;E3: latent fusion&lt;br&gt;E4: route bias&lt;br&gt;E5: debug command selection&lt;br&gt;E6: selected bounded command&lt;br&gt;E7: runtime wrapper" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#777777;strokeWidth=1;fontSize=12;align=left;spacingLeft=10;spacingRight=10;spacingTop=8;spacingBottom=8;" vertex="1" parent="1">
+          <mxGeometry x="100" y="1810" width="1680" height="230" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

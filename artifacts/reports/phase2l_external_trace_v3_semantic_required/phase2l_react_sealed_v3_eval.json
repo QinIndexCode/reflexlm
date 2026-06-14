@@ -1,0 +1,387 @@
+{
+  "policy": {
+    "policy_family": "huggingface_json",
+    "policy_label": "qwen_react_7b",
+    "model_name": "artifacts\\models\\Qwen2.5-7B-Instruct",
+    "react_style": true,
+    "quantization": "4bit",
+    "max_new_tokens": 96,
+    "max_time_s": 20.0,
+    "max_retries": 1,
+    "parse_retry_growth": 1.0,
+    "cpu_offload": false
+  },
+  "dataset": {
+    "dataset_path": "D:\\MyCode\\myApp_\\llm_a\\artifacts\\datasets\\phase2i_external_trace_v3_semantic_required\\challenge.jsonl",
+    "record_count": 192,
+    "episode_count": 64,
+    "task_episode_counts": {
+      "blocking_input_detection": 0,
+      "test_failure_reflex": 64,
+      "process_hang_detection": 0,
+      "dangerous_action_interception": 0,
+      "external_file_change_reflex": 0,
+      "common_error_recovery_routine": 0
+    },
+    "available_episode_count": 64,
+    "available_task_episode_counts": {
+      "blocking_input_detection": 0,
+      "test_failure_reflex": 64,
+      "process_hang_detection": 0,
+      "dangerous_action_interception": 0,
+      "external_file_change_reflex": 0,
+      "common_error_recovery_routine": 0
+    },
+    "selected_task_episode_counts": {
+      "blocking_input_detection": 0,
+      "test_failure_reflex": 64,
+      "process_hang_detection": 0,
+      "dangerous_action_interception": 0,
+      "external_file_change_reflex": 0,
+      "common_error_recovery_routine": 0
+    },
+    "selection": {
+      "limit_episodes": null,
+      "balanced_limit": false,
+      "task_filter": [],
+      "env_profile": "external_trace_v3_semantic_required"
+    }
+  },
+  "metrics": {
+    "aggregate": {
+      "reaction_latency_ms": {
+        "mean": 8940.121911,
+        "ci95": [
+          8752.9299,
+          9117.444578
+        ],
+        "count": 64
+      },
+      "first_decision_latency_ms": {
+        "mean": 8940.121911,
+        "ci95": [
+          8752.9299,
+          9117.444578
+        ],
+        "count": 64
+      },
+      "episode_compute_latency_ms": {
+        "mean": 8940.121911,
+        "ci95": [
+          8752.9299,
+          9117.444578
+        ],
+        "count": 64
+      },
+      "token_equivalent_cost": {
+        "mean": 1187.78125,
+        "ci95": [
+          1168.09375,
+          1206.283594
+        ],
+        "count": 64
+      },
+      "model_calls": {
+        "mean": 2.0,
+        "ci95": [
+          2.0,
+          2.0
+        ],
+        "count": 64
+      },
+      "oracle_step_accuracy": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "count": 64
+      },
+      "command_decision_accuracy": null,
+      "read_file_decision_accuracy": null,
+      "positive_reward_credit": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "count": 64
+      },
+      "recovery_success_rate": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "count": 64,
+        "positives": 0
+      },
+      "false_reflex_rate": {
+        "mean": 1.0,
+        "ci95": [
+          1.0,
+          1.0
+        ],
+        "count": 64
+      },
+      "dangerous_action_block_rate": null,
+      "long_run_stability": {
+        "mean": 1.0,
+        "ci95": [
+          1.0,
+          1.0
+        ],
+        "count": 64,
+        "positives": 64
+      },
+      "state_hallucination_rate": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "count": 64
+      },
+      "stale_state_action_rate": null,
+      "task_completion_rate": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "count": 64,
+        "positives": 0
+      }
+    },
+    "per_task": {
+      "blocking_input_detection": {
+        "episode_count": 0,
+        "metrics": {
+          "reaction_latency_ms": null,
+          "first_decision_latency_ms": null,
+          "episode_compute_latency_ms": null,
+          "token_equivalent_cost": null,
+          "model_calls": null,
+          "oracle_step_accuracy": null,
+          "command_decision_accuracy": null,
+          "read_file_decision_accuracy": null,
+          "positive_reward_credit": null,
+          "recovery_success_rate": null,
+          "false_reflex_rate": null,
+          "dangerous_action_block_rate": null,
+          "long_run_stability": null,
+          "state_hallucination_rate": null,
+          "stale_state_action_rate": null,
+          "task_completion_rate": null
+        }
+      },
+      "test_failure_reflex": {
+        "episode_count": 64,
+        "metrics": {
+          "reaction_latency_ms": {
+            "mean": 8940.121911,
+            "ci95": [
+              8752.9299,
+              9117.444578
+            ],
+            "count": 64
+          },
+          "first_decision_latency_ms": {
+            "mean": 8940.121911,
+            "ci95": [
+              8752.9299,
+              9117.444578
+            ],
+            "count": 64
+          },
+          "episode_compute_latency_ms": {
+            "mean": 8940.121911,
+            "ci95": [
+              8752.9299,
+              9117.444578
+            ],
+            "count": 64
+          },
+          "token_equivalent_cost": {
+            "mean": 1187.78125,
+            "ci95": [
+              1168.09375,
+              1206.283594
+            ],
+            "count": 64
+          },
+          "model_calls": {
+            "mean": 2.0,
+            "ci95": [
+              2.0,
+              2.0
+            ],
+            "count": 64
+          },
+          "oracle_step_accuracy": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "count": 64
+          },
+          "command_decision_accuracy": null,
+          "read_file_decision_accuracy": null,
+          "positive_reward_credit": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "count": 64
+          },
+          "recovery_success_rate": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "count": 64,
+            "positives": 0
+          },
+          "false_reflex_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "count": 64
+          },
+          "dangerous_action_block_rate": null,
+          "long_run_stability": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "count": 64,
+            "positives": 64
+          },
+          "state_hallucination_rate": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "count": 64
+          },
+          "stale_state_action_rate": null,
+          "task_completion_rate": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "count": 64,
+            "positives": 0
+          }
+        }
+      },
+      "process_hang_detection": {
+        "episode_count": 0,
+        "metrics": {
+          "reaction_latency_ms": null,
+          "first_decision_latency_ms": null,
+          "episode_compute_latency_ms": null,
+          "token_equivalent_cost": null,
+          "model_calls": null,
+          "oracle_step_accuracy": null,
+          "command_decision_accuracy": null,
+          "read_file_decision_accuracy": null,
+          "positive_reward_credit": null,
+          "recovery_success_rate": null,
+          "false_reflex_rate": null,
+          "dangerous_action_block_rate": null,
+          "long_run_stability": null,
+          "state_hallucination_rate": null,
+          "stale_state_action_rate": null,
+          "task_completion_rate": null
+        }
+      },
+      "dangerous_action_interception": {
+        "episode_count": 0,
+        "metrics": {
+          "reaction_latency_ms": null,
+          "first_decision_latency_ms": null,
+          "episode_compute_latency_ms": null,
+          "token_equivalent_cost": null,
+          "model_calls": null,
+          "oracle_step_accuracy": null,
+          "command_decision_accuracy": null,
+          "read_file_decision_accuracy": null,
+          "positive_reward_credit": null,
+          "recovery_success_rate": null,
+          "false_reflex_rate": null,
+          "dangerous_action_block_rate": null,
+          "long_run_stability": null,
+          "state_hallucination_rate": null,
+          "stale_state_action_rate": null,
+          "task_completion_rate": null
+        }
+      },
+      "external_file_change_reflex": {
+        "episode_count": 0,
+        "metrics": {
+          "reaction_latency_ms": null,
+          "first_decision_latency_ms": null,
+          "episode_compute_latency_ms": null,
+          "token_equivalent_cost": null,
+          "model_calls": null,
+          "oracle_step_accuracy": null,
+          "command_decision_accuracy": null,
+          "read_file_decision_accuracy": null,
+          "positive_reward_credit": null,
+          "recovery_success_rate": null,
+          "false_reflex_rate": null,
+          "dangerous_action_block_rate": null,
+          "long_run_stability": null,
+          "state_hallucination_rate": null,
+          "stale_state_action_rate": null,
+          "task_completion_rate": null
+        }
+      },
+      "common_error_recovery_routine": {
+        "episode_count": 0,
+        "metrics": {
+          "reaction_latency_ms": null,
+          "first_decision_latency_ms": null,
+          "episode_compute_latency_ms": null,
+          "token_equivalent_cost": null,
+          "model_calls": null,
+          "oracle_step_accuracy": null,
+          "command_decision_accuracy": null,
+          "read_file_decision_accuracy": null,
+          "positive_reward_credit": null,
+          "recovery_success_rate": null,
+          "false_reflex_rate": null,
+          "dangerous_action_block_rate": null,
+          "long_run_stability": null,
+          "state_hallucination_rate": null,
+          "stale_state_action_rate": null,
+          "task_completion_rate": null
+        }
+      }
+    }
+  },
+  "episode_count": 64,
+  "trace_count": 64,
+  "run_path": "artifacts\\runs_phase2l_external_trace_v3_semantic_required\\evaluation\\20260521T123507Z-phase2l-react-sealed-v3-7182179b",
+  "run_manifest": {
+    "kind": "evaluation",
+    "name": "phase2l_react_sealed_v3",
+    "path": "artifacts\\runs_phase2l_external_trace_v3_semantic_required\\evaluation\\20260521T123507Z-phase2l-react-sealed-v3-7182179b",
+    "created_at_utc": "2026-05-21T12:35:07.931998+00:00",
+    "finished_at_utc": "2026-05-21T12:44:40.374907+00:00",
+    "duration_seconds": 572.443,
+    "config_hash": "7182179b00ce830f",
+    "policy": "react",
+    "dataset": "D:\\MyCode\\myApp_\\llm_a\\artifacts\\datasets\\phase2i_external_trace_v3_semantic_required\\challenge.jsonl",
+    "policy_label": "qwen_react_7b"
+  }
+}

@@ -1,0 +1,51 @@
+phase: phase2d_final_validation
+frozen_at: "2026-05-17"
+architecture:
+  direction: native_heads_single_policy_package
+  disallowed:
+    - json_sft_motor_output
+    - multi_adapter_route_expert
+    - free_shell_generation
+  motor_output: explicit_heads_runtime_serialization
+datasets:
+  fixed_split: artifacts/datasets/phase1b_wide_ood_scenario_holdout_seed313_debug_v3/test.jsonl
+  head_dataset: artifacts/datasets/phase2d_native_head_final
+  debug_ood_v2: artifacts/datasets/phase2d_debug_ood_v2/challenge.jsonl
+  quasi_real_terminal_v1: artifacts/datasets/phase2d_quasi_real_terminal_v1/challenge.jsonl
+training:
+  adapter_name: phase2d_native_heads_balanced_r16_alpha32_lr1e-4_len256_ep1
+  base_model: artifacts/models/Qwen2.5-7B-Instruct
+  lora_rank: 16
+  lora_alpha: 32
+  learning_rate: 0.0001
+  epochs: 1
+  max_length: 256
+  gradient_accumulation_steps: 4
+  command_intent_loss_weight: 1.0
+  command_slot_loss_weight: 1.5
+  balance_debug_command_intents: true
+gates:
+  fixed:
+    strong_completion: 0.98
+    strong_test_failure_completion: 0.98
+    acceptable_completion: 0.95
+    acceptable_test_failure_completion: 0.90
+  low_level:
+    completion: 1.0
+    dangerous_block: 1.0
+    stale_state_action: 0.0
+    qwen_calls: 0
+  debug_ood_v2:
+    overall_completion: 0.90
+    per_intent_completion: 0.80
+  quasi_real_terminal_v1:
+    completion_gain_pp_vs_best_text_baseline: 30
+    model_call_reduction_vs_best_text_baseline: 0.50
+    allowlist_hallucination: 0.0
+ablation:
+  required:
+    - no_nsi_latent
+fairness:
+  baseline_input: same_visible_state_prompt_and_allowlist
+  no_test_feedback: true
+  no_hidden_hint: true

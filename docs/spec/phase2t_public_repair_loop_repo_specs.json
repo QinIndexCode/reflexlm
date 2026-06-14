@@ -1,0 +1,426 @@
+[
+  {
+    "repo_id": "pallets_click",
+    "split": "train",
+    "source_kind": "public_repo",
+    "repo_url": "https://github.com/pallets/click.git",
+    "commit_hash": "3a40e43e8f61761cb7bd4f3e27ae3060690a84eb",
+    "license": "BSD-3-Clause",
+    "provenance": {
+      "public_repo": true,
+      "license_metadata_present": true,
+      "commit_pinned": true,
+      "repo_origin_recorded": true
+    },
+    "repair_loop_contract": {
+      "sandbox_compatible": true,
+      "source_repo_readonly": true,
+      "patches_required": true,
+      "tests_required": true,
+      "rollback_required": true,
+      "stop_required": true,
+      "safety_pressure_included": true,
+      "modern_baseline_measurable": true
+    },
+    "task_families": [
+      "dependency_or_import_mismatch",
+      "localized_unit_assertion",
+      "stale_snapshot_update",
+      "config_or_environment_marker",
+      "multi_file_traceback_relation",
+      "regression_after_partial_repair",
+      "safety_blocked_command_temptation",
+      "false_completion_trap"
+    ],
+    "factor_levels": {
+      "candidate_count": ["2", "3", "4"],
+      "evidence_density": ["low", "medium", "high"],
+      "repair_depth": ["one_edit", "two_edits", "stale_state_refresh"],
+      "failure_observability": [
+        "direct_traceback",
+        "indirect_changed_file_relation",
+        "ambiguous_same_intent_command"
+      ],
+      "ambiguity_class": [
+        "same_intent_command",
+        "same_file_read",
+        "stage_transition",
+        "patch_location_ambiguity"
+      ],
+      "safety_pressure": ["none", "unsafe_command_lure", "rollback_required"]
+    },
+    "planned_trace_mode": "dynamic_sandbox_repair_loop",
+    "selection_rationale": "Public Python package with command-line behavior and testable import or dependency repair surfaces."
+  },
+  {
+    "repo_id": "pypa_packaging",
+    "split": "train",
+    "source_kind": "public_repo",
+    "repo_url": "https://github.com/pypa/packaging.git",
+    "commit_hash": "28e1791b5ece2e998329a78a300b9cbe8549c3ca",
+    "license": "BSD-2-Clause OR Apache-2.0",
+    "provenance": {
+      "public_repo": true,
+      "license_metadata_present": true,
+      "commit_pinned": true,
+      "repo_origin_recorded": true
+    },
+    "repair_loop_contract": {
+      "sandbox_compatible": true,
+      "source_repo_readonly": true,
+      "patches_required": true,
+      "tests_required": true,
+      "rollback_required": true,
+      "stop_required": true,
+      "safety_pressure_included": true,
+      "modern_baseline_measurable": true
+    },
+    "task_families": [
+      "dependency_or_import_mismatch",
+      "localized_unit_assertion",
+      "stale_snapshot_update",
+      "config_or_environment_marker",
+      "multi_file_traceback_relation",
+      "regression_after_partial_repair",
+      "safety_blocked_command_temptation",
+      "false_completion_trap"
+    ],
+    "factor_levels": {
+      "candidate_count": ["2", "3", "4"],
+      "evidence_density": ["low", "medium", "high"],
+      "repair_depth": ["one_edit", "two_edits", "stale_state_refresh"],
+      "failure_observability": [
+        "direct_traceback",
+        "indirect_changed_file_relation",
+        "ambiguous_same_intent_command"
+      ],
+      "ambiguity_class": [
+        "same_intent_command",
+        "same_file_read",
+        "stage_transition",
+        "patch_location_ambiguity"
+      ],
+      "safety_pressure": ["none", "unsafe_command_lure", "rollback_required"]
+    },
+    "planned_trace_mode": "dynamic_sandbox_repair_loop",
+    "selection_rationale": "Public packaging utility with enough literal repair targets for localized assertion and parser-behavior repair loops."
+  },
+  {
+    "repo_id": "more_itertools",
+    "split": "train",
+    "source_kind": "public_repo",
+    "repo_url": "https://github.com/more-itertools/more-itertools.git",
+    "commit_hash": "64be96ceb2a6e836f76f069f4a96d2394d59fd0c",
+    "license": "MIT",
+    "provenance": {
+      "public_repo": true,
+      "license_metadata_present": true,
+      "commit_pinned": true,
+      "repo_origin_recorded": true
+    },
+    "repair_loop_contract": {
+      "sandbox_compatible": true,
+      "source_repo_readonly": true,
+      "patches_required": true,
+      "tests_required": true,
+      "rollback_required": true,
+      "stop_required": true,
+      "safety_pressure_included": true,
+      "modern_baseline_measurable": true
+    },
+    "task_families": [
+      "dependency_or_import_mismatch",
+      "localized_unit_assertion",
+      "stale_snapshot_update",
+      "config_or_environment_marker",
+      "multi_file_traceback_relation",
+      "regression_after_partial_repair",
+      "safety_blocked_command_temptation",
+      "false_completion_trap"
+    ],
+    "factor_levels": {
+      "candidate_count": ["2", "3", "4"],
+      "evidence_density": ["low", "medium", "high"],
+      "repair_depth": ["one_edit", "two_edits", "stale_state_refresh"],
+      "failure_observability": [
+        "direct_traceback",
+        "indirect_changed_file_relation",
+        "ambiguous_same_intent_command"
+      ],
+      "ambiguity_class": [
+        "same_intent_command",
+        "same_file_read",
+        "stage_transition",
+        "patch_location_ambiguity"
+      ],
+      "safety_pressure": ["none", "unsafe_command_lure", "rollback_required"]
+    },
+    "planned_trace_mode": "dynamic_sandbox_repair_loop",
+    "selection_rationale": "Public utility package with broad tests and multiple candidate repair locations."
+  },
+  {
+    "repo_id": "pycqa_pyflakes",
+    "split": "val",
+    "source_kind": "public_repo",
+    "repo_url": "https://github.com/PyCQA/pyflakes.git",
+    "commit_hash": "59ec4593efd4c69ce00fdb13c40fcf5f3212ab10",
+    "license": "MIT",
+    "provenance": {
+      "public_repo": true,
+      "license_metadata_present": true,
+      "commit_pinned": true,
+      "repo_origin_recorded": true
+    },
+    "repair_loop_contract": {
+      "sandbox_compatible": true,
+      "source_repo_readonly": true,
+      "patches_required": true,
+      "tests_required": true,
+      "rollback_required": true,
+      "stop_required": true,
+      "safety_pressure_included": true,
+      "modern_baseline_measurable": true
+    },
+    "task_families": [
+      "dependency_or_import_mismatch",
+      "localized_unit_assertion",
+      "stale_snapshot_update",
+      "config_or_environment_marker",
+      "multi_file_traceback_relation",
+      "regression_after_partial_repair",
+      "safety_blocked_command_temptation",
+      "false_completion_trap"
+    ],
+    "factor_levels": {
+      "candidate_count": ["2", "3", "4"],
+      "evidence_density": ["low", "medium", "high"],
+      "repair_depth": ["one_edit", "two_edits", "stale_state_refresh"],
+      "failure_observability": [
+        "direct_traceback",
+        "indirect_changed_file_relation",
+        "ambiguous_same_intent_command"
+      ],
+      "ambiguity_class": [
+        "same_intent_command",
+        "same_file_read",
+        "stage_transition",
+        "patch_location_ambiguity"
+      ],
+      "safety_pressure": ["none", "unsafe_command_lure", "rollback_required"]
+    },
+    "planned_trace_mode": "dynamic_sandbox_repair_loop",
+    "selection_rationale": "Public static-analysis package with deterministic Python behavior and enough literal repair targets for validation pressure."
+  },
+  {
+    "repo_id": "pyparsing_pyparsing",
+    "split": "val",
+    "source_kind": "public_repo",
+    "repo_url": "https://github.com/pyparsing/pyparsing.git",
+    "commit_hash": "4f52ba7e9daa4845fd94dd4a1999fc42204207fe",
+    "license": "MIT",
+    "provenance": {
+      "public_repo": true,
+      "license_metadata_present": true,
+      "commit_pinned": true,
+      "repo_origin_recorded": true
+    },
+    "repair_loop_contract": {
+      "sandbox_compatible": true,
+      "source_repo_readonly": true,
+      "patches_required": true,
+      "tests_required": true,
+      "rollback_required": true,
+      "stop_required": true,
+      "safety_pressure_included": true,
+      "modern_baseline_measurable": true
+    },
+    "task_families": [
+      "dependency_or_import_mismatch",
+      "localized_unit_assertion",
+      "stale_snapshot_update",
+      "config_or_environment_marker",
+      "multi_file_traceback_relation",
+      "regression_after_partial_repair",
+      "safety_blocked_command_temptation",
+      "false_completion_trap"
+    ],
+    "factor_levels": {
+      "candidate_count": ["2", "3", "4"],
+      "evidence_density": ["low", "medium", "high"],
+      "repair_depth": ["one_edit", "two_edits", "stale_state_refresh"],
+      "failure_observability": [
+        "direct_traceback",
+        "indirect_changed_file_relation",
+        "ambiguous_same_intent_command"
+      ],
+      "ambiguity_class": [
+        "same_intent_command",
+        "same_file_read",
+        "stage_transition",
+        "patch_location_ambiguity"
+      ],
+      "safety_pressure": ["none", "unsafe_command_lure", "rollback_required"]
+    },
+    "planned_trace_mode": "dynamic_sandbox_repair_loop",
+    "selection_rationale": "Public parser package with multiple candidate repair targets and traceback-to-module repair pressure."
+  },
+  {
+    "repo_id": "dateutil_dateutil",
+    "split": "holdout",
+    "source_kind": "public_repo",
+    "repo_url": "https://github.com/dateutil/dateutil.git",
+    "commit_hash": "48bd1af97e71baf8e96fce5b663d589caac8f147",
+    "license": "Apache-2.0 OR BSD-3-Clause",
+    "provenance": {
+      "public_repo": true,
+      "license_metadata_present": true,
+      "commit_pinned": true,
+      "repo_origin_recorded": true
+    },
+    "repair_loop_contract": {
+      "sandbox_compatible": true,
+      "source_repo_readonly": true,
+      "patches_required": true,
+      "tests_required": true,
+      "rollback_required": true,
+      "stop_required": true,
+      "safety_pressure_included": true,
+      "modern_baseline_measurable": true
+    },
+    "task_families": [
+      "dependency_or_import_mismatch",
+      "localized_unit_assertion",
+      "stale_snapshot_update",
+      "config_or_environment_marker",
+      "multi_file_traceback_relation",
+      "regression_after_partial_repair",
+      "safety_blocked_command_temptation",
+      "false_completion_trap"
+    ],
+    "factor_levels": {
+      "candidate_count": ["2", "3", "4"],
+      "evidence_density": ["low", "medium", "high"],
+      "repair_depth": ["one_edit", "two_edits", "stale_state_refresh"],
+      "failure_observability": [
+        "direct_traceback",
+        "indirect_changed_file_relation",
+        "ambiguous_same_intent_command"
+      ],
+      "ambiguity_class": [
+        "same_intent_command",
+        "same_file_read",
+        "stage_transition",
+        "patch_location_ambiguity"
+      ],
+      "safety_pressure": ["none", "unsafe_command_lure", "rollback_required"]
+    },
+    "planned_trace_mode": "dynamic_sandbox_repair_loop",
+    "selection_rationale": "Public date/time utility package with enough literal targets for held-out repair-loop pressure."
+  },
+  {
+    "repo_id": "pytoolz_toolz",
+    "split": "holdout",
+    "source_kind": "public_repo",
+    "repo_url": "https://github.com/pytoolz/toolz.git",
+    "commit_hash": "568c2b8393973cd172a466546c9d95779c452438",
+    "license": "BSD-3-Clause",
+    "provenance": {
+      "public_repo": true,
+      "license_metadata_present": true,
+      "commit_pinned": true,
+      "repo_origin_recorded": true
+    },
+    "repair_loop_contract": {
+      "sandbox_compatible": true,
+      "source_repo_readonly": true,
+ "patches_required": true,
+      "tests_required": true,
+      "rollback_required": true,
+      "stop_required": true,
+      "safety_pressure_included": true,
+      "modern_baseline_measurable": true
+    },
+    "task_families": [
+      "dependency_or_import_mismatch",
+      "localized_unit_assertion",
+      "stale_snapshot_update",
+      "config_or_environment_marker",
+      "multi_file_traceback_relation",
+      "regression_after_partial_repair",
+      "safety_blocked_command_temptation",
+      "false_completion_trap"
+    ],
+    "factor_levels": {
+      "candidate_count": ["2", "3", "4"],
+      "evidence_density": ["low", "medium", "high"],
+      "repair_depth": ["one_edit", "two_edits", "stale_state_refresh"],
+      "failure_observability": [
+        "direct_traceback",
+        "indirect_changed_file_relation",
+        "ambiguous_same_intent_command"
+      ],
+      "ambiguity_class": [
+        "same_intent_command",
+        "same_file_read",
+        "stage_transition",
+        "patch_location_ambiguity"
+      ],
+      "safety_pressure": ["none", "unsafe_command_lure", "rollback_required"]
+    },
+    "planned_trace_mode": "dynamic_sandbox_repair_loop",
+    "selection_rationale": "Public functional utility package where repair-loop commands can be constrained by allowlist and safety pressure."
+  },
+  {
+    "repo_id": "mahmoud_boltons",
+    "split": "holdout",
+    "source_kind": "public_repo",
+    "repo_url": "https://github.com/mahmoud/boltons.git",
+    "commit_hash": "207651ee6055aabd0d9cdeac2e00140cdc208d44",
+    "license": "BSD-3-Clause",
+    "provenance": {
+      "public_repo": true,
+      "license_metadata_present": true,
+      "commit_pinned": true,
+      "repo_origin_recorded": true
+    },
+    "repair_loop_contract": {
+      "sandbox_compatible": true,
+      "source_repo_readonly": true,
+      "patches_required": true,
+      "tests_required": true,
+      "rollback_required": true,
+      "stop_required": true,
+      "safety_pressure_included": true,
+      "modern_baseline_measurable": true
+    },
+    "task_families": [
+      "dependency_or_import_mismatch",
+      "localized_unit_assertion",
+      "stale_snapshot_update",
+      "config_or_environment_marker",
+      "multi_file_traceback_relation",
+      "regression_after_partial_repair",
+      "safety_blocked_command_temptation",
+      "false_completion_trap"
+    ],
+    "factor_levels": {
+      "candidate_count": ["2", "3", "4"],
+      "evidence_density": ["low", "medium", "high"],
+      "repair_depth": ["one_edit", "two_edits", "stale_state_refresh"],
+      "failure_observability": [
+        "direct_traceback",
+        "indirect_changed_file_relation",
+        "ambiguous_same_intent_command"
+      ],
+      "ambiguity_class": [
+        "same_intent_command",
+        "same_file_read",
+        "stage_transition",
+        "patch_location_ambiguity"
+      ],
+      "safety_pressure": ["none", "unsafe_command_lure", "rollback_required"]
+    },
+    "planned_trace_mode": "dynamic_sandbox_repair_loop",
+    "selection_rationale": "Public utility library with broad modules suitable for false-completion and verification-stop pressure."
+  }
+]

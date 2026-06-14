@@ -1,0 +1,26 @@
+// title: Evidence Ladder and Claim Boundary DAG
+// subtitle: Positive evidence can support bounded claims only while preserved failures constrain overclaiming
+// size: 22 | 11
+// lane: evidence | 8.2 | 10.1 | Positive evidence ladder | evidence
+// lane: synthesis | 5.0 | 8.2 | Claim synthesis | output
+// lane: boundary | 0.8 | 5.0 | Negative evidence and unsupported scope | boundary
+// node: p2m | 4.25 | 9.1 | Phase2M-v2\nrelation-key public split | evidence
+// node: p2p | 8.4 | 9.1 | Phase2P\nsealed cross-model transfer | evidence
+// node: p2q | 12.55 | 9.1 | Phase2Q\npublic trace breadth | evidence
+// node: p2r | 16.7 | 9.1 | Phase2R\ndynamic pytest traces | evidence
+// node: p2s | 20.2 | 9.1 | Phase2S\npublic repair multiseed | evidence
+// node: paperb | 12.0 | 6.5 | Paper B claim\nbounded native nervous command selection | output
+// node: neg | 7.0 | 2.65 | Negative evidence\nPhase2I K L failures preserved | control
+// node: unsupported | 16.0 | 2.65 | Unsupported scope\nproduction autonomy epoch-making claims | boundary
+// edge: p2m -> p2p | sealed transfer after non-sealed gate
+// edge: p2p -> p2q | public breadth
+// edge: p2q -> p2r | dynamic evidence
+// edge: p2r -> p2s | repair-pressure reproduction
+// edge: p2s -> paperb | supports bounded claim
+// edge: neg -> paperb | limits overclaim
+// edge: paperb -> unsupported | explicit boundary
+digraph EvidenceLadder {
+  rankdir=LR;
+  p2m -> p2p -> p2q -> p2r -> p2s -> paperb -> unsupported;
+  neg -> paperb;
+}

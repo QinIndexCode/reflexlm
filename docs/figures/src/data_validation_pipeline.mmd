@@ -1,0 +1,31 @@
+%% title: Data and Validation Pipeline
+%% subtitle: Non-sealed construction and gates precede one-way sealed final evaluation
+%% size: 22 | 11
+%% lane: data | 8.2 | 10.1 | Data construction | input
+%% lane: audit | 6.0 | 8.2 | Audit and split gates | evidence
+%% lane: train | 3.75 | 6.0 | Training and postflight | model
+%% lane: release | 1.55 | 3.75 | Package and final evaluation | output
+%% lane: boundary | 0.35 | 1.55 | Sealed boundary | boundary
+%% node: collect | 4.6 | 9.1 | Public read-only traces\nor preregistered synthetic-safe data | input
+%% node: normalize | 8.4 | 9.1 | Normalize and scrub\nremove hidden gold candidate markers | control
+%% node: split | 12.2 | 7.1 | Repo-disjoint split\ntrain validation holdout | control
+%% node: audit | 16.0 | 7.1 | Data health audit\nhashes leakage graded difficulty | evidence
+%% node: train | 16.0 | 4.85 | Non-sealed train\nfixed config and seeds | model
+%% node: post | 12.2 | 4.85 | Postflight gates\nsource-overlap native controls | evidence
+%% node: package | 8.4 | 2.55 | Package only after gates\nno sealed tuning | output
+%% node: sealed | 4.6 | 2.55 | Sealed final eval\none-way evidence only | boundary
+%% edge: collect -> normalize | raw traces
+%% edge: normalize -> split | clean rows
+%% edge: split -> audit | effective hashes
+%% edge: audit -> train | only if passed
+%% edge: train -> post | measured metrics
+%% edge: post -> package | if deltas pass
+%% edge: package -> sealed | final evaluation only
+flowchart LR
+  collect["Public read-only traces"] --> normalize["Normalize and scrub"]
+  normalize --> split["Repo-disjoint split"]
+  split --> audit["Data health audit"]
+  audit --> train["Non-sealed train"]
+  train --> post["Postflight gates"]
+  post --> package["Package only after gates"]
+  package --> sealed["Sealed final eval"]

@@ -1,0 +1,25 @@
+\begin{table}[ht]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{2pt}
+\caption{Positive evidence matrix for bounded command-selection claims.}
+\label{tab:positive-evidence}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.10\linewidth}>{\raggedright\arraybackslash}p{0.16\linewidth}>{\raggedright\arraybackslash}p{0.21\linewidth}>{\raggedright\arraybackslash}p{0.13\linewidth}>{\raggedright\arraybackslash}p{0.22\linewidth}@{}}
+\toprule
+Layer & Non-sealed full & Source/native pressure & Sealed full & Boundary \\
+\midrule
+Phase2M-v2 & 1.000 & source 0.371; native 0.367 & 1.000 & single local 7B run \\
+Phase2P & reuses Phase2M-v2 family & no-NSI max 0.688; native max 0.000 & min 1.000; 15/15 gates & local cross-model transfer, not independent reproduction \\
+Phase2Q & 1.000 & source 0.348; native 0.332 & 1.000 & static public trace breadth \\
+Phase2R & 1.000 & source 0.344; native 0.371 & 1.000 & dynamic pytest traces, still command selection \\
+Phase2S & holdout min 0.905; mean 0.907 & source-delta min 0.531; no-NSI-delta min 0.535 & separate final-eval evidence only & 3B/7B x 3 seeds on non-sealed public repair split; same-family, not production autonomy \\
+Phase2T & holdout 1.000 & source 0.406; no-NSI 0.313; slot-head 0.156 & 0.953 & all-zero sealed controls require baseline-feasibility caveat; strong architecture claim remains blocked \\
+Phase2AA & 1.000 across 3B plus 1.5B seeds 13/17/23 & fixed no-policy 0.395; no-NSI 0.395; delta 0.605 & not used & bounded candidate-selection runtime delta; identity-first verification retry ties full and blocks stronger claim \\
+Phase2AE package runtime & package runtime 45/45; full 1.000 & policyless 0.000; erased 0.000; wrong 0.000; identity heuristic 1.000 & not used & package structural sidecar closes residual budget-pressure gap; no learned-head superiority over explicit identity heuristic \\
+\shortstack[l]{Phase2AM\\Phase2AP} & natural full min 0.991 & source 0.527; erased max 0.518; wrong max 0.402 & not used & natural repo-disjoint sidecar dependency reproduced across models/seeds; strict pure-sidecar causality remains blocked by residual controls \\
+\shortstack[l]{Phase2Z\\Phase2AQ} & symbolic patch runtime 24/24 & source 0.500; model-source 0.500 & not used & bounded symbolic text-membership patch proposal runtime; not freeform model-generated patch repair \\
+Phase2AU capacity package & Qwen0.5B val 1.000; holdout 1.000; runtime command 20/20; patch execution 20/20 & source/no-policy 0.550; holdout source-delta rows 9; command and execution delta 0.450 & not used & identityrefv2 capacity package beats fixed no-policy control for bounded command selection and Phase2AU-gated recorded patch-candidate execution; descriptor outputs are observable but single-template only; Qwen1.5B local throughput blocked and freeform patch generation remains unproven \\
+Phase2AV pretrain gate & smoke failed & train/val/holdout 14/8/7 rows; 5/2/2 repos; descriptor/runtime/head hashes bound; two operation-template pairs; non-parser-oracle tests & not used & data-quality positive only; Qwen0.5B smoke tied source-overlap and failed descriptor gates, so no learned runtime-delta, full-training, or package result \\
+\bottomrule
+\end{tabular}
+\end{table}

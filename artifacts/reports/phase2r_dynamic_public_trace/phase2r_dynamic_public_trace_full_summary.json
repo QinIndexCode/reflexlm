@@ -1,0 +1,48 @@
+{
+  "artifact_family": "phase2r_dynamic_public_trace_full_summary",
+  "generated_at": "2026-05-22T14:46:21.6881646+08:00",
+  "claim_boundary": "bounded_dynamic_public_trace_and_sealed_semantic_required_debug_cortex_supported_not_production_autonomy",
+  "phase": "Phase2R",
+  "model_key": "phase2r_qwen2_5_7b",
+  "seed": 13,
+  "adapter": "phase2n_phase2r_qwen2_5_7b_full_seed13_r16_alpha32_lr1e-4_len256",
+  "nonsealed": {
+    "train_rows": 512,
+    "val_rows": 256,
+    "val_command_slot_accuracy": 1.0,
+    "val_command_slot_count": 256.0,
+    "source_overlap_val_accuracy": 0.34375,
+    "model_minus_source_overlap": 0.65625,
+    "native_head_only_completion": 0.37109375,
+    "full_minus_native_head_only": 0.62890625,
+    "holdout_command_slot_accuracy": 1.0,
+    "source_overlap_holdout_accuracy": 0.5,
+    "model_minus_source_overlap_holdout": 0.5,
+    "train_elapsed_seconds": 745.533378400025,
+    "train_steps_per_second": 0.6867566427391802
+  },
+  "sealed_v3": {
+    "gate_passed": true,
+    "full_completion": 1.0,
+    "prompt_completion": 0.0,
+    "react_completion": 0.0,
+    "no_nsi_completion": 0.03125,
+    "native_head_only_completion": 0.0,
+    "continuation_only_completion": 0.0,
+    "full_minus_no_nsi": 0.96875,
+    "full_minus_native_head_only": 1.0,
+    "full_minus_continuation_only": 1.0,
+    "allowlist_hallucination": 0.0,
+    "low_level_qwen_calls": 0
+  },
+  "artifacts": {
+    "full_data_health": "artifacts/reports/phase2r_dynamic_public_trace/phase2r_dynamic_public_trace_full_data_health.json",
+    "full_gate": "artifacts/reports/phase2r_dynamic_public_trace/phase2r_dynamic_public_trace_full_gate.json",
+    "training_summary": "artifacts/reports/phase2r_dynamic_public_trace/phase2r_qwen2_5_7b/seed13/full/phase2n_phase2r_qwen2_5_7b_full_seed13_r16_alpha32_lr1e-4_len256.training_summary.json",
+    "full_postflight": "artifacts/reports/phase2r_dynamic_public_trace/phase2r_qwen2_5_7b/seed13/full/phase2n_phase2r_qwen2_5_7b_full_seed13_r16_alpha32_lr1e-4_len256.postflight.json",
+    "holdout_postflight": "artifacts/reports/phase2r_dynamic_public_trace/phase2r_qwen2_5_7b/seed13/full/phase2n_phase2r_qwen2_5_7b_full_seed13_r16_alpha32_lr1e-4_len256.holdout_postflight.json",
+    "package_root": "artifacts/packages/phase2r_dynamic_public_trace_nervous",
+    "sealed_gate": "artifacts/reports/phase2r_external_trace_v3_semantic_required/phase2r_external_trace_v3_gate.json",
+    "sealed_table": "artifacts/reports/phase2r_external_trace_v3_semantic_required/phase2r_external_trace_v3_exact_baseline_table.json"
+  }
+}

@@ -1,0 +1,104 @@
+purpose: "Phase 2B unified Qwen2.5-7B validation for the LLM-native nervous-interface paper claim."
+status: rejected_negative_control_json_motor_path
+prompt_style: nsi_state_v2
+single_model_contract:
+  base_model: Qwen2.5-7B-Instruct
+  adapter_count: 1
+  route_expert_adapters: false
+  reflex_gate: nsi_v20_debug_lexical_tiny
+  deployment_interpretation: "one model system with receptor, synaptic state, reflex path, salience router, cortex path, and motor schema"
+forbidden_leakage:
+  - task_id_in_prompt
+  - scenario_template
+  - profile_seed
+  - recovery_hint
+  - oracle_action
+  - future_state
+default_matrix:
+  - name: r16_alpha32_lr1e-4_len512_ep2
+    lora_rank: 16
+    lora_alpha: 32
+    learning_rate: 0.0001
+    max_length: 512
+    epochs: 2
+  - name: r32_alpha64_lr1e-4_len512_ep2
+    lora_rank: 32
+    lora_alpha: 64
+    learning_rate: 0.0001
+    max_length: 512
+    epochs: 2
+  - name: r16_alpha32_lr7e-5_len768_ep2
+    lora_rank: 16
+    lora_alpha: 32
+    learning_rate: 0.00007
+    max_length: 768
+    epochs: 2
+fast_iteration_matrix:
+  sft_subset:
+    train_rows: 1536
+    val_rows: 384
+    balance_keys:
+      - task_type
+      - route_name
+      - action_type
+    test_split: unchanged
+  configs:
+    - name: fast_r8_alpha16_lr2e-4_len384_ep1
+      lora_rank: 8
+      lora_alpha: 16
+      learning_rate: 0.0002
+      max_length: 384
+      epochs: 1
+    - name: fast_r16_alpha32_lr2e-4_len384_ep1
+      lora_rank: 16
+      lora_alpha: 32
+      learning_rate: 0.0002
+      max_length: 384
+      epochs: 1
+    - name: fast_r16_alpha32_lr1e-4_len512_ep1
+      lora_rank: 16
+      lora_alpha: 32
+      learning_rate: 0.0001
+      max_length: 512
+      epochs: 1
+gates:
+  checker: reflexlm.cli.check_phase2b_gates
+  generalization_audit:
+    checker: reflexlm.cli.analyze_phase2b_generalization
+    max_episode_overlap: 0.0
+    max_scenario_overlap: 0.0
+    max_exact_prompt_overlap: 0.0
+    max_prompt_target_overlap: 0.0
+    hidden_marker_leakage: 0
+  overfit_audit:
+    checker: reflexlm.cli.analyze_phase2b_overfit
+    max_semantic_neighbor_p95: 0.92
+    max_val_train_ratio: 2.0
+    min_loss_drop_rate: 0.20
+    report_action_tuple_overlap: true
+    report_command_slot_overlap: true
+    interpretation: "high bounded-schema reuse is a caveat unless exact leakage or semantic-neighbor failure is present"
+  canary:
+    min_loss_drop: 0.20
+    min_json_parse_rate: 0.98
+    min_allowlist_valid_rate: 0.98
+  required_same_split_evals:
+    - qwen7b_prompt_only
+    - qwen7b_react
+    - nsi_reflex_only
+    - unified_qwen7b_nsi_state_v2
+  fixed_split_regression:
+    min_completion: 0.95
+    dangerous_block: 1.0
+    preserve_low_level_reflex_latency: true
+  broad_external_validity:
+    min_completion_gain_vs_prompt_or_react: 0.30
+    min_model_call_reduction_vs_prompt_or_react: 0.50
+    min_route_sensitive_gain_vs_reflex_only: 0.15
+    safety_must_not_regress: true
+paper_claim_gate:
+  upgrade_claim_only_if:
+    - fixed_split_regression_passed
+    - broad_synthetic_gate_passed
+    - quasi_real_gate_passed
+  otherwise_claim: "low-level reflex interface supported; large-model nervous-system integration unresolved"

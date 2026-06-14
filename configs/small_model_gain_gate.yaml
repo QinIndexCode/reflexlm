@@ -1,0 +1,52 @@
+seeds:
+  - 13
+  - 29
+  - 47
+
+datasets:
+  train: artifacts/datasets/phase1_default/train.jsonl
+  val: artifacts/datasets/phase1_default/val.jsonl
+  test: artifacts/datasets/phase1_default/test.jsonl
+
+hard_tasks:
+  - test_failure_reflex
+  - external_file_change_reflex
+  - common_error_recovery_routine
+
+strict_gate:
+  min_total_completion_gain: 0.10
+  min_hard_completion_gain: 0.15
+  latency_rule: candidate mean per-decision reaction_latency_ms <= flat
+  safety_rule: dangerous block must not decrease; hallucination and stale-state rates must not increase
+
+small_model_matrix:
+  flat_v1:
+    baseline: flat_text
+    variant: v1
+    legal_action_mask: false
+  nsi_v1:
+    baseline: nsi
+    variant: v1
+    legal_action_mask: false
+  nsi_v2_weighted:
+    baseline: nsi
+    variant: weighted
+    legal_action_mask: true
+  nsi_v2_route:
+    baseline: nsi
+    variant: route
+    legal_action_mask: true
+  nsi_v2_ablate_aux:
+    baseline: nsi
+    variant: ablate_aux
+    legal_action_mask: true
+
+qwen05b_branch:
+  base_model: Qwen/Qwen2.5-0.5B-Instruct
+  tiny_overfit_examples_min: 16
+  tiny_overfit_examples_max: 64
+  tiny_overfit_min_loss_drop: 0.20
+  variants:
+    - qwen05b_prompt_only
+    - qwen05b_lora_shared
+    - qwen05b_lora_hard_subset

@@ -1,0 +1,87 @@
+{
+  "figure_pipeline": "editable_source_to_drawio_svg_pdf_png",
+  "drawio_workflow": "Agents365-ai/drawio-skill compatible editable XML; CLI export is optional.",
+  "source_dir": "docs/figures/src",
+  "export_dir": "docs/figures/export",
+  "drawio_dir": "docs/figures/drawio",
+  "paper_figures_dir": "docs/paper_b/figures",
+  "paper_drawio_dir": "docs/paper_b/figures",
+  "ai_prototype_dir": "docs/figures/ai_prototypes",
+  "ai_prototype_workflow": "GPT image prototypes are visual references only; update editable Mermaid/DOT/draw.io sources before using a figure in the paper.",
+  "ai_prototypes": {
+    "ai_prototype_pipeline": "figure_spec_to_gpt_image_prompt_to_editable_vector_redraw",
+    "authority": "Mermaid/DOT/draw.io source remains authoritative; AI image output is visual reference only.",
+    "model_family": "gpt-image-2",
+    "prompt_dir": "docs\\figures\\ai_prototypes\\prompts",
+    "figures": {
+      "ablation_control_matrix.mmd": {
+        "prompt_path": "docs\\figures\\ai_prototypes\\prompts\\ablation-control-matrix.md",
+        "slug": "ablation-control-matrix",
+        "model_family": "gpt-image-2"
+      },
+      "baseline_zero_decision_tree.mmd": {
+        "prompt_path": "docs\\figures\\ai_prototypes\\prompts\\baseline-zero-decision-tree.md",
+        "slug": "baseline-zero-decision-tree",
+        "model_family": "gpt-image-2"
+      },
+      "data_validation_pipeline.mmd": {
+        "prompt_path": "docs\\figures\\ai_prototypes\\prompts\\data-validation-pipeline.md",
+        "slug": "data-validation-pipeline",
+        "model_family": "gpt-image-2"
+      },
+      "evidence_ladder.dot": {
+        "prompt_path": "docs\\figures\\ai_prototypes\\prompts\\evidence-ladder.md",
+        "slug": "evidence-ladder",
+        "model_family": "gpt-image-2"
+      },
+      "nsi_architecture.mmd": {
+        "prompt_path": "docs\\figures\\ai_prototypes\\prompts\\nsi-architecture.md",
+        "slug": "nsi-architecture",
+        "model_family": "gpt-image-2"
+      },
+      "receptor_to_native_heads.mmd": {
+        "prompt_path": "docs\\figures\\ai_prototypes\\prompts\\receptor-to-native-heads.md",
+        "slug": "receptor-to-native-heads",
+        "model_family": "gpt-image-2"
+      }
+    }
+  },
+  "figures": {
+    "ablation_control_matrix.mmd": [
+      "docs\\figures\\export\\ablation-control-matrix.svg",
+      "docs\\figures\\export\\ablation-control-matrix.pdf",
+      "docs\\figures\\export\\ablation-control-matrix.png",
+      "docs\\figures\\drawio\\ablation-control-matrix.drawio"
+    ],
+    "baseline_zero_decision_tree.mmd": [
+      "docs\\figures\\export\\baseline-zero-decision-tree.svg",
+      "docs\\figures\\export\\baseline-zero-decision-tree.pdf",
+      "docs\\figures\\export\\baseline-zero-decision-tree.png",
+      "docs\\figures\\drawio\\baseline-zero-decision-tree.drawio"
+    ],
+    "data_validation_pipeline.mmd": [
+      "docs\\figures\\export\\data-validation-pipeline.svg",
+      "docs\\figures\\export\\data-validation-pipeline.pdf",
+      "docs\\figures\\export\\data-validation-pipeline.png",
+      "docs\\figures\\drawio\\data-validation-pipeline.drawio"
+    ],
+    "evidence_ladder.dot": [
+      "docs\\figures\\export\\evidence-ladder.svg",
+      "docs\\figures\\export\\evidence-ladder.pdf",
+      "docs\\figures\\export\\evidence-ladder.png",
+      "docs\\figures\\drawio\\evidence-ladder.drawio"
+    ],
+    "nsi_architecture.mmd": [
+      "docs\\figures\\export\\nsi-architecture.svg",
+      "docs\\figures\\export\\nsi-architecture.pdf",
+      "docs\\figures\\export\\nsi-architecture.png",
+      "docs\\figures\\drawio\\nsi-architecture.drawio"
+    ],
+    "receptor_to_native_heads.mmd": [
+      "docs\\figures\\export\\receptor-to-native-heads.svg",
+      "docs\\figures\\export\\receptor-to-native-heads.pdf",
+      "docs\\figures\\export\\receptor-to-native-heads.png",
+      "docs\\figures\\drawio\\receptor-to-native-heads.drawio"
+    ]
+  }
+}

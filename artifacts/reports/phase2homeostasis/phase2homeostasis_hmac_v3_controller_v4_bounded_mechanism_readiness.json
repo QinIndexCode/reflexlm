@@ -1,0 +1,62 @@
+{
+  "artifact_family": "phase2homeostasis_bounded_mechanism_readiness",
+  "passed": true,
+  "ready_for_bounded_nsi_mechanism_evidence_argument": true,
+  "ready_for_exact_cross_runtime_homeostatic_dynamics_claim": false,
+  "ready_for_unbounded_long_term_memory_claim": false,
+  "ready_for_general_runtime_interpreter_invariance_claim": false,
+  "ready_for_open_ended_native_perception_claim": false,
+  "ready_for_production_autonomy_claim": false,
+  "ready_for_epoch_making_architecture_claim": false,
+  "ready_for_submission_without_external_machine_replay": false,
+  "checks": {
+    "bounded_dossier_passed_and_validates": true,
+    "bounded_manifest_passed_and_validates": true,
+    "bounded_manifest_replay_passed_and_validates": true,
+    "fresh_limitations_passed_and_validates": true,
+    "exact_cross_runtime_failure_recorded_not_claimed": true,
+    "all_source_overclaims_closed": true
+  },
+  "metrics": {
+    "bounded_dossier_core_positive_report_count": 7,
+    "bounded_manifest_source_report_count": 10,
+    "bounded_manifest_replay_source_report_count": 10,
+    "maximum_active_threshold_delta": 0.0089290106695335,
+    "fresh_limitation_threshold_drift_limit": 0.01,
+    "fresh_limitation_side_effect_trace_rows": 18
+  },
+  "source_summary": {
+    "bounded_dossier_validated": true,
+    "bounded_manifest_validated": true,
+    "bounded_manifest_replay_validated": true,
+    "fresh_limitations_validated": true,
+    "exact_cross_runtime_failure_recorded": true
+  },
+  "claim_boundary": "The current evidence is ready for a bounded NSI/homeostatic mechanism argument: HMAC-authenticated persistent state transfers across fresh bounded runtime executions, task completion is preserved, missing-key state verification fails closed, limitation evidence is explicit, and the manifest replays by hash in a distinct directory. It does not support exact cross-runtime internal homeostatic microdynamics, does not support unbounded or semantic long-term memory, and does not support free-form shell autonomy, open-ended native perception, production autonomy, or epoch-making architecture.",
+  "supported_claims": [
+    "bounded NSI/homeostatic mechanism evidence argument for HMAC-authenticated persistent-state transfer under controlled runtime tasks, with explicit limitation evidence"
+  ],
+  "unsupported_claims": [
+    "exact cross-runtime homeostatic microdynamics",
+    "unbounded or semantic long-term memory",
+    "free-form shell autonomy",
+    "general runtime interpreter invariance",
+    "open-ended native perception",
+    "production autonomy",
+    "epoch-making architecture",
+    "submission without external machine replay"
+  ],
+  "remaining_publication_risks": [
+    "external-machine replay has not yet been run in this evidence gate",
+    "exact internal homeostatic microdynamics drift across Python runtimes",
+    "paper text must preserve the bounded claim boundary"
+  ],
+  "next_required_experiment": "external_machine_replay_or_manuscript_claim_boundary_update",
+  "evidence": {
+    "bounded_dossier_report_json": "artifacts\\reports\\phase2homeostasis\\phase2homeostasis_hmac_v3_controller_v4_bounded_publication_dossier.json",
+    "bounded_manifest_report_json": "artifacts\\reports\\phase2homeostasis\\phase2homeostasis_hmac_v3_controller_v4_bounded_dossier_manifest.json",
+    "bounded_manifest_replay_report_json": "artifacts\\reports\\phase2homeostasis\\phase2homeostasis_hmac_v3_controller_v4_bounded_dossier_manifest_replay.json",
+    "fresh_rerun_limitations_report_json": "artifacts\\reports\\phase2homeostasis\\phase2homeostasis_hmac_v3_controller_v4_fresh_rerun_limitations.json",
+    "cross_runtime_dynamics_report_json": "artifacts\\reports\\phase2homeostasis\\phase2homeostasis_hmac_v3_controller_v4_fresh_cross_runtime_dynamics.json"
+  }
+}

@@ -1,0 +1,30 @@
+%% title: Baseline-Zero Interpretability Decision Tree
+%% subtitle: A zero-valued baseline must be classified before it can support a stronger mechanism claim
+%% size: 22 | 11
+%% lane: observation | 8.2 | 10.1 | Observed result | evidence
+%% lane: capability | 5.8 | 8.2 | Capability and evaluability checks | control
+%% lane: outcome | 2.4 | 5.8 | Permitted interpretation | output
+%% lane: boundary | 0.5 | 2.4 | Boundary statement | boundary
+%% node: zero | 4.1 | 9.1 | Control score is zero | evidence
+%% node: access | 7.9 | 9.1 | Did control have\nrequired capability? | control
+%% node: expected | 12.4 | 9.6 | Expected zero\nmechanism-dependency evidence only | output
+%% node: evaluable | 12.4 | 7.9 | Not evaluable\nexclude from performance delta | output
+%% node: sanity | 7.9 | 6.6 | Is there graded sanity\nwhere control can score? | control
+%% node: valid | 12.4 | 5.1 | Valid zero failure\nusable only with caveats | output
+%% node: suspicious | 17.1 | 5.1 | Suspicious zero\nredesign or add sanity subset | evidence
+%% node: boundary | 17.1 | 1.55 | Strong claims require explained zeros\nand measured nonzero sanity controls | boundary
+%% edge: zero -> access | classify
+%% edge: access -> expected | no capability
+%% edge: access -> sanity | capability exists
+%% edge: access -> evaluable | task excludes control
+%% edge: sanity -> valid | yes
+%% edge: sanity -> suspicious | no
+%% edge: suspicious -> boundary | blocks claim
+flowchart TD
+  zero["Control score is zero"] --> access["Did control have required capability?"]
+  access --> expected["Expected zero"]
+  access --> evaluable["Not evaluable"]
+  access --> sanity["Graded sanity subset exists?"]
+  sanity --> valid["Valid zero failure"]
+  sanity --> suspicious["Suspicious zero"]
+  suspicious --> boundary["Strong claims require explained zeros"]

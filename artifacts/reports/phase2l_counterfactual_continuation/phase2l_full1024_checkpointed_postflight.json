@@ -1,0 +1,54 @@
+{
+  "audit_family": "phase2l_counterfactual_continuation_postflight",
+  "postflight_stage": "full",
+  "passed": true,
+  "ready_for_full_train": false,
+  "ready_for_larger_gpu_full1024": false,
+  "ready_for_package": true,
+  "ready_for_sealed_eval": false,
+  "allowed_next_action": "run_phase2l_package_only",
+  "blocked_actions": [],
+  "checks": {
+    "data_health_passed": true,
+    "full_completion_gate_passed": true,
+    "native_head_only_baseline_measured": true,
+    "wrong_cache_control_recorded": true,
+    "cache_erased_control_recorded": true,
+    "full_beats_native_head_only_by_required_delta": true,
+    "full_beats_wrong_cache_by_required_delta": true,
+    "full_beats_cache_erased_by_required_delta": true,
+    "full_low_level_qwen_calls_zero": true,
+    "source_overlap_baseline_below_threshold": true,
+    "sealed_v3_not_used_for_postflight": true
+  },
+  "metrics": {
+    "full_completion": 1.0,
+    "native_head_only_completion": 0.5,
+    "wrong_cache_completion": 0.0,
+    "cache_erased_completion": 0.5,
+    "full_minus_native_head_only": 0.5,
+    "full_minus_wrong_cache": 1.0,
+    "full_minus_cache_erased": 0.5,
+    "full_trace_audit": {
+      "trace_rows": 72,
+      "low_level_qwen_calls": 0,
+      "debug_qwen_calls": 0,
+      "qwen_on_non_debug": 0,
+      "cache_hits": 48,
+      "cache_reset_reasons": {}
+    }
+  },
+  "thresholds": {
+    "min_full_completion": 0.85,
+    "min_full_minus_native_head_only": 0.15,
+    "min_full_minus_wrong_cache": 0.25,
+    "min_full_minus_cache_erased": 0.25
+  },
+  "inputs": {
+    "data_health_json": "artifacts\\reports\\phase2l_counterfactual_continuation\\phase2l_full_data_health.json",
+    "full_eval_json": "artifacts\\reports\\phase2l_counterfactual_continuation\\phase2l_full1024_checkpointed_full_eval.json",
+    "native_head_only_eval_json": "artifacts\\reports\\phase2l_counterfactual_continuation\\phase2l_full1024_checkpointed_native_head_only_eval.json",
+    "wrong_cache_eval_json": "artifacts\\reports\\phase2l_counterfactual_continuation\\phase2l_full1024_checkpointed_wrong_cache_eval.json",
+    "cache_erased_eval_json": "artifacts\\reports\\phase2l_counterfactual_continuation\\phase2l_full1024_checkpointed_native_head_only_eval.json"
+  }
+}

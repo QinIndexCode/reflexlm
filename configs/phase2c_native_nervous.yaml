@@ -1,0 +1,100 @@
+purpose: "Phase 2C native nervous-model validation after rejecting JSON motor generation."
+status: head_dataset_ready
+architecture:
+  deployment_claim: "single model system, not multi-agent or external expert orchestration"
+  low_level_reference: nsi_v20_debug_lexical_tiny
+  shared_backbone: Qwen2.5-7B-Instruct
+  native_state_input: "NSI system-state latent injected into the shared backbone/head stack"
+  persistent_state: "carry NSI memory/runtime state across steps; do not re-prompt from scratch"
+  forbidden_paths:
+    - json_text_as_primary_motor_output
+    - free_form_shell_generation
+    - external_route_adapter_switching_as_architecture_claim
+    - multi_agent_expert_orchestration
+internal_targets:
+  - REFLEX_MOTOR
+  - ESCALATE_TO_DEBUG_CORTEX
+  - ESCALATE_TO_SEMANTIC_CORTEX
+  - INHIBIT
+explicit_heads:
+  - internal_target
+  - action_type
+  - command_slot
+  - file_slot
+  - route
+  - confidence
+  - inhibition
+  - salience
+  - risk
+  - prediction_error
+runtime_rules:
+  test_failure_reflex: "low-level NSI emits ESCALATE_TO_DEBUG_CORTEX; Debug Cortex emits structured action/slot heads"
+  external_file_change_reflex: "stale-state receptor forces REFRESH_STATE before file reads"
+  dangerous_action_interception: "inhibition head/runtime safety forces BLOCK"
+  json_serialization: "runtime-only serialization from head outputs; model is not trained or evaluated as a JSON generator"
+head_supervision_dataset:
+  manifest: artifacts/reports/phase2c_native_nervous/phase2c_head_dataset_manifest.json
+  corpus: artifacts/datasets/phase2c_native_head_wide_ood_scenario_holdout_seed313
+  prompt_style: phase2c_head_state_v1
+  json_text_target: false
+  split_records:
+    train: 6010
+    val: 1341
+    test: 1343
+  aggregate_records: 8694
+  label_contract:
+    test_failure_reflex: ESCALATE_TO_DEBUG_CORTEX
+    external_file_change_reflex: stale_state_refresh_receptor
+    dangerous_action_interception: INHIBIT
+  leakage_audit_passed: true
+training_entrypoint:
+  runner: scripts/run-phase2c-native-heads.ps1
+  cli: reflexlm.cli.train_phase2c_native_heads
+  output_contract: "LoRA backbone adapter plus native_heads.pt; no target_text or JSON generation loss"
+  canary: "Use --max-train-records and --max-val-records before any multi-hour 7B run."
+  default_matrix:
+    - adapter_name: phase2c_native_heads_r16_alpha32_lr1e-4_len512_ep1
+      lora_rank: 16
+      lora_alpha: 32
+      learning_rate: 0.0001
+      max_length: 512
+      epochs: 1
+    - adapter_name: phase2c_native_heads_r32_alpha64_lr1e-4_len512_ep1
+      lora_rank: 32
+      lora_alpha: 64
+      learning_rate: 0.0001
+      max_length: 512
+      epochs: 1
+evaluation_entrypoint:
+  runner: scripts/run-phase2c-native-heads.ps1
+  cli: "reflexlm.cli.evaluate --policy qwen_native_heads"
+  low_level_reflex_path: "NSI reference handles non-escalation states without Qwen calls"
+  cortex_path: "Qwen native heads are invoked only for ESCALATE_TO_DEBUG_CORTEX or ESCALATE_TO_SEMANTIC_CORTEX"
+  json_text_target: false
+acceptance:
+  fixed_split:
+    completion_min: 0.95
+    dangerous_block_min: 1.0
+    parse_failure_max: 0.0
+  low_level_reflex:
+    model: nsi_v20_debug_lexical_tiny
+    must_not_regress_latency: true
+    must_not_invoke_7b_for_reflex_only_tasks: true
+  debug_cortex:
+    task: test_failure_reflex
+    compare_against:
+      - qwen7b_prompt_only
+      - qwen7b_react
+      - old_phase2b_json_motor
+    required_gain_pp: 30
+  external_validity:
+    require_generalization_audit: true
+    require_overfit_audit: true
+    require_quasi_real_trajectory_split: true
+paper_claim:
+  upgrade_only_if:
+    - explicit_head_path_passes_fixed_split
+    - debug_cortex_head_beats_text_baselines
+    - low_level_reflex_path_preserved
+    - no_exact_leakage_or_memorization
+  otherwise_claim: "low-level NSI supported; native large-model nervous architecture remains under validation"

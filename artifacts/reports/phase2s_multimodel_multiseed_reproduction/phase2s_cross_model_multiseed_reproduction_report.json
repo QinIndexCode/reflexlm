@@ -1,0 +1,180 @@
+{
+  "artifact_family": "phase2s_cross_model_reproduction_report",
+  "passed": true,
+  "claim_scope": "phase2s_multiseed_reproduction_positive_bounded",
+  "checks": {
+    "run_count_minimum_met": true,
+    "distinct_model_count_minimum_met": true,
+    "seed_count_minimum_met": true,
+    "all_runs_passed": true,
+    "split_hashes_consistent": true,
+    "sealed_not_used_for_training_or_tuning": true,
+    "pairwise_disabled": true,
+    "no_json_motor_target": true,
+    "low_level_qwen_calls_target_zero": true
+  },
+  "thresholds": {
+    "min_models": 2,
+    "min_seeds_per_model": 3,
+    "min_holdout_accuracy": 0.85,
+    "min_holdout_minus_source_overlap": 0.15,
+    "min_holdout_minus_zero_nsi": 0.15,
+    "require_distinct_models": true
+  },
+  "metrics": {
+    "model_count": 2,
+    "eligible_model_count": 2,
+    "run_count": 6,
+    "eligible_run_count": 6,
+    "models": [
+      "qwen2_5_3b",
+      "qwen2_5_7b"
+    ],
+    "seeds_by_model": {
+      "qwen2_5_3b": [
+        "seed13",
+        "seed17",
+        "seed23"
+      ],
+      "qwen2_5_7b": [
+        "seed13",
+        "seed17",
+        "seed23"
+      ]
+    },
+    "eligible_models": [
+      "qwen2_5_3b",
+      "qwen2_5_7b"
+    ],
+    "eligible_seeds_by_model": {
+      "qwen2_5_3b": [
+        "seed13",
+        "seed17",
+        "seed23"
+      ],
+      "qwen2_5_7b": [
+        "seed13",
+        "seed17",
+        "seed23"
+      ]
+    }
+  },
+  "runs": [
+    {
+      "model_key": "qwen2_5_7b",
+      "seed": "seed13",
+      "passed": true,
+      "eval_json": "artifacts\\reports\\phase2s_public_repair_r128\\phase2s_public_repair_r128_qwen2_5_7b_full_seed13_r16_alpha32_lr1e-4_len256_featureonly.full_holdout_postflight.json",
+      "val_command_slot_accuracy": 0.9856770833333334,
+      "holdout_command_slot_accuracy": 0.9073660714285714,
+      "holdout_model_minus_source_overlap_accuracy": 0.5334821428571428,
+      "holdout_model_minus_zero_nsi_accuracy": 0.5412946428571428,
+      "holdout_command_record_count": 896,
+      "duration_seconds": 1231.466,
+      "pairwise_disabled": true,
+      "low_level_qwen_calls_target_zero": true,
+      "no_json_motor_target": true,
+      "sealed_not_tuned": true,
+      "split_hashes_match_first_run": true
+    },
+    {
+      "model_key": "qwen2_5_7b",
+      "seed": "seed17",
+      "passed": true,
+      "eval_json": "artifacts\\reports\\phase2s_multimodel_multiseed_reproduction\\qwen2_5_7b\\seed17\\full\\phase2s_qwen2_5_7b_full_seed17_r16_alpha32_lr1e-4_len256_featureonly.full_holdout_postflight.json",
+      "val_command_slot_accuracy": 0.984375,
+      "holdout_command_slot_accuracy": 0.9084821428571429,
+      "holdout_model_minus_source_overlap_accuracy": 0.5345982142857144,
+      "holdout_model_minus_zero_nsi_accuracy": 0.5424107142857144,
+      "holdout_command_record_count": 896,
+      "duration_seconds": 1035.436,
+      "pairwise_disabled": true,
+      "low_level_qwen_calls_target_zero": true,
+      "no_json_motor_target": true,
+      "sealed_not_tuned": true,
+      "split_hashes_match_first_run": true
+    },
+    {
+      "model_key": "qwen2_5_7b",
+      "seed": "seed23",
+      "passed": true,
+      "eval_json": "artifacts\\reports\\phase2s_multimodel_multiseed_reproduction\\qwen2_5_7b\\seed23\\full\\phase2s_qwen2_5_7b_full_seed23_r16_alpha32_lr1e-4_len256_featureonly.full_holdout_postflight.json",
+      "val_command_slot_accuracy": 0.984375,
+      "holdout_command_slot_accuracy": 0.9051339285714286,
+      "holdout_model_minus_source_overlap_accuracy": 0.53125,
+      "holdout_model_minus_zero_nsi_accuracy": 0.5379464285714286,
+      "holdout_command_record_count": 896,
+      "duration_seconds": 1461.762,
+      "pairwise_disabled": true,
+      "low_level_qwen_calls_target_zero": true,
+      "no_json_motor_target": true,
+      "sealed_not_tuned": true,
+      "split_hashes_match_first_run": true
+    },
+    {
+      "model_key": "qwen2_5_3b",
+      "seed": "seed13",
+      "passed": true,
+      "eval_json": "artifacts\\reports\\phase2s_multimodel_multiseed_reproduction\\qwen2_5_3b\\seed13\\full\\phase2s_qwen2_5_3b_full_seed13_r16_alpha32_lr1e-4_len256_featureonly.full_holdout_postflight.json",
+      "val_command_slot_accuracy": 0.9856770833333334,
+      "holdout_command_slot_accuracy": 0.9084821428571429,
+      "holdout_model_minus_source_overlap_accuracy": 0.5345982142857144,
+      "holdout_model_minus_zero_nsi_accuracy": 0.5345982142857144,
+      "holdout_command_record_count": 896,
+      "duration_seconds": 602.083,
+      "pairwise_disabled": true,
+      "low_level_qwen_calls_target_zero": true,
+      "no_json_motor_target": true,
+      "sealed_not_tuned": true,
+      "split_hashes_match_first_run": true
+    },
+    {
+      "model_key": "qwen2_5_3b",
+      "seed": "seed17",
+      "passed": true,
+      "eval_json": "artifacts\\reports\\phase2s_multimodel_multiseed_reproduction\\qwen2_5_3b\\seed17\\full\\phase2s_qwen2_5_3b_full_seed17_r16_alpha32_lr1e-4_len256_featureonly.full_holdout_postflight.json",
+      "val_command_slot_accuracy": 0.9856770833333334,
+      "holdout_command_slot_accuracy": 0.9073660714285714,
+      "holdout_model_minus_source_overlap_accuracy": 0.5334821428571428,
+      "holdout_model_minus_zero_nsi_accuracy": 0.5412946428571428,
+      "holdout_command_record_count": 896,
+      "duration_seconds": 615.152,
+      "pairwise_disabled": true,
+      "low_level_qwen_calls_target_zero": true,
+      "no_json_motor_target": true,
+      "sealed_not_tuned": true,
+      "split_hashes_match_first_run": true
+    },
+    {
+      "model_key": "qwen2_5_3b",
+      "seed": "seed23",
+      "passed": true,
+      "eval_json": "artifacts\\reports\\phase2s_multimodel_multiseed_reproduction\\qwen2_5_3b\\seed23\\full\\phase2s_qwen2_5_3b_full_seed23_r16_alpha32_lr1e-4_len256_featureonly.full_holdout_postflight.json",
+      "val_command_slot_accuracy": 0.96875,
+      "holdout_command_slot_accuracy": 0.9051339285714286,
+      "holdout_model_minus_source_overlap_accuracy": 0.53125,
+      "holdout_model_minus_zero_nsi_accuracy": 0.5524553571428572,
+      "holdout_command_record_count": 896,
+      "duration_seconds": 629.601,
+      "pairwise_disabled": true,
+      "low_level_qwen_calls_target_zero": true,
+      "no_json_motor_target": true,
+      "sealed_not_tuned": true,
+      "split_hashes_match_first_run": true
+    }
+  ],
+  "supported_claims": [
+    "Phase2S cross-model mechanism evidence reproduces across the listed model sizes on the same preregistered non-sealed public repair split",
+    "Phase2S multi-seed robustness is supported for the listed model sizes and seeds under this preregistered non-sealed split"
+  ],
+  "unsupported_claims": [
+    "cross-family reproduction is not proven unless listed models include distinct model families",
+    "sealed final evaluation must remain separate from this non-sealed reproduction report",
+    "production autonomy and open-ended debugging generalization are not proven"
+  ],
+  "effective_split_hashes": {
+    "phase2s_train": "d43d209f287adf8c4cd685312520f60ee0394eb0cefcb20bd26ed3147c57ed08",
+    "phase2s_val": "bcbce496910101edfe4c0d76824b4c92cbe1b26e7928f7811b3e1dd6bb642568",
+    "phase2s_holdout": "859454bed25ffa5a763fbbc3aeb863d401b4f3d44b96744cf2531317286a5e08"
+  }
+}

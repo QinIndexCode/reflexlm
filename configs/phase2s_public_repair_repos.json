@@ -1,0 +1,152 @@
+[
+  {
+    "repo_id": "pallets_click_train",
+    "split": "train",
+    "repo_url": "https://github.com/pallets/click.git"
+  },
+  {
+    "repo_id": "pallets_itsdangerous_train",
+    "split": "train",
+    "repo_url": "https://github.com/pallets/itsdangerous.git"
+  },
+  {
+    "repo_id": "pypa_packaging_train",
+    "split": "train",
+    "repo_url": "https://github.com/pypa/packaging.git"
+  },
+  {
+    "repo_id": "psf_requests_train",
+    "split": "train",
+    "repo_url": "https://github.com/psf/requests.git"
+  },
+  {
+    "repo_id": "tox_dev_tox_train",
+    "split": "train",
+    "repo_url": "https://github.com/tox-dev/tox.git"
+  },
+  {
+    "repo_id": "pallets_werkzeug_train",
+    "split": "train",
+    "repo_url": "https://github.com/pallets/werkzeug.git"
+  },
+  {
+    "repo_id": "pypa_installer_train",
+    "split": "train",
+    "repo_url": "https://github.com/pypa/installer.git"
+  },
+  {
+    "repo_id": "pypa_build_train",
+    "split": "train",
+    "repo_url": "https://github.com/pypa/build.git"
+  },
+  {
+    "repo_id": "python_importlib_metadata_train",
+    "split": "train",
+    "repo_url": "https://github.com/python/importlib_metadata.git"
+  },
+  {
+    "repo_id": "dateutil_dateutil_train",
+    "split": "train",
+    "repo_url": "https://github.com/dateutil/dateutil.git"
+  },
+  {
+    "repo_id": "pytest_dev_pluggy_val",
+    "split": "val",
+    "repo_url": "https://github.com/pytest-dev/pluggy.git"
+  },
+  {
+    "repo_id": "pallets_markupsafe_val",
+    "split": "val",
+    "repo_url": "https://github.com/pallets/markupsafe.git"
+  },
+  {
+    "repo_id": "python_attrs_val",
+    "split": "val",
+    "repo_url": "https://github.com/python-attrs/attrs.git"
+  },
+  {
+    "repo_id": "urllib3_urllib3_val",
+    "split": "val",
+    "repo_url": "https://github.com/urllib3/urllib3.git"
+  },
+  {
+    "repo_id": "pallets_flask_val",
+    "split": "val",
+    "repo_url": "https://github.com/pallets/flask.git"
+  },
+  {
+    "repo_id": "encode_httpx_val",
+    "split": "val",
+    "repo_url": "https://github.com/encode/httpx.git"
+  },
+  {
+    "repo_id": "encode_starlette_val",
+    "split": "val",
+    "repo_url": "https://github.com/encode/starlette.git"
+  },
+  {
+    "repo_id": "pypa_wheel_val",
+    "split": "val",
+    "repo_url": "https://github.com/pypa/wheel.git"
+  },
+  {
+    "repo_id": "python_jsonschema_val",
+    "split": "val",
+    "repo_url": "https://github.com/python-jsonschema/jsonschema.git"
+  },
+  {
+    "repo_id": "pytest_dev_iniconfig_val",
+    "split": "val",
+    "repo_url": "https://github.com/pytest-dev/iniconfig.git"
+  },
+  {
+    "repo_id": "python_hyper_h11_holdout",
+    "split": "holdout",
+    "repo_url": "https://github.com/python-hyper/h11.git"
+  },
+  {
+    "repo_id": "jaraco_zipp_holdout",
+    "split": "holdout",
+    "repo_url": "https://github.com/jaraco/zipp.git"
+  },
+  {
+    "repo_id": "pytest_dev_pytest_holdout",
+    "split": "holdout",
+    "repo_url": "https://github.com/pytest-dev/pytest.git"
+  },
+  {
+    "repo_id": "sphinx_doc_sphinx_holdout",
+    "split": "holdout",
+    "repo_url": "https://github.com/sphinx-doc/sphinx.git"
+  },
+  {
+    "repo_id": "pydantic_pydantic_holdout",
+    "split": "holdout",
+    "repo_url": "https://github.com/pydantic/pydantic.git"
+  },
+  {
+    "repo_id": "psf_black_holdout",
+    "split": "holdout",
+    "repo_url": "https://github.com/psf/black.git"
+  },
+  {
+    "repo_id": "pallets_jinja_holdout",
+    "split": "holdout",
+    "repo_url": "https://github.com/pallets/jinja.git"
+  },
+  {
+    "repo_id": "aio_libs_yarl_holdout",
+    "split": "holdout",
+    "repo_url": "https://github.com/aio-libs/yarl.git"
+  },
+  {
+    "repo_id": "textualize_rich_holdout",
+    "split": "holdout",
+    "repo_url": "https://github.com/Textualize/rich.git"
+  },
+  {
+    "repo_id": "pypa_pip_holdout",
+    "split": "holdout",
+    "repo_url": "https://github.com/pypa/pip.git"
+  }
+]

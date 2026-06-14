@@ -1,0 +1,25 @@
+phase: phase2g_semantic_required
+inherits: configs/phase2f_rich_latent_fusion_canary.yaml
+purpose: semantic_required_debug_cortex_validation_against_continuation_only
+sealed_tests:
+  external_trace_v1: artifacts/datasets/phase2g_external_trace_v1/challenge.jsonl
+  external_trace_v2_semantic_required: artifacts/datasets/phase2g_external_trace_v2_semantic_required/challenge.jsonl
+training:
+  extra_train_profile: phase2g_semantic_train
+  extra_val_profile: phase2g_semantic_val
+  adapter_name: phase2g_semantic_required_r16_alpha32_lr1e-4_len256_cap4096
+  max_train_records: 4096
+  max_val_records: 512
+  lora_rank: 16
+  lora_alpha: 32
+  learning_rate: 0.0001
+  max_length: 256
+  epochs: 1
+  latent_fusion: additive
+  command_intent_loss_weight: 1.0
+  command_slot_loss_weight: 1.5
+constraints:
+  json_text_target: false
+  multi_adapter_route_expert: false
+  free_shell_generation: false
+  no_sealed_test_feedback_tuning: true

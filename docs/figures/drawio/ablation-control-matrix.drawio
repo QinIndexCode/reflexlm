@@ -1,0 +1,107 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net" agent="reflexlm-paper-figures;drawio-skill-compatible" version="26.0.0">
+  <diagram id="ablation-control-matrix" name="Ablation and Control Matrix">
+    <mxGraphModel dx="3940" dy="2070" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="3940" pageHeight="2070" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="figure_subtitle" value="Each control is measured&lt;br&gt;before deltas are&lt;br&gt;interpreted; zero scores are&lt;br&gt;not automatic proof" style="text;html=1;strokeColor=none;fillColor=none;fontSize=14;fontColor=#333333;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="100" y="40" width="3740" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="lane_ablations" value="Ablation mechanisms" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f2ecff;strokeColor=#7f3fbf;opacity=18;dashed=1;strokeWidth=1;fontSize=14;fontStyle=1;align=left;verticalAlign=middle;spacingLeft=16;" vertex="1" parent="1">
+          <mxGeometry x="20" y="250" width="3900" height="360" as="geometry" />
+        </mxCell>
+        <mxCell id="lane_baselines" value="Shortcut and text baselines" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff0f0;strokeColor=#d62728;opacity=18;dashed=1;strokeWidth=1;fontSize=14;fontStyle=1;align=left;verticalAlign=middle;spacingLeft=16;" vertex="1" parent="1">
+          <mxGeometry x="20" y="610" width="3900" height="510" as="geometry" />
+        </mxCell>
+        <mxCell id="lane_interpretation" value="Delta interpretation" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ecfbfb;strokeColor=#17becf;opacity=18;dashed=1;strokeWidth=1;fontSize=14;fontStyle=1;align=left;verticalAlign=middle;spacingLeft=16;" vertex="1" parent="1">
+          <mxGeometry x="20" y="1120" width="3900" height="410" as="geometry" />
+        </mxCell>
+        <mxCell id="lane_boundary" value="Claim boundary" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f7f7f7;strokeColor=#555555;opacity=18;dashed=1;strokeWidth=1;fontSize=14;fontStyle=1;align=left;verticalAlign=middle;spacingLeft=16;" vertex="1" parent="1">
+          <mxGeometry x="20" y="1530" width="3900" height="360" as="geometry" />
+        </mxCell>
+        <mxCell id="full" value="Full package&lt;br&gt;heads + NSI + cache +&lt;br&gt;bounded route" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff3df;strokeColor=#ff7f0e;strokeWidth=2;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="730" y="390" width="230" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="nonsi" value="No-NSI&lt;br&gt;latent contribution removed" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f2ecff;strokeColor=#7f3fbf;strokeWidth=2;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="1440" y="400" width="270" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="native" value="Native-head-only&lt;br&gt;cache or latent removed" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f2ecff;strokeColor=#7f3fbf;strokeWidth=2;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="2190" y="400" width="240" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="cont" value="Continuation-only&lt;br&gt;heads removed" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f2ecff;strokeColor=#7f3fbf;strokeWidth=2;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="2930" y="400" width="220" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="text" value="Prompt-only and ReAct&lt;br&gt;text-loop baselines" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f2ecff;strokeColor=#7f3fbf;strokeWidth=2;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="730" y="840" width="230" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="source" value="Source-overlap baseline&lt;br&gt;measured shortcut pressure" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f2ecff;strokeColor=#7f3fbf;strokeWidth=2;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="1450" y="840" width="260" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="zero" value="Zero-result audit&lt;br&gt;classify evaluability first" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f7f7f7;strokeColor=#555555;strokeWidth=2;fontSize=13;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="710" y="1640" width="270" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="deltas" value="Measured delta table&lt;br&gt;accuracy gaps + evaluability&lt;br&gt;flags" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff0f0;strokeColor=#d62728;strokeWidth=2;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="2170" y="1240" width="280" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="gates" value="Claim gates&lt;br&gt;full must beat measured&lt;br&gt;controls" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ecfbfb;strokeColor=#17becf;strokeWidth=2;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="2920" y="1240" width="240" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_1_full_deltas" value="E1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#4a4a4a;fontSize=12;labelBackgroundColor=#ffffff;labelBorderColor=#dddddd;labelPosition=center;verticalLabelPosition=middle;align=center;verticalAlign=middle;endArrow=block;endFill=1;" edge="1" parent="1" source="full" target="deltas">
+          <mxGeometry relative="1" x="0" y="0" as="geometry">
+            <Array as="points">
+              <mxPoint x="1290" y="440" />
+              <mxPoint x="1290" y="1290" />
+            </Array>
+            <mxPoint x="-420" y="-420" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_2_nonsi_deltas" value="E2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#4a4a4a;fontSize=12;labelBackgroundColor=#ffffff;labelBorderColor=#dddddd;labelPosition=center;verticalLabelPosition=middle;align=center;verticalAlign=middle;endArrow=block;endFill=1;" edge="1" parent="1" source="nonsi" target="deltas">
+          <mxGeometry relative="1" x="0" y="0" as="geometry">
+            <mxPoint x="-150" y="-170" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_3_native_deltas" value="E3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#4a4a4a;fontSize=12;labelBackgroundColor=#ffffff;labelBorderColor=#dddddd;labelPosition=center;verticalLabelPosition=middle;align=center;verticalAlign=middle;endArrow=block;endFill=1;" edge="1" parent="1" source="native" target="deltas">
+          <mxGeometry relative="1" x="0" y="0" as="geometry">
+            <mxPoint x="0" y="-170" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_4_cont_deltas" value="E4" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#4a4a4a;fontSize=12;labelBackgroundColor=#ffffff;labelBorderColor=#dddddd;labelPosition=center;verticalLabelPosition=middle;align=center;verticalAlign=middle;endArrow=block;endFill=1;" edge="1" parent="1" source="cont" target="deltas">
+          <mxGeometry relative="1" x="0" y="0" as="geometry">
+            <mxPoint x="160" y="-190" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_5_text_deltas" value="E5" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#4a4a4a;fontSize=12;labelBackgroundColor=#ffffff;labelBorderColor=#dddddd;labelPosition=center;verticalLabelPosition=middle;align=center;verticalAlign=middle;endArrow=block;endFill=1;" edge="1" parent="1" source="text" target="deltas">
+          <mxGeometry relative="1" x="0" y="0" as="geometry">
+            <Array as="points">
+              <mxPoint x="850" y="1380" />
+              <mxPoint x="2310" y="1380" />
+            </Array>
+            <mxPoint x="-730" y="190" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_6_source_deltas" value="E6" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#4a4a4a;fontSize=12;labelBackgroundColor=#ffffff;labelBorderColor=#dddddd;labelPosition=center;verticalLabelPosition=middle;align=center;verticalAlign=middle;endArrow=block;endFill=1;" edge="1" parent="1" source="source" target="deltas">
+          <mxGeometry relative="1" x="0" y="0" as="geometry">
+            <mxPoint x="-30" y="-10" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_7_zero_deltas" value="E7" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#4a4a4a;fontSize=12;labelBackgroundColor=#ffffff;labelBorderColor=#dddddd;labelPosition=center;verticalLabelPosition=middle;align=center;verticalAlign=middle;endArrow=block;endFill=1;" edge="1" parent="1" source="zero" target="deltas">
+          <mxGeometry relative="1" x="0" y="0" as="geometry">
+            <Array as="points">
+              <mxPoint x="2310" y="1680" />
+            </Array>
+            <mxPoint x="290" y="200" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_8_deltas_gates" value="E8" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#4a4a4a;fontSize=12;labelBackgroundColor=#ffffff;labelBorderColor=#dddddd;labelPosition=center;verticalLabelPosition=middle;align=center;verticalAlign=middle;endArrow=block;endFill=1;" edge="1" parent="1" source="deltas" target="gates">
+          <mxGeometry relative="1" x="0" y="0" as="geometry">
+            <mxPoint x="30" y="0" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="connection_label_legend" value="&lt;b&gt;Connection labels&lt;/b&gt;&lt;br&gt;E1: target evidence&lt;br&gt;E2: latent delta&lt;br&gt;E3: package delta&lt;br&gt;E4: cache/head delta&lt;br&gt;E5: text-loop delta&lt;br&gt;E6: shortcut pressure&lt;br&gt;E7: interpretability audit&lt;br&gt;E8: predeclared thresholds" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#777777;strokeWidth=1;fontSize=12;align=left;spacingLeft=10;spacingRight=10;spacingTop=8;spacingBottom=8;" vertex="1" parent="1">
+          <mxGeometry x="100" y="1790" width="1680" height="250" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

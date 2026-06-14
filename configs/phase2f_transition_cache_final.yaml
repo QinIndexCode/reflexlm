@@ -1,0 +1,31 @@
+phase: phase2f_transition_cache_final
+frozen_at: "2026-05-17"
+inherits: configs/phase2f_transition_cache_canary.yaml
+purpose: moderate_final_validation_after_phase2f_canary_pass
+architecture:
+  direction: native_heads_single_policy_package
+  persistent_state: policy_internal_debug_continuation_cache
+  motor_output: explicit_heads_runtime_serialization
+training:
+  adapter_name: phase2f_transition_cache_final_r16_alpha32_lr1e-4_len256_cap4096
+  base_model: artifacts/models/Qwen2.5-7B-Instruct
+  lora_rank: 16
+  lora_alpha: 32
+  learning_rate: 0.0001
+  epochs: 1
+  max_length: 256
+  gradient_accumulation_steps: 4
+  max_train_records: 4096
+  max_val_records: 1024
+  command_intent_loss_weight: 1.0
+  command_slot_loss_weight: 1.5
+  balance_debug_command_intents: true
+claim_policy:
+  upgrade_claim_only_if_all_gates_pass: true
+  if_latent_delta_fails: native_head_debug_cortex_positive_but_nsi_latent_unproven
+  if_cost_gate_fails: architecture_not_final_system_level_evidence
+overfit_guards:
+  final_config_hash_required_before_final_tests: true
+  no_test_feedback_tuning: true
+  sealed_final_tests_not_training_data: true
+  exact_final_command_hardcoding_forbidden: true

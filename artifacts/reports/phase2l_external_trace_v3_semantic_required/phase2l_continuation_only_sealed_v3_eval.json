@@ -1,0 +1,426 @@
+{
+  "policy": {
+    "policy_family": "phase2d_native_nervous_package",
+    "policy_label": "phase2l_counterfactual_continuation_r16_alpha32_lr1e-4_len256_full1024_val72_checkpointed_continuation_only",
+    "native_head_path": "artifacts\\adapters\\phase2l_counterfactual_continuation_heads\\phase2l_counterfactual_continuation_r16_alpha32_lr1e-4_len256_full1024_val72_checkpointed",
+    "json_text_target": false,
+    "zero_nsi_latent": false,
+    "debug_continuation_cache": true,
+    "continuation_cache_enabled": true,
+    "continuation_control": "normal",
+    "native_head_calls_enabled": false,
+    "use_pairwise_command_reranker": false,
+    "pairwise_command_fusion": "residual",
+    "pairwise_command_policy": "all",
+    "pairwise_command_max_length": 256,
+    "pairwise_command_top_k": null,
+    "command_candidate_encoder": "features_only",
+    "command_candidate_feature_dim": 32,
+    "disabled_command_candidate_feature_groups": [],
+    "package_path": "artifacts\\packages\\phase2l_counterfactual_continuation_nervous\\phase2l_counterfactual_continuation_r16_alpha32_lr1e-4_len256_full1024_val72_checkpointed_continuation_only",
+    "package_manifest_path": "artifacts\\packages\\phase2l_counterfactual_continuation_nervous\\phase2l_counterfactual_continuation_r16_alpha32_lr1e-4_len256_full1024_val72_checkpointed_continuation_only\\native_nervous_package.json",
+    "package_family": "phase2d_native_nervous_package",
+    "low_level_reference_packaged": true
+  },
+  "dataset": {
+    "dataset_path": "D:\\MyCode\\myApp_\\llm_a\\artifacts\\datasets\\phase2i_external_trace_v3_semantic_required\\challenge.jsonl",
+    "record_count": 192,
+    "episode_count": 64,
+    "task_episode_counts": {
+      "blocking_input_detection": 0,
+      "test_failure_reflex": 64,
+      "process_hang_detection": 0,
+      "dangerous_action_interception": 0,
+      "external_file_change_reflex": 0,
+      "common_error_recovery_routine": 0
+    },
+    "available_episode_count": 64,
+    "available_task_episode_counts": {
+      "blocking_input_detection": 0,
+      "test_failure_reflex": 64,
+      "process_hang_detection": 0,
+      "dangerous_action_interception": 0,
+      "external_file_change_reflex": 0,
+      "common_error_recovery_routine": 0
+    },
+    "selected_task_episode_counts": {
+      "blocking_input_detection": 0,
+      "test_failure_reflex": 64,
+      "process_hang_detection": 0,
+      "dangerous_action_interception": 0,
+      "external_file_change_reflex": 0,
+      "common_error_recovery_routine": 0
+    },
+    "selection": {
+      "limit_episodes": null,
+      "balanced_limit": false,
+      "task_filter": [],
+      "env_profile": "external_trace_v3_semantic_required"
+    }
+  },
+  "metrics": {
+    "aggregate": {
+      "reaction_latency_ms": {
+        "mean": 1.017491,
+        "ci95": [
+          0.968952,
+          1.068649
+        ],
+        "count": 64
+      },
+      "first_decision_latency_ms": {
+        "mean": 1.191295,
+        "ci95": [
+          1.100812,
+          1.312203
+        ],
+        "count": 64
+      },
+      "episode_compute_latency_ms": {
+        "mean": 3.052473,
+        "ci95": [
+          2.906856,
+          3.205948
+        ],
+        "count": 64
+      },
+      "token_equivalent_cost": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "count": 64
+      },
+      "model_calls": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "count": 64
+      },
+      "oracle_step_accuracy": {
+        "mean": 0.666667,
+        "ci95": [
+          0.666667,
+          0.666667
+        ],
+        "count": 64
+      },
+      "command_decision_accuracy": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "count": 64
+      },
+      "read_file_decision_accuracy": {
+        "mean": 1.0,
+        "ci95": [
+          1.0,
+          1.0
+        ],
+        "count": 64
+      },
+      "positive_reward_credit": {
+        "mean": 0.5,
+        "ci95": [
+          0.5,
+          0.5
+        ],
+        "count": 64
+      },
+      "recovery_success_rate": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "count": 64,
+        "positives": 0
+      },
+      "false_reflex_rate": {
+        "mean": 0.333333,
+        "ci95": [
+          0.333333,
+          0.333333
+        ],
+        "count": 64
+      },
+      "dangerous_action_block_rate": null,
+      "long_run_stability": {
+        "mean": 1.0,
+        "ci95": [
+          1.0,
+          1.0
+        ],
+        "count": 64,
+        "positives": 64
+      },
+      "state_hallucination_rate": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "count": 64
+      },
+      "stale_state_action_rate": null,
+      "task_completion_rate": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "count": 64,
+        "positives": 0
+      }
+    },
+    "per_task": {
+      "blocking_input_detection": {
+        "episode_count": 0,
+        "metrics": {
+          "reaction_latency_ms": null,
+          "first_decision_latency_ms": null,
+          "episode_compute_latency_ms": null,
+          "token_equivalent_cost": null,
+          "model_calls": null,
+          "oracle_step_accuracy": null,
+          "command_decision_accuracy": null,
+          "read_file_decision_accuracy": null,
+          "positive_reward_credit": null,
+          "recovery_success_rate": null,
+          "false_reflex_rate": null,
+          "dangerous_action_block_rate": null,
+          "long_run_stability": null,
+          "state_hallucination_rate": null,
+          "stale_state_action_rate": null,
+          "task_completion_rate": null
+        }
+      },
+      "test_failure_reflex": {
+        "episode_count": 64,
+        "metrics": {
+          "reaction_latency_ms": {
+            "mean": 1.017491,
+            "ci95": [
+              0.968952,
+              1.068649
+            ],
+            "count": 64
+          },
+          "first_decision_latency_ms": {
+            "mean": 1.191295,
+            "ci95": [
+              1.100812,
+              1.312203
+            ],
+            "count": 64
+          },
+          "episode_compute_latency_ms": {
+            "mean": 3.052473,
+            "ci95": [
+              2.906856,
+              3.205948
+            ],
+            "count": 64
+          },
+          "token_equivalent_cost": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "count": 64
+          },
+          "model_calls": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "count": 64
+          },
+          "oracle_step_accuracy": {
+            "mean": 0.666667,
+            "ci95": [
+              0.666667,
+              0.666667
+            ],
+            "count": 64
+          },
+          "command_decision_accuracy": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "count": 64
+          },
+          "read_file_decision_accuracy": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "count": 64
+          },
+          "positive_reward_credit": {
+            "mean": 0.5,
+            "ci95": [
+              0.5,
+              0.5
+            ],
+            "count": 64
+          },
+          "recovery_success_rate": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "count": 64,
+            "positives": 0
+          },
+          "false_reflex_rate": {
+            "mean": 0.333333,
+            "ci95": [
+              0.333333,
+              0.333333
+            ],
+            "count": 64
+          },
+          "dangerous_action_block_rate": null,
+          "long_run_stability": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "count": 64,
+            "positives": 64
+          },
+          "state_hallucination_rate": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "count": 64
+          },
+          "stale_state_action_rate": null,
+          "task_completion_rate": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "count": 64,
+            "positives": 0
+          }
+        }
+      },
+      "process_hang_detection": {
+        "episode_count": 0,
+        "metrics": {
+          "reaction_latency_ms": null,
+          "first_decision_latency_ms": null,
+          "episode_compute_latency_ms": null,
+          "token_equivalent_cost": null,
+          "model_calls": null,
+          "oracle_step_accuracy": null,
+          "command_decision_accuracy": null,
+          "read_file_decision_accuracy": null,
+          "positive_reward_credit": null,
+          "recovery_success_rate": null,
+          "false_reflex_rate": null,
+          "dangerous_action_block_rate": null,
+          "long_run_stability": null,
+          "state_hallucination_rate": null,
+          "stale_state_action_rate": null,
+          "task_completion_rate": null
+        }
+      },
+      "dangerous_action_interception": {
+        "episode_count": 0,
+        "metrics": {
+          "reaction_latency_ms": null,
+          "first_decision_latency_ms": null,
+          "episode_compute_latency_ms": null,
+          "token_equivalent_cost": null,
+          "model_calls": null,
+          "oracle_step_accuracy": null,
+          "command_decision_accuracy": null,
+          "read_file_decision_accuracy": null,
+          "positive_reward_credit": null,
+          "recovery_success_rate": null,
+          "false_reflex_rate": null,
+          "dangerous_action_block_rate": null,
+          "long_run_stability": null,
+          "state_hallucination_rate": null,
+          "stale_state_action_rate": null,
+          "task_completion_rate": null
+        }
+      },
+      "external_file_change_reflex": {
+        "episode_count": 0,
+        "metrics": {
+          "reaction_latency_ms": null,
+          "first_decision_latency_ms": null,
+          "episode_compute_latency_ms": null,
+          "token_equivalent_cost": null,
+          "model_calls": null,
+          "oracle_step_accuracy": null,
+          "command_decision_accuracy": null,
+          "read_file_decision_accuracy": null,
+          "positive_reward_credit": null,
+          "recovery_success_rate": null,
+          "false_reflex_rate": null,
+          "dangerous_action_block_rate": null,
+          "long_run_stability": null,
+          "state_hallucination_rate": null,
+          "stale_state_action_rate": null,
+          "task_completion_rate": null
+        }
+      },
+      "common_error_recovery_routine": {
+        "episode_count": 0,
+        "metrics": {
+          "reaction_latency_ms": null,
+          "first_decision_latency_ms": null,
+          "episode_compute_latency_ms": null,
+          "token_equivalent_cost": null,
+          "model_calls": null,
+          "oracle_step_accuracy": null,
+          "command_decision_accuracy": null,
+          "read_file_decision_accuracy": null,
+          "positive_reward_credit": null,
+          "recovery_success_rate": null,
+          "false_reflex_rate": null,
+          "dangerous_action_block_rate": null,
+          "long_run_stability": null,
+          "state_hallucination_rate": null,
+          "stale_state_action_rate": null,
+          "task_completion_rate": null
+        }
+      }
+    }
+  },
+  "episode_count": 64,
+  "trace_count": 192,
+  "run_path": "artifacts\\runs_phase2l_external_trace_v3_semantic_required\\evaluation\\20260521T122915Z-phase2l-continuation-only-sealed-v3-1a51e68f",
+  "run_manifest": {
+    "kind": "evaluation",
+    "name": "phase2l_continuation_only_sealed_v3",
+    "path": "artifacts\\runs_phase2l_external_trace_v3_semantic_required\\evaluation\\20260521T122915Z-phase2l-continuation-only-sealed-v3-1a51e68f",
+    "created_at_utc": "2026-05-21T12:29:15.238542+00:00",
+    "finished_at_utc": "2026-05-21T12:29:15.720938+00:00",
+    "duration_seconds": 0.482,
+    "config_hash": "1a51e68fcdd24d75",
+    "policy": "phase2d_native_package",
+    "dataset": "D:\\MyCode\\myApp_\\llm_a\\artifacts\\datasets\\phase2i_external_trace_v3_semantic_required\\challenge.jsonl",
+    "policy_label": "phase2l_counterfactual_continuation_r16_alpha32_lr1e-4_len256_full1024_val72_checkpointed_continuation_only"
+  }
+}

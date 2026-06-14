@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net" agent="reflexlm-paper-figures;drawio-skill-compatible" version="26.0.0">
+  <diagram id="data-validation-pipeline" name="Data and Validation Pipeline">
+    <mxGraphModel dx="3940" dy="2070" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="3940" pageHeight="2070" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="figure_subtitle" value="Non-sealed construction and&lt;br&gt;gates precede one-way sealed&lt;br&gt;final evaluation" style="text;html=1;strokeColor=none;fillColor=none;fontSize=14;fontColor=#333333;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="100" y="40" width="3740" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="lane_data" value="Data construction" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e8f3ff;strokeColor=#1f77b4;opacity=18;dashed=1;strokeWidth=1;fontSize=14;fontStyle=1;align=left;verticalAlign=middle;spacingLeft=16;" vertex="1" parent="1">
+          <mxGeometry x="20" y="250" width="3900" height="320" as="geometry" />
+        </mxCell>
+        <mxCell id="lane_audit" value="Audit and split gates" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff0f0;strokeColor=#d62728;opacity=18;dashed=1;strokeWidth=1;fontSize=14;fontStyle=1;align=left;verticalAlign=middle;spacingLeft=16;" vertex="1" parent="1">
+          <mxGeometry x="20" y="580" width="3900" height="370" as="geometry" />
+        </mxCell>
+        <mxCell id="lane_train" value="Training and postflight" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff3df;strokeColor=#ff7f0e;opacity=18;dashed=1;strokeWidth=1;fontSize=14;fontStyle=1;align=left;verticalAlign=middle;spacingLeft=16;" vertex="1" parent="1">
+          <mxGeometry x="20" y="950" width="3900" height="380" as="geometry" />
+        </mxCell>
+        <mxCell id="lane_release" value="Package and final evaluation" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ecfbfb;strokeColor=#17becf;opacity=18;dashed=1;strokeWidth=1;fontSize=14;fontStyle=1;align=left;verticalAlign=middle;spacingLeft=16;" vertex="1" parent="1">
+          <mxGeometry x="20" y="1330" width="3900" height="370" as="geometry" />
+        </mxCell>
+        <mxCell id="lane_boundary" value="Sealed boundary" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f7f7f7;strokeColor=#555555;opacity=18;dashed=1;strokeWidth=1;fontSize=14;fontStyle=1;align=left;verticalAlign=middle;spacingLeft=16;" vertex="1" parent="1">
+          <mxGeometry x="20" y="1710" width="3900" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="collect" value="Public read-only traces&lt;br&gt;or preregistered synthetic-&lt;br&gt;safe data" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e8f3ff;strokeColor=#1f77b4;strokeWidth=2;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="750" y="370" width="270" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="normalize" value="Normalize and scrub&lt;br&gt;remove hidden gold candidate&lt;br&gt;markers" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f2ecff;strokeColor=#7f3fbf;strokeWidth=2;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="1390" y="370" width="280" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="split" value="Repo-disjoint split&lt;br&gt;train validation holdout" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f2ecff;strokeColor=#7f3fbf;strokeWidth=2;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="2050" y="720" width="250" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="audit" value="Data health audit&lt;br&gt;hashes leakage graded&lt;br&gt;difficulty" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff0f0;strokeColor=#d62728;strokeWidth=2;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="2700" y="710" width="230" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="train" value="Non-sealed train&lt;br&gt;fixed config and seeds" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff3df;strokeColor=#ff7f0e;strokeWidth=2;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="2700" y="1110" width="230" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="post" value="Postflight gates&lt;br&gt;source-overlap native&lt;br&gt;controls" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff0f0;strokeColor=#d62728;strokeWidth=2;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="2060" y="1100" width="230" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="package" value="Package only after gates&lt;br&gt;no sealed tuning" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ecfbfb;strokeColor=#17becf;strokeWidth=2;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="1400" y="1500" width="250" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="sealed" value="Sealed final eval&lt;br&gt;one-way evidence only" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f7f7f7;strokeColor=#555555;strokeWidth=2;fontSize=13;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="770" y="1500" width="230" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_1_collect_normalize" value="E1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#4a4a4a;fontSize=12;labelBackgroundColor=#ffffff;labelBorderColor=#dddddd;labelPosition=center;verticalLabelPosition=middle;align=center;verticalAlign=middle;endArrow=block;endFill=1;" edge="1" parent="1" source="collect" target="normalize">
+          <mxGeometry relative="1" x="0" y="0" as="geometry">
+            <mxPoint x="0" y="0" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_2_normalize_split" value="E2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#4a4a4a;fontSize=12;labelBackgroundColor=#ffffff;labelBorderColor=#dddddd;labelPosition=center;verticalLabelPosition=middle;align=center;verticalAlign=middle;endArrow=block;endFill=1;" edge="1" parent="1" source="normalize" target="split">
+          <mxGeometry relative="1" x="0" y="0" as="geometry">
+            <mxPoint x="0" y="0" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_3_split_audit" value="E3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#4a4a4a;fontSize=12;labelBackgroundColor=#ffffff;labelBorderColor=#dddddd;labelPosition=center;verticalLabelPosition=middle;align=center;verticalAlign=middle;endArrow=block;endFill=1;" edge="1" parent="1" source="split" target="audit">
+          <mxGeometry relative="1" x="0" y="0" as="geometry">
+            <mxPoint x="0" y="0" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_4_audit_train" value="E4" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#4a4a4a;fontSize=12;labelBackgroundColor=#ffffff;labelBorderColor=#dddddd;labelPosition=center;verticalLabelPosition=middle;align=center;verticalAlign=middle;endArrow=block;endFill=1;" edge="1" parent="1" source="audit" target="train">
+          <mxGeometry relative="1" x="0" y="0" as="geometry">
+            <mxPoint x="0" y="-20" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_5_train_post" value="E5" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#4a4a4a;fontSize=12;labelBackgroundColor=#ffffff;labelBorderColor=#dddddd;labelPosition=center;verticalLabelPosition=middle;align=center;verticalAlign=middle;endArrow=block;endFill=1;" edge="1" parent="1" source="train" target="post">
+          <mxGeometry relative="1" x="0" y="0" as="geometry">
+            <mxPoint x="-10" y="0" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_6_post_package" value="E6" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#4a4a4a;fontSize=12;labelBackgroundColor=#ffffff;labelBorderColor=#dddddd;labelPosition=center;verticalLabelPosition=middle;align=center;verticalAlign=middle;endArrow=block;endFill=1;" edge="1" parent="1" source="post" target="package">
+          <mxGeometry relative="1" x="0" y="0" as="geometry">
+            <mxPoint x="0" y="0" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_7_package_sealed" value="E7" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#4a4a4a;fontSize=12;labelBackgroundColor=#ffffff;labelBorderColor=#dddddd;labelPosition=center;verticalLabelPosition=middle;align=center;verticalAlign=middle;endArrow=block;endFill=1;" edge="1" parent="1" source="package" target="sealed">
+          <mxGeometry relative="1" x="0" y="0" as="geometry">
+            <mxPoint x="-40" y="0" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="connection_label_legend" value="&lt;b&gt;Connection labels&lt;/b&gt;&lt;br&gt;E1: raw traces&lt;br&gt;E2: clean rows&lt;br&gt;E3: effective hashes&lt;br&gt;E4: only if passed&lt;br&gt;E5: measured metrics&lt;br&gt;E6: if deltas pass&lt;br&gt;E7: final evaluation only" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#777777;strokeWidth=1;fontSize=12;align=left;spacingLeft=10;spacingRight=10;spacingTop=8;spacingBottom=8;" vertex="1" parent="1">
+          <mxGeometry x="100" y="1810" width="1680" height="230" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

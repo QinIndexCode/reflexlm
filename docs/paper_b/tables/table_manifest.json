@@ -1,0 +1,36 @@
+{
+  "table_pipeline": "artifact_json_to_latex_tables",
+  "output_dir": "docs\\paper_b\\tables",
+  "tables": {
+    "claim_boundary": {
+      "path": "docs\\paper_b\\tables\\claim_boundary.tex",
+      "caption": "Claim boundary for the bounded mechanism paper.",
+      "label": "tab:claim-boundary",
+      "row_count": 12
+    },
+    "positive_evidence_matrix": {
+      "path": "docs\\paper_b\\tables\\positive_evidence_matrix.tex",
+      "caption": "Positive evidence matrix for bounded command-selection claims.",
+      "label": "tab:positive-evidence",
+      "row_count": 12
+    },
+    "negative_evidence": {
+      "path": "docs\\paper_b\\tables\\negative_evidence.tex",
+      "caption": "Negative and bounded evidence retained as claim boundary.",
+      "label": "tab:negative-evidence",
+      "row_count": 10
+    },
+    "baseline_zero_summary": {
+      "path": "docs\\paper_b\\tables\\baseline_zero_summary.tex",
+      "caption": "Interpretability audit for zero-valued controls.",
+      "label": "tab:baseline-zero-summary",
+      "row_count": 6
+    },
+    "homeostasis_mechanism_evidence": {
+      "path": "docs\\paper_b\\tables\\homeostasis_mechanism_evidence.tex",
+      "caption": "Bounded homeostatic persistent-state mechanism evidence and limits.",
+      "label": "tab:homeostasis-mechanism-evidence",
+      "row_count": 4
+    }
+  }
+}

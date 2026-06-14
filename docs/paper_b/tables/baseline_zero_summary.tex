@@ -1,0 +1,19 @@
+\begin{table}[ht]
+\centering
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\caption{Interpretability audit for zero-valued controls.}
+\label{tab:baseline-zero-summary}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.10\linewidth}>{\raggedright\arraybackslash}p{0.16\linewidth}>{\raggedright\arraybackslash}p{0.21\linewidth}>{\raggedright\arraybackslash}p{0.13\linewidth}>{\raggedright\arraybackslash}p{0.22\linewidth}@{}}
+\toprule
+Phase & Native and no-NSI both zero & Full zero & Zero categories & Claim blocker \\
+\midrule
+Phase2M-v2 & no & no & expected missing capability; valid zero failure & classified; not standalone broad proof \\
+Phase2Q & yes & no & expected missing capability; valid zero failure & classified; requires non-sealed feasibility context \\
+Phase2R & no & no & expected missing capability; valid zero failure & classified; not standalone broad proof \\
+Phase2L & yes & yes & expected missing capability; valid zero failure & negative sealed-transfer evidence only \\
+Phase2P & no & no & expected missing capability; valid zero failure & classified; local transfer only \\
+Phase2T & yes & no & expected missing capability; valid zero failure & no strong claim from sealed all-zero controls; mitigated by non-sealed baseline-feasibility sanity \\
+\bottomrule
+\end{tabular}
+\end{table}

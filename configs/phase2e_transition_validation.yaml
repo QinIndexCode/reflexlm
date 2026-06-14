@@ -1,0 +1,72 @@
+phase: phase2e_transition_validation
+frozen_at: "2026-05-17"
+architecture:
+  direction: native_heads_single_policy_package
+  disallowed:
+    - json_sft_motor_output
+    - multi_adapter_route_expert
+    - free_shell_generation
+    - test_feedback_command_injection
+  motor_output: explicit_heads_runtime_serialization
+  low_level_reference: nsi_v20
+  cortex_scope: debug_cortex_only_on_semantic_debug_routes
+datasets:
+  fixed_split: artifacts/datasets/phase1b_wide_ood_scenario_holdout_seed313_debug_v3/test.jsonl
+  head_dataset: artifacts/datasets/phase2e_native_head_transition
+  extra_train_profile: debug_transition_train
+  extra_train_jsonl: artifacts/datasets/phase2e_debug_transition_train_v1/challenge.jsonl
+  extra_val_profile: debug_transition_val
+  extra_val_jsonl: artifacts/datasets/phase2e_debug_transition_val_v1/challenge.jsonl
+  sealed_debug_ood_v2: artifacts/datasets/phase2d_debug_ood_v2/challenge.jsonl
+  sealed_quasi_real_terminal_v1: artifacts/datasets/phase2d_quasi_real_terminal_v1/challenge.jsonl
+training:
+  adapter_name: phase2e_native_heads_transition_r16_alpha32_lr7e-5_len384_ep1
+  base_model: artifacts/models/Qwen2.5-7B-Instruct
+  lora_rank: 16
+  lora_alpha: 32
+  learning_rate: 0.00007
+  epochs: 1
+  max_length: 384
+  gradient_accumulation_steps: 4
+  command_intent_loss_weight: 1.0
+  command_slot_loss_weight: 1.5
+  balance_debug_command_intents: true
+optimization_hypothesis:
+  target: assertion_failure_after_source_inspection_should_rerun_last_test
+  visible_signals:
+    - source_inspected
+    - last_command_intent
+    - candidate_command_intents
+    - candidate_matches_last_command
+  expected_effect: improve_debug_ood_v2_test_rerun_without_hurting_low_level_reflex
+overfit_guards:
+  no_test_feedback_tuning: true
+  final_test_sets_sealed: true
+  extra_train_val_are_disjoint_from_debug_ood_v2_and_quasi_real_commands: true
+  no_recovery_hint_or_scenario_template_serialization: true
+  exact_final_command_hardcoding_forbidden: true
+gates:
+  fixed:
+    strong_completion: 0.98
+    strong_test_failure_completion: 0.98
+    acceptable_completion: 0.95
+    acceptable_test_failure_completion: 0.90
+  low_level:
+    completion: 1.0
+    dangerous_block: 1.0
+    stale_state_action: 0.0
+    qwen_calls: 0
+  debug_ood_v2:
+    overall_completion: 0.90
+    per_intent_completion: 0.80
+  quasi_real_terminal_v1:
+    completion_gain_pp_vs_best_text_baseline: 30
+    model_call_reduction_vs_best_text_baseline: 0.50
+    allowlist_hallucination: 0.0
+ablation:
+  required:
+    - no_nsi_latent
+fairness:
+  baseline_input: same_visible_state_prompt_and_allowlist
+  no_test_feedback: true
+  no_hidden_hint: true

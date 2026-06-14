@@ -1,0 +1,60 @@
+phase: phase2i_semantic_pairwise
+inherits: configs/phase2h_semantic_pairwise.yaml
+purpose: data_health_first_semantic_pairwise_canary_without_tuning_on_sealed_v2
+
+evidence_boundary:
+  sealed_external_v2: artifacts/datasets/phase2g_external_trace_v2_semantic_required/challenge.jsonl
+  sealed_external_v2_role: historical_diagnostic_only
+  sealed_external_v3: artifacts/datasets/phase2i_external_trace_v3_semantic_required/challenge.jsonl
+  train_profile: phase2i_semantic_train
+  val_profile: phase2i_semantic_val
+  no_json_sft: true
+  no_multi_adapter_route_experts: true
+  no_free_shell_generation: true
+  no_sealed_failure_tuning: true
+
+architecture:
+  policy_package: NativeNervousPolicyPackage
+  motor_output: explicit_heads_runtime_serialization
+  latent_fusion: additive
+  command_reranker: pairwise_candidate_evidence
+  pairwise_command_fusion: residual_lightweight_candidate_prior
+  pairwise_prompt: candidate_first_compact_visible_state
+  feature_fix: source_evidence_overlap_excludes_candidate_list_and_last_command
+  low_level_qwen_calls_required: 0
+
+data_health:
+  audit_json: artifacts/reports/phase2i_semantic_pairwise_canary/phase2i_data_health_audit.json
+  max_command_slot_share: 0.45
+  min_val_target_commands: 6
+  max_train_val_target_overlap: 0.25
+  sealed_v3_target_command_overlap_with_phase2i: 0
+  same_intent_ambiguous_episode_rate: 1.0
+
+training:
+  adapter_name: phase2i_semantic_pairwise_r16_alpha32_lr1e-4_len256_cap1024
+  lora_rank: 16
+  lora_alpha: 32
+  learning_rate: 0.0001
+  epochs: 1
+  max_length: 256
+  max_train_records: 1024
+  max_val_records: 512
+  gradient_accumulation_steps: 4
+  command_intent_loss_weight: 1.0
+  command_slot_loss_weight: 2.0
+  use_pairwise_command_reranker: true
+  pairwise_command_fusion: residual
+  balance_debug_command_intents: true
+
+acceptance:
+  canary_val_command_slot_accuracy_min: 0.85
+  sealed_v3_full_completion_min: 0.90
+  sealed_v3_full_beats_continuation_pp: 0.15
+  sealed_v3_full_beats_no_nsi_pp: 0.15
+  sealed_v3_full_beats_native_head_only_pp: 0.10
+
+interpretation:
+  if_data_health_fails: do_not_train_fix_nonsealed_profiles_or_sampling_first
+  if_v3_gate_fails: keep_paper_claim_bounded_debug_cortex_necessity_not_proven
+  if_v3_gate_passes: controlled_evidence_supports_llm_native_nervous_interface_architecture

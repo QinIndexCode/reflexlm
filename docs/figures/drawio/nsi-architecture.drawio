@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net" agent="reflexlm-paper-figures;drawio-skill-compatible" version="26.0.0">
+  <diagram id="nsi-architecture" name="Native Nervous Interface Architecture">
+    <mxGraphModel dx="3940" dy="2070" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="3940" pageHeight="2070" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="figure_subtitle" value="Bounded command selection&lt;br&gt;only; not production&lt;br&gt;autonomy or open-ended&lt;br&gt;repair" style="text;html=1;strokeColor=none;fillColor=none;fontSize=14;fontColor=#333333;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="100" y="40" width="3740" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="lane_observation" value="Observation layer" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e8f3ff;strokeColor=#1f77b4;opacity=18;dashed=1;strokeWidth=1;fontSize=14;fontStyle=1;align=left;verticalAlign=middle;spacingLeft=16;" vertex="1" parent="1">
+          <mxGeometry x="20" y="250" width="3900" height="360" as="geometry" />
+        </mxCell>
+        <mxCell id="lane_latent_lane" value="Latent state layer" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#edf7ed;strokeColor=#2ca02c;opacity=18;dashed=1;strokeWidth=1;fontSize=14;fontStyle=1;align=left;verticalAlign=middle;spacingLeft=16;" vertex="1" parent="1">
+          <mxGeometry x="20" y="610" width="3900" height="250" as="geometry" />
+        </mxCell>
+        <mxCell id="lane_action_lane" value="Routing and action layer" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff3df;strokeColor=#ff7f0e;opacity=18;dashed=1;strokeWidth=1;fontSize=14;fontStyle=1;align=left;verticalAlign=middle;spacingLeft=16;" vertex="1" parent="1">
+          <mxGeometry x="20" y="860" width="3900" height="340" as="geometry" />
+        </mxCell>
+        <mxCell id="lane_controls_lane" value="Controls and ablations layer" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f2ecff;strokeColor=#7f3fbf;opacity=18;dashed=1;strokeWidth=1;fontSize=14;fontStyle=1;align=left;verticalAlign=middle;spacingLeft=16;" vertex="1" parent="1">
+          <mxGeometry x="20" y="1200" width="3900" height="390" as="geometry" />
+        </mxCell>
+        <mxCell id="lane_boundary_lane" value="Claim boundary layer" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f7f7f7;strokeColor=#555555;opacity=18;dashed=1;strokeWidth=1;fontSize=14;fontStyle=1;align=left;verticalAlign=middle;spacingLeft=16;" vertex="1" parent="1">
+          <mxGeometry x="20" y="1590" width="3900" height="360" as="geometry" />
+        </mxCell>
+        <mxCell id="receptors" value="Structured receptors&lt;br&gt;terminal process filesystem&lt;br&gt;time" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e8f3ff;strokeColor=#1f77b4;strokeWidth=2;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="820" y="380" width="270" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="latent" value="NSI latent state&lt;br&gt;salience prediction error&lt;br&gt;route bias" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#edf7ed;strokeColor=#2ca02c;strokeWidth=2;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="1500" y="380" width="260" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="cache" value="Continuation memory&lt;br&gt;bounded prior runtime&lt;br&gt;context" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#edf7ed;strokeColor=#2ca02c;strokeWidth=2;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="2200" y="380" width="230" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="cortex" value="Debug Cortex route&lt;br&gt;semantic command selection" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff3df;strokeColor=#ff7f0e;strokeWidth=2;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="1160" y="990" width="260" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="heads" value="Native heads&lt;br&gt;action route slot confidence" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff3df;strokeColor=#ff7f0e;strokeWidth=2;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="1830" y="990" width="280" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="schema" value="Bounded motor schema&lt;br&gt;no JSON motor target" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ecfbfb;strokeColor=#17becf;strokeWidth=2;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="2680" y="990" width="220" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="controls" value="Controls and ablations&lt;br&gt;no-NSI native-only no-cache&lt;br&gt;text baselines" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f2ecff;strokeColor=#7f3fbf;strokeWidth=2;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="1660" y="1350" width="270" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="boundary" value="Claim boundary&lt;br&gt;bounded command selection&lt;br&gt;not production autonomy" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f7f7f7;strokeColor=#555555;strokeWidth=2;fontSize=13;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="1450" y="1720" width="260" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_1_receptors_latent" value="E1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#4a4a4a;fontSize=12;labelBackgroundColor=#ffffff;labelBorderColor=#dddddd;labelPosition=center;verticalLabelPosition=middle;align=center;verticalAlign=middle;endArrow=block;endFill=1;" edge="1" parent="1" source="receptors" target="latent">
+          <mxGeometry relative="1" x="0" y="0" as="geometry">
+            <mxPoint x="-30" y="0" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_2_latent_cache" value="E2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#4a4a4a;fontSize=12;labelBackgroundColor=#ffffff;labelBorderColor=#dddddd;labelPosition=center;verticalLabelPosition=middle;align=center;verticalAlign=middle;endArrow=block;endFill=1;" edge="1" parent="1" source="latent" target="cache">
+          <mxGeometry relative="1" x="0" y="0" as="geometry">
+            <mxPoint x="-30" y="0" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_3_cache_cortex" value="E3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#4a4a4a;fontSize=12;labelBackgroundColor=#ffffff;labelBorderColor=#dddddd;labelPosition=center;verticalLabelPosition=middle;align=center;verticalAlign=middle;endArrow=block;endFill=1;" edge="1" parent="1" source="cache" target="cortex">
+          <mxGeometry relative="1" x="0" y="0" as="geometry">
+            <mxPoint x="0" y="0" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_4_cortex_heads" value="E4" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#4a4a4a;fontSize=12;labelBackgroundColor=#ffffff;labelBorderColor=#dddddd;labelPosition=center;verticalLabelPosition=middle;align=center;verticalAlign=middle;endArrow=block;endFill=1;" edge="1" parent="1" source="cortex" target="heads">
+          <mxGeometry relative="1" x="0" y="0" as="geometry">
+            <mxPoint x="30" y="0" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_5_heads_schema" value="E5" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#4a4a4a;fontSize=12;labelBackgroundColor=#ffffff;labelBorderColor=#dddddd;labelPosition=center;verticalLabelPosition=middle;align=center;verticalAlign=middle;endArrow=block;endFill=1;" edge="1" parent="1" source="heads" target="schema">
+          <mxGeometry relative="1" x="0" y="0" as="geometry">
+            <mxPoint x="120" y="0" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_6_controls_heads" value="E6" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#4a4a4a;fontSize=12;labelBackgroundColor=#ffffff;labelBorderColor=#dddddd;labelPosition=center;verticalLabelPosition=middle;align=center;verticalAlign=middle;endArrow=block;endFill=1;" edge="1" parent="1" source="controls" target="heads">
+          <mxGeometry relative="1" x="0" y="0" as="geometry">
+            <mxPoint x="-10" y="20" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_7_boundary_controls" value="E7" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#4a4a4a;fontSize=12;labelBackgroundColor=#ffffff;labelBorderColor=#dddddd;labelPosition=center;verticalLabelPosition=middle;align=center;verticalAlign=middle;endArrow=block;endFill=1;" edge="1" parent="1" source="boundary" target="controls">
+          <mxGeometry relative="1" x="0" y="0" as="geometry">
+            <mxPoint x="-10" y="10" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="connection_label_legend" value="&lt;b&gt;Connection labels&lt;/b&gt;&lt;br&gt;E1: runtime-visible state&lt;br&gt;E2: fused state&lt;br&gt;E3: continuation-conditioned evidence&lt;br&gt;E4: debug route features&lt;br&gt;E5: bounded decision&lt;br&gt;E6: mechanism deltas&lt;br&gt;E7: claim gating" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#777777;strokeWidth=1;fontSize=12;align=left;spacingLeft=10;spacingRight=10;spacingTop=8;spacingBottom=8;" vertex="1" parent="1">
+          <mxGeometry x="100" y="1810" width="1680" height="230" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

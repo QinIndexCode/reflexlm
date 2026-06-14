@@ -1,0 +1,33 @@
+%% title: Ablation and Control Matrix
+%% subtitle: Each control is measured before deltas are interpreted; zero scores are not automatic proof
+%% size: 22 | 11
+%% lane: ablations | 8.0 | 10.1 | Ablation mechanisms | control
+%% lane: baselines | 5.0 | 8.0 | Shortcut and text baselines | evidence
+%% lane: interpretation | 2.6 | 5.0 | Delta interpretation | output
+%% lane: boundary | 0.5 | 2.6 | Claim boundary | boundary
+%% node: full | 4.4 | 9.0 | Full package\nheads + NSI + cache + bounded route | model
+%% node: nonsi | 8.7 | 9.0 | No-NSI\nlatent contribution removed | control
+%% node: native | 13.0 | 9.0 | Native-head-only\ncache or latent removed | control
+%% node: cont | 17.3 | 9.0 | Continuation-only\nheads removed | control
+%% node: text | 4.4 | 6.4 | Prompt-only and ReAct\ntext-loop baselines | control
+%% node: source | 8.7 | 6.4 | Source-overlap baseline\nmeasured shortcut pressure | control
+%% node: zero | 4.4 | 1.7 | Zero-result audit\nclassify evaluability first | boundary
+%% node: deltas | 13.0 | 4.0 | Measured delta table\naccuracy gaps + evaluability flags | evidence
+%% node: gates | 17.3 | 4.0 | Claim gates\nfull must beat measured controls | output
+%% edge: full -> deltas | target evidence
+%% edge: nonsi -> deltas | latent delta
+%% edge: native -> deltas | package delta
+%% edge: cont -> deltas | cache/head delta
+%% edge: text -> deltas | text-loop delta
+%% edge: source -> deltas | shortcut pressure
+%% edge: zero -> deltas | interpretability audit
+%% edge: deltas -> gates | predeclared thresholds
+flowchart LR
+  full["Full package"] --> deltas["Measured delta table"]
+  nonsi["No-NSI"] --> deltas
+  native["Native-head-only"] --> deltas
+  cont["Continuation-only"] --> deltas
+  text["Prompt-only and ReAct"] --> deltas
+  source["Source-overlap baseline"] --> deltas
+  zero["Zero-result audit"] --> deltas
+  deltas --> gates["Claim gates"]

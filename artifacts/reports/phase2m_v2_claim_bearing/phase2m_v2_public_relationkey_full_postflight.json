@@ -1,0 +1,55 @@
+{
+  "audit_family": "phase2m_v2_postflight",
+  "postflight_stage": "full",
+  "passed": true,
+  "ready_for_full_train": false,
+  "ready_for_package": true,
+  "ready_for_sealed_eval": false,
+  "allowed_next_action": "run_phase2m_v2_package_only",
+  "blocked_actions": [],
+  "checks": {
+    "data_health_passed": true,
+    "pretrain_gate_passed": true,
+    "design_maturity_claim_bearing": true,
+    "summary_exists_and_completed": true,
+    "head_hashes_match_training_summary": true,
+    "smoke_limits_recorded": true,
+    "val_command_slot_accuracy_gate": true,
+    "source_overlap_baseline_recorded": true,
+    "model_beats_source_overlap": true,
+    "no_json_motor_target": true,
+    "low_level_qwen_calls_target_zero": true,
+    "pairwise_disabled_for_phase2m_isolation": true,
+    "additive_latent_fusion": true,
+    "native_head_only_eval_required_for_full": true,
+    "full_beats_native_head_only_for_package": true
+  },
+  "metrics": {
+    "val_command_slot_accuracy": 1.0,
+    "val_command_slot_count": 256.0,
+    "source_overlap_val_accuracy": 0.37109375,
+    "model_minus_source_overlap_accuracy": 0.62890625,
+    "duration_seconds": 857.01,
+    "train_pairwise_encoded_candidates": 0,
+    "val_pairwise_encoded_candidates": 0,
+    "full_completion": 1.0,
+    "full_completion_source": "val_command_slot_accuracy",
+    "native_head_only_completion": 0.3671875,
+    "full_minus_native_head_only": 0.6328125
+  },
+  "thresholds": {
+    "min_val_command_slot_accuracy": 0.85,
+    "min_model_minus_source_overlap": 0.1,
+    "min_full_minus_native_head_only": 0.1,
+    "max_smoke_train_records": 128,
+    "max_smoke_val_records": 512
+  },
+  "inputs": {
+    "training_summary_json": "artifacts\\reports\\phase2m_v2_claim_bearing\\phase2m_v2_public_relationkey_full.training_summary.json",
+    "data_health_json": "artifacts\\reports\\phase2m_v2_claim_bearing\\phase2m_v2_public_relationkey_full_data_health.json",
+    "pretrain_gate_json": "artifacts\\reports\\phase2m_v2_claim_bearing\\phase2m_v2_public_relationkey_full_pretrain_gate.json",
+    "design_maturity_json": "artifacts\\reports\\phase2m_v2_claim_bearing\\phase2m_v2_public_relationkey_full_design_maturity_review.json",
+    "head_manifest_json": "artifacts\\reports\\phase2m_v2_claim_bearing\\phase2m_v2_public_relationkey_full_head_dataset_manifest.json",
+    "native_head_only_eval_json": "artifacts\\reports\\phase2m_v2_claim_bearing\\phase2m_v2_public_relationkey_full_native_head_only_eval.json"
+  }
+}

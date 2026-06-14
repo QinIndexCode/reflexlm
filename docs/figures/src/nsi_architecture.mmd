@@ -1,0 +1,31 @@
+%% title: Native Nervous Interface Architecture
+%% subtitle: Bounded command selection only; not production autonomy or open-ended repair
+%% size: 22 | 11
+%% lane: observation | 8.0 | 10.1 | Observation layer | input
+%% lane: latent_lane | 6.55 | 8.0 | Latent state layer | state
+%% lane: action_lane | 4.55 | 6.55 | Routing and action layer | model
+%% lane: controls_lane | 2.25 | 4.55 | Controls and ablations layer | control
+%% lane: boundary_lane | 0.15 | 2.25 | Claim boundary layer | boundary
+%% node: receptors | 5.0 | 9.05 | Structured receptors\nterminal process filesystem time | input
+%% node: latent | 9.0 | 9.05 | NSI latent state\nsalience prediction error route bias | state
+%% node: cache | 13.0 | 9.05 | Continuation memory\nbounded prior runtime context | state
+%% node: cortex | 7.0 | 5.55 | Debug Cortex route\nsemantic command selection | model
+%% node: heads | 11.0 | 5.55 | Native heads\naction route slot confidence | model
+%% node: schema | 15.8 | 5.55 | Bounded motor schema\nno JSON motor target | output
+%% node: controls | 10.0 | 3.35 | Controls and ablations\nno-NSI native-only no-cache text baselines | control
+%% node: boundary | 8.7 | 1.15 | Claim boundary\nbounded command selection not production autonomy | boundary
+%% edge: receptors -> latent | runtime-visible state
+%% edge: latent -> cache | fused state
+%% edge: cache -> cortex | continuation-conditioned evidence
+%% edge: cortex -> heads | debug route features
+%% edge: heads -> schema | bounded decision
+%% edge: controls -> heads | mechanism deltas
+%% edge: boundary -> controls | claim gating
+flowchart LR
+  receptors["Structured receptors"] --> latent["NSI latent state"]
+  latent --> cache["Continuation memory"]
+  cache --> cortex["Debug Cortex route"]
+  cortex --> heads["Native heads"]
+  heads --> schema["Bounded motor schema"]
+  controls["Controls and ablations"] --> heads
+  boundary["Claim boundary"] --> controls

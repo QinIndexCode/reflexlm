@@ -1,0 +1,63 @@
+canonical_document: native_synaptic_interface_research.md
+paper_draft_role: validation_oriented_english_draft
+phase1_scope:
+  modalities:
+    - terminal
+    - process
+    - filesystem
+    - time
+  excluded:
+    - gui
+    - robotics
+    - full_scale_llm_training
+    - unrestricted_shell_generation
+action_space:
+  - WAIT
+  - READ_STDOUT
+  - READ_STDERR
+  - READ_FILE
+  - RUN_COMMAND
+  - STOP_PROCESS
+  - ASK_USER
+  - REFRESH_STATE
+  - BLOCK
+  - DONE
+task_suite:
+  - blocking_input_detection
+  - test_failure_reflex
+  - process_hang_detection
+  - dangerous_action_interception
+  - external_file_change_reflex
+  - common_error_recovery_routine
+metrics:
+  - reaction_latency
+  - token_equivalent_cost
+  - model_calls
+  - recovery_success_rate
+  - false_reflex_rate
+  - dangerous_action_block_rate
+  - long_run_stability
+  - state_hallucination_rate
+  - stale_state_action_rate
+  - task_completion_rate
+baselines:
+  prompt_only_model: Qwen/Qwen2.5-7B-Instruct
+  react_model: Qwen/Qwen2.5-7B-Instruct
+  no_synapse_small_model: flat_text_state_baseline
+  rule_system: rule_oracle
+fusion:
+  base_model: Qwen/Qwen2.5-1.5B-Instruct
+  fallback_model: Qwen/Qwen2.5-0.5B-Instruct
+  method: lora_plus_latent_prefix
+phase2c_native_nervous:
+  shared_backbone: Qwen/Qwen2.5-7B-Instruct
+  method: native_state_latent_injection_plus_explicit_heads
+  json_generation_as_motor_output: false
+  low_level_reference: nsi_v20_debug_lexical_tiny
+  debug_task_target: ESCALATE_TO_DEBUG_CORTEX
+dataset:
+  target_episode_count: 5796
+  split_ratio:
+    train: 0.8
+    val: 0.1
+    test: 0.1

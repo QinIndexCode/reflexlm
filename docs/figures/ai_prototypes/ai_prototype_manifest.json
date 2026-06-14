@@ -1,0 +1,38 @@
+{
+  "ai_prototype_pipeline": "figure_spec_to_gpt_image_prompt_to_editable_vector_redraw",
+  "authority": "Mermaid/DOT/draw.io source remains authoritative; AI image output is visual reference only.",
+  "model_family": "gpt-image-2",
+  "prompt_dir": "docs\\figures\\ai_prototypes\\prompts",
+  "figures": {
+    "ablation_control_matrix.mmd": {
+      "prompt_path": "docs\\figures\\ai_prototypes\\prompts\\ablation-control-matrix.md",
+      "slug": "ablation-control-matrix",
+      "model_family": "gpt-image-2"
+    },
+    "baseline_zero_decision_tree.mmd": {
+      "prompt_path": "docs\\figures\\ai_prototypes\\prompts\\baseline-zero-decision-tree.md",
+      "slug": "baseline-zero-decision-tree",
+      "model_family": "gpt-image-2"
+    },
+    "data_validation_pipeline.mmd": {
+      "prompt_path": "docs\\figures\\ai_prototypes\\prompts\\data-validation-pipeline.md",
+      "slug": "data-validation-pipeline",
+      "model_family": "gpt-image-2"
+    },
+    "evidence_ladder.dot": {
+      "prompt_path": "docs\\figures\\ai_prototypes\\prompts\\evidence-ladder.md",
+      "slug": "evidence-ladder",
+      "model_family": "gpt-image-2"
+    },
+    "nsi_architecture.mmd": {
+      "prompt_path": "docs\\figures\\ai_prototypes\\prompts\\nsi-architecture.md",
+      "slug": "nsi-architecture",
+      "model_family": "gpt-image-2"
+    },
+    "receptor_to_native_heads.mmd": {
+      "prompt_path": "docs\\figures\\ai_prototypes\\prompts\\receptor-to-native-heads.md",
+      "slug": "receptor-to-native-heads",
+      "model_family": "gpt-image-2"
+    }
+  }
+}

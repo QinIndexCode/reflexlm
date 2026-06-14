@@ -1,0 +1,120 @@
+{
+  "artifact_family": "phase2q_public_trace_breadth_full_summary",
+  "created_date": "2026-05-22",
+  "sealed_v3_used_for_training_or_tuning": false,
+  "claim_boundary": {
+    "supported": [
+      "Phase2Q public/read-only repo breadth full-density data gates passed",
+      "Phase2Q Qwen2.5-7B seed13 full non-sealed validation passed",
+      "Phase2Q public holdout passed",
+      "Phase2Q package passed sealed external_trace_v3_semantic_required gate"
+    ],
+    "not_supported": [
+      "production autonomy",
+      "open-ended dynamic real-repo debugging or repair",
+      "unrestricted shell use",
+      "independent external reproduction",
+      "epoch-making architecture status"
+    ]
+  },
+  "full_density_split": {
+    "repo_count": 8,
+    "train_rows": 512,
+    "val_rows": 256,
+    "holdout_rows": 256,
+    "train_repos": [
+      "pallets_click",
+      "pallets_itsdangerous",
+      "pallets_jinja",
+      "pytest_pluggy"
+    ],
+    "val_repos": [
+      "pallets_markupsafe",
+      "pytest_iniconfig"
+    ],
+    "holdout_repos": [
+      "pallets_flask",
+      "pypa_packaging"
+    ],
+    "split_repos_disjoint": true,
+    "collection_rejections": 0
+  },
+  "gates": {
+    "data_health_passed": true,
+    "breadth_gate_passed": true,
+    "head_state_source_overlap_gate_passed": true,
+    "pretrain_gate_passed": true,
+    "design_maturity_passed": true,
+    "full_postflight_passed": true,
+    "holdout_postflight_passed": true,
+    "sealed_v3_gate_passed": true
+  },
+  "full_nonsealed": {
+    "model_key": "phase2q_qwen2_5_7b",
+    "seed": 13,
+    "adapter": "phase2n_phase2q_qwen2_5_7b_full_seed13_r16_alpha32_lr1e-4_len256",
+    "train_examples": 512,
+    "val_examples": 256,
+    "max_train_records": 1024,
+    "max_val_records": 512,
+    "pairwise_enabled": false,
+    "additive_latent_fusion": true,
+    "train_loss": 0.3584706895380805,
+    "training_duration_seconds": 1029.717,
+    "val_command_slot_accuracy": 1.0,
+    "val_command_slot_count": 256,
+    "source_overlap_val_accuracy": 0.34765625,
+    "model_minus_source_overlap_accuracy": 0.65234375,
+    "native_head_only_completion": 0.33203125,
+    "full_minus_native_head_only": 0.66796875,
+    "train_pairwise_encoded_candidates": 0,
+    "val_pairwise_encoded_candidates": 0
+  },
+  "public_holdout": {
+    "holdout_command_slot_accuracy": 1.0,
+    "command_record_count": 256,
+    "source_overlap_holdout_accuracy": 0.3828125,
+    "model_minus_source_overlap_holdout": 0.6171875,
+    "slot_head_holdout_accuracy": 0.375
+  },
+  "sealed_v3": {
+    "profile": "external_trace_v3_semantic_required",
+    "full_completion": 1.0,
+    "full_positives": "64/64",
+    "prompt_completion": 0.0,
+    "react_completion": 0.0,
+    "no_nsi_completion": 0.0,
+    "native_head_only_completion": 0.0,
+    "continuation_only_completion": 0.0,
+    "full_minus_best_text": 1.0,
+    "full_minus_no_nsi": 1.0,
+    "full_minus_native_head_only": 1.0,
+    "full_minus_continuation_only": 1.0,
+    "allowlist_hallucination": 0.0,
+    "state_hallucination": 0.0,
+    "low_level_qwen_calls": 0,
+    "debug_qwen_calls": 64,
+    "qwen_on_non_debug": 0,
+    "cache_hits": 64
+  },
+  "artifacts": {
+    "full_collector_manifest": "artifacts/datasets/phase2q_public_trace_breadth_full/manifest.json",
+    "full_data_health": "artifacts/reports/phase2q_public_trace_breadth/phase2q_public_trace_breadth_full_data_health.json",
+    "full_breadth_gate": "artifacts/reports/phase2q_public_trace_breadth/phase2q_public_trace_breadth_full_gate.json",
+    "full_head_dataset_manifest": "artifacts/reports/phase2q_public_trace_breadth/phase2q_public_trace_breadth_full_head_dataset_manifest.json",
+    "full_head_state_baseline": "artifacts/reports/phase2q_public_trace_breadth/phase2q_public_trace_breadth_full_head_state_baseline.json",
+    "full_pretrain_gate": "artifacts/reports/phase2q_public_trace_breadth/phase2q_public_trace_breadth_full_pretrain_gate.json",
+    "full_design_maturity": "artifacts/reports/phase2q_public_trace_breadth/phase2q_public_trace_breadth_full_design_maturity_review.json",
+    "full_training_summary": "artifacts/reports/phase2q_public_trace_breadth/phase2q_qwen2_5_7b/seed13/full/phase2n_phase2q_qwen2_5_7b_full_seed13_r16_alpha32_lr1e-4_len256.training_summary.json",
+    "full_postflight": "artifacts/reports/phase2q_public_trace_breadth/phase2q_qwen2_5_7b/seed13/full/phase2n_phase2q_qwen2_5_7b_full_seed13_r16_alpha32_lr1e-4_len256.postflight.json",
+    "native_head_only_eval": "artifacts/reports/phase2q_public_trace_breadth/phase2q_qwen2_5_7b/seed13/full/phase2n_phase2q_qwen2_5_7b_full_seed13_r16_alpha32_lr1e-4_len256.native_head_only_eval.json",
+    "holdout_postflight": "artifacts/reports/phase2q_public_trace_breadth/phase2q_qwen2_5_7b/seed13/full/phase2n_phase2q_qwen2_5_7b_full_seed13_r16_alpha32_lr1e-4_len256.holdout_postflight.json",
+    "package_root": "artifacts/packages/phase2q_public_trace_breadth_nervous",
+    "sealed_full_eval": "artifacts/reports/phase2q_external_trace_v3_semantic_required/phase2q_full_sealed_v3_eval.json",
+    "sealed_no_nsi_eval": "artifacts/reports/phase2q_external_trace_v3_semantic_required/phase2q_no_nsi_sealed_v3_eval.json",
+    "sealed_native_head_only_eval": "artifacts/reports/phase2q_external_trace_v3_semantic_required/phase2q_native_head_only_sealed_v3_eval.json",
+    "sealed_continuation_only_eval": "artifacts/reports/phase2q_external_trace_v3_semantic_required/phase2q_continuation_only_sealed_v3_eval.json",
+    "sealed_gate": "artifacts/reports/phase2q_external_trace_v3_semantic_required/phase2q_external_trace_v3_gate.json",
+    "sealed_exact_baseline_table": "artifacts/reports/phase2q_external_trace_v3_semantic_required/phase2q_external_trace_v3_exact_baseline_table.json"
+  }
+}

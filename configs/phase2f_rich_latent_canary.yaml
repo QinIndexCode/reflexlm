@@ -1,0 +1,48 @@
+phase: phase2f_rich_latent_canary
+frozen_at: "2026-05-17"
+inherits: configs/phase2f_transition_cache_canary.yaml
+purpose: verify_rich_nsi_latent_contribution_without_using_sealed_latent_probe_for_training
+architecture:
+  direction: native_heads_single_policy_package
+  persistent_state: policy_internal_debug_continuation_cache
+  nsi_latent: rich_reflex_action_and_route_signal
+  disallowed:
+    - json_sft_motor_output
+    - multi_adapter_route_expert
+    - free_shell_generation
+    - sealed_test_feedback_tuning
+  motor_output: explicit_heads_runtime_serialization
+datasets:
+  fixed_split: artifacts/datasets/phase1b_wide_ood_scenario_holdout_seed313_debug_v3/test.jsonl
+  head_dataset: artifacts/datasets/phase2f_rich_latent_head_canary
+  extra_train_profile: phase2f_latent_train
+  extra_val_profile: phase2f_latent_val
+  sealed_debug_ood_v2: artifacts/datasets/phase2d_debug_ood_v2/challenge.jsonl
+  sealed_quasi_real_terminal_v1: artifacts/datasets/phase2d_quasi_real_terminal_v1/challenge.jsonl
+  sealed_latent_sensitive_probe: artifacts/datasets/phase2f_latent_sensitive/challenge.jsonl
+training:
+  adapter_name: phase2f_rich_latent_canary_r16_alpha32_lr1e-4_len256_cap2048
+  base_model: artifacts/models/Qwen2.5-7B-Instruct
+  lora_rank: 16
+  lora_alpha: 32
+  learning_rate: 0.0001
+  epochs: 1
+  max_length: 256
+  gradient_accumulation_steps: 4
+  max_train_records: 2048
+  max_val_records: 512
+  command_intent_loss_weight: 1.0
+  command_slot_loss_weight: 1.5
+  balance_debug_command_intents: true
+gates:
+  fixed_strong_completion: 0.98
+  fixed_acceptable_completion: 0.95
+  debug_or_quasi_mean_model_calls: 1.0
+  latent_sensitive_completion: 0.90
+  latent_sensitive_delta_vs_no_nsi_latent: 0.15
+overfit_guards:
+  final_test_sets_sealed: true
+  latent_sensitive_probe_is_eval_only: true
+  no_test_feedback_tuning: true
+  canary_not_final_claim_evidence: true
+  exact_final_command_hardcoding_forbidden: true

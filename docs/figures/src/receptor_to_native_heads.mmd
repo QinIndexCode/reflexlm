@@ -1,0 +1,31 @@
+%% title: Receptor-to-Native-Head Decision Path
+%% subtitle: Observable runtime evidence is converted into bounded native action fields
+%% size: 22 | 11
+%% lane: evidence | 8.25 | 10.1 | Runtime evidence | input
+%% lane: scrub | 6.55 | 8.25 | Leakage controls | control
+%% lane: latent | 4.8 | 6.55 | Latent and routing state | state
+%% lane: decision | 2.65 | 4.8 | Native decision heads | model
+%% lane: boundary | 0.55 | 2.65 | Serialization boundary | boundary
+%% node: trace | 4.4 | 9.1 | Runtime trace\nstderr changed files watched paths | input
+%% node: scrub | 8.2 | 7.45 | Leakage scrub\nno gold hidden or candidate markers | control
+%% node: features | 12.0 | 7.45 | Receptor features\nobservable state only | input
+%% node: nsi | 8.2 | 5.65 | NSI latent\nidentity relation stage signals | state
+%% node: route | 12.0 | 5.65 | Route gate\nDebug Cortex only when needed | model
+%% node: slots | 15.9 | 3.75 | Command-slot head\nsame-intent candidates | model
+%% node: action | 12.0 | 1.7 | Native action tuple\naction route slot confidence | output
+%% node: nojson | 8.2 | 1.7 | Serialization after decision\nnot model JSON output | boundary
+%% edge: trace -> scrub | public or synthetic-safe input
+%% edge: scrub -> features | visible fields
+%% edge: features -> nsi | latent fusion
+%% edge: nsi -> route | route bias
+%% edge: route -> slots | debug command selection
+%% edge: slots -> action | selected bounded command
+%% edge: action -> nojson | runtime wrapper
+flowchart LR
+  trace["Runtime trace"] --> scrub["Leakage scrub"]
+  scrub --> features["Receptor features"]
+  features --> nsi["NSI latent"]
+  nsi --> route["Route gate"]
+  route --> slots["Command-slot head"]
+  slots --> action["Native action tuple"]
+  action --> nojson["Serialization after decision"]

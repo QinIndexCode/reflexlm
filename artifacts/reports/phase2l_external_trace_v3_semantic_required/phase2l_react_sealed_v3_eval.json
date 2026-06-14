@@ -12,7 +12,7 @@
     "cpu_offload": false
   },
   "dataset": {
-    "dataset_path": "D:\\MyCode\\myApp_\\llm_a\\artifacts\\datasets\\phase2i_external_trace_v3_semantic_required\\challenge.jsonl",
+    "dataset_path": "./artifacts\\datasets\\phase2i_external_trace_v3_semantic_required\\challenge.jsonl",
     "record_count": 192,
     "episode_count": 64,
     "task_episode_counts": {
@@ -381,7 +381,7 @@
     "duration_seconds": 572.443,
     "config_hash": "7182179b00ce830f",
     "policy": "react",
-    "dataset": "D:\\MyCode\\myApp_\\llm_a\\artifacts\\datasets\\phase2i_external_trace_v3_semantic_required\\challenge.jsonl",
+    "dataset": "./artifacts\\datasets\\phase2i_external_trace_v3_semantic_required\\challenge.jsonl",
     "policy_label": "qwen_react_7b"
   }
 }

@@ -23,7 +23,7 @@
     "low_level_reference_packaged": true
   },
   "dataset": {
-    "dataset_path": "D:\\MyCode\\myApp_\\llm_a\\artifacts\\datasets\\phase2i_external_trace_v3_semantic_required\\challenge.jsonl",
+    "dataset_path": "./artifacts\\datasets\\phase2i_external_trace_v3_semantic_required\\challenge.jsonl",
     "record_count": 192,
     "episode_count": 64,
     "task_episode_counts": {
@@ -420,7 +420,7 @@
     "duration_seconds": 31.412,
     "config_hash": "a40ca3d69bd4c623",
     "policy": "phase2d_native_package",
-    "dataset": "D:\\MyCode\\myApp_\\llm_a\\artifacts\\datasets\\phase2i_external_trace_v3_semantic_required\\challenge.jsonl",
+    "dataset": "./artifacts\\datasets\\phase2i_external_trace_v3_semantic_required\\challenge.jsonl",
     "policy_label": "phase2l_counterfactual_continuation_r16_alpha32_lr1e-4_len256_full1024_val72_checkpointed_no_nsi_latent"
   }
 }

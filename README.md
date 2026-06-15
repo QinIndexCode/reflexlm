@@ -62,11 +62,12 @@ The full suite contains long-running integration and reproduction tests.
 
 ## Data Availability
 
-The public dataset archive is available from Zenodo:
-https://doi.org/10.5281/zenodo.20688825
+The latest public dataset archive is available through its Zenodo concept DOI:
+https://doi.org/10.5281/zenodo.20688824
 
 The deposited archive contains benchmark traces, checksums, and a manifest for
-the bounded command-selection experiments.
+the bounded command-selection experiments. Version-specific DOIs remain
+available from the Zenodo version history for reproducible citation.
 
 ## Claim Boundary
 

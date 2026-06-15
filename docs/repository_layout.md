@@ -18,9 +18,10 @@ Tracked paths:
 ## External Data
 
 Large or source-derived benchmark archives are deposited separately with their
-own provenance and licensing. The current public archive is available at:
+own provenance and licensing. The latest public archive is available through
+its Zenodo concept DOI:
 
-https://doi.org/10.5281/zenodo.20688825
+https://doi.org/10.5281/zenodo.20688824
 
 ## Artifacts
 

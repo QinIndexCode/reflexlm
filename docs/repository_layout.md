@@ -1,12 +1,11 @@
-# Repository Layout and Privacy Boundary
+# Repository Layout
 
-## Public GitHub Repository
+## Tracked Materials
 
-The public repository contains only reusable research code, tests,
-configuration, anonymized manuscripts, public figures, and claim-boundary
-documentation.
+This repository contains reusable research code, tests, configuration,
+manuscript sources, public figures, and claim-boundary documentation.
 
-Public paths:
+Tracked paths:
 
 - `src/`
 - `tests/`
@@ -16,28 +15,15 @@ Public paths:
 - `docs/paper_b/`
 - `scripts/`
 
-## Local Private Materials
+## External Data
 
-The local `private/` directory is ignored by Git and contains:
+Large or source-derived benchmark archives are deposited separately with their
+own provenance and licensing. The current public archive is available at:
 
-- author-identifying manuscript versions;
-- cover letters and journal compliance checklists;
-- reviewer and submission workflow notes;
-- private repository administration scripts;
-- submission archives and compiled PDFs;
-- machine-specific experiment notebooks.
-
-Do not move these files back into public paths. Run
-`python scripts/audit-public-release.py` before creating any public release.
+https://doi.org/10.5281/zenodo.20688825
 
 ## Artifacts
 
-`artifacts/` is local-first and ignored by default. Public evidence should be
-regenerated from documented commands or deposited separately with appropriate
-provenance and licensing.
-
-## History Safety
-
-Removing a file from the current working tree does not remove it from Git
-history. Public releases must be created with
-`scripts/export-public-repository.py` and initialized as a new repository.
+`artifacts/` contains compact report summaries used by the manuscript tables
+and boundary checks. Larger generated outputs should be regenerated from the
+documented commands or retrieved from the external dataset archive.

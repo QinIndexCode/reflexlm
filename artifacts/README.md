@@ -1,15 +1,14 @@
-# Public evidence artifacts
+# Evidence Artifacts
 
 This directory exposes only the compact report summaries required to reproduce
 the manuscript tables and their boundary checks.
 
-Raw datasets, model packages, runtime outputs, complete experiment directories,
-submission archives, and author workflow materials remain excluded from the
-public repository. The allowlist in the root `.gitignore` is intentionally
-file-specific so that newly generated local artifacts are not published by
-accident.
+Large datasets, model packages, runtime outputs, and complete experiment
+directories are distributed through the external dataset archive rather than
+tracked directly in Git. The allowlist in the root `.gitignore` is
+file-specific so that newly generated local artifacts are not added by accident.
 
-Validate the public boundary before release:
+Validate the tracked artifact set:
 
 ```powershell
 python scripts/audit-public-release.py

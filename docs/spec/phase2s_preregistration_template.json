@@ -163,7 +163,7 @@
     "starts_sealed_eval": false
   },
   "claim_policy": {
-    "scientific_data_submission_unchanged": true,
+    "baseline_dataset_scope_unchanged": true,
     "uses_phase2s_to_upgrade_data_descriptor_claim": false,
     "bounded_until_gates_pass": true,
     "claims_production_autonomy": false,

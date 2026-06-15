@@ -8,7 +8,7 @@
   "ready_for_open_ended_native_perception_claim": false,
   "ready_for_production_autonomy_claim": false,
   "ready_for_epoch_making_architecture_claim": false,
-  "ready_for_submission_without_external_machine_replay": false,
+  "ready_for_independent_replay_claim_without_external_machine_replay": false,
   "checks": {
     "bounded_dossier_passed_and_validates": true,
     "bounded_manifest_passed_and_validates": true,
@@ -44,14 +44,14 @@
     "open-ended native perception",
     "production autonomy",
     "epoch-making architecture",
-    "submission without external machine replay"
+    "independent replay claim without external machine replay"
   ],
-  "remaining_publication_risks": [
+  "remaining_evidence_limits": [
     "external-machine replay has not yet been run in this evidence gate",
     "exact internal homeostatic microdynamics drift across Python runtimes",
-    "paper text must preserve the bounded claim boundary"
+    "public claim text must preserve the bounded claim boundary"
   ],
-  "next_required_experiment": "external_machine_replay_or_manuscript_claim_boundary_update",
+  "next_required_experiment": "external_machine_replay_or_claim_boundary_update",
   "evidence": {
     "bounded_dossier_report_json": "artifacts\\reports\\phase2homeostasis\\phase2homeostasis_hmac_v3_controller_v4_bounded_publication_dossier.json",
     "bounded_manifest_report_json": "artifacts\\reports\\phase2homeostasis\\phase2homeostasis_hmac_v3_controller_v4_bounded_dossier_manifest.json",

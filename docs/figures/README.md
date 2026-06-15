@@ -41,9 +41,8 @@ Accepted workflow:
 4. Re-run `python scripts/render-paper-figures.py` and use the generated SVG/PDF
    output in LaTeX.
 
-Do not cite or submit raw AI-generated raster diagrams as final evidence
-artwork unless they have been recreated as editable vector source and pass the
-layout audit.
+Do not treat raw AI-generated raster diagrams as final evidence artwork unless
+they have been recreated as editable vector source and pass the layout audit.
 
 Render command:
 

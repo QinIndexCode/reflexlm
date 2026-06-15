@@ -1,7 +1,7 @@
 # Paper B: Bounded Mechanism Manuscript
 
-This directory contains the anonymized, LaTeX-first public manuscript workspace
-for the bounded NSI mechanism paper.
+This directory contains LaTeX manuscript sources for the bounded NSI mechanism
+paper.
 
 ## Contents
 
@@ -9,10 +9,6 @@ for the bounded NSI mechanism paper.
 - `references.bib`: bibliography.
 - `tables/`: artifact-backed LaTeX tables.
 - `figures/`: editable and rendered public figures.
-
-Author metadata, cover letters, reviewer correspondence, compliance checklists,
-submission portals, and compiled submission packages are intentionally kept
-outside the public repository.
 
 ## Build
 
@@ -25,7 +21,7 @@ pdflatex main.tex
 
 Generated LaTeX products and PDFs are ignored by Git.
 
-## Regenerate Public Materials
+## Regenerate Materials
 
 ```powershell
 python scripts/render-paper-figures.py

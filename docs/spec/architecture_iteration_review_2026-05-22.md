@@ -57,8 +57,8 @@ open-ended repair.
 - No broad architecture claims until preregistered repair-loop evidence,
   external public holdout, multi-seed, multi-model, budget-matched modern-agent
   baselines, safety gates, and independent reproduction all pass.
-- No "epoch-making" architecture claim from reviewer agreement alone. The
-  internal reviewer simulation must be unanimous, but it is only a final
+- No "epoch-making" architecture claim from audit agreement alone. The
+  internal audit synthesis must be unanimous, but it is only a final
   critique layer after measured repair-loop, safety, public holdout,
   multi-seed, multi-model, and independent reproduction gates pass.
 - Negative evidence remains in the paper instead of being reinterpreted after

@@ -5,18 +5,14 @@ ReflexLM is a research implementation of a bounded Native Synaptic Interface
 The repository focuses on falsifiable mechanism evidence rather than production
 autonomy or unrestricted software-agent claims.
 
-## Public Scope
+## Scope
 
 - Structured receptors and state-vector encoding.
 - Salience, inhibition, prediction-error, persistence, and bounded action heads.
 - Controlled command-selection and runtime-recovery benchmarks.
 - Explicit ablations, negative evidence, safety boundaries, and reproducibility
   gates.
-- An anonymized bounded-mechanism manuscript workspace under `docs/paper_b/`.
-
-Private submission workflows, reviewer materials, author metadata, local
-experiment artifacts, model weights, and machine-specific research notes are
-intentionally excluded from the public repository.
+- Bounded-mechanism manuscript sources under `docs/paper_b/`.
 
 ## Layout
 
@@ -30,8 +26,8 @@ intentionally excluded from the public repository.
 | `docs/figures/` | Editable figure sources and generated public figures |
 | `scripts/` | Public experiment, rendering, audit, and export utilities |
 
-See [Repository Layout](docs/repository_layout.md) for the public/private
-boundary.
+See [Repository Layout](docs/repository_layout.md) for the tracked research
+materials.
 
 ## Install
 
@@ -49,7 +45,7 @@ python -m pip install -e .[dev,llm]
 
 ## Validate
 
-Run the fast public release checks:
+Run the fast repository checks:
 
 ```bash
 python scripts/audit-public-release.py
@@ -64,41 +60,13 @@ python -m pytest
 
 The full suite contains long-running integration and reproduction tests.
 
-## Paper Workspace
+## Data Availability
 
-Artifact-backed tables:
+The public dataset archive is available from Zenodo:
+https://doi.org/10.5281/zenodo.20688825
 
-```bash
-python scripts/render-paper-b-tables.py
-```
-
-Editable figures:
-
-```bash
-python scripts/render-paper-figures.py
-```
-
-Build the anonymized manuscript from `docs/paper_b/`:
-
-```bash
-pdflatex main.tex
-bibtex main
-pdflatex main.tex
-pdflatex main.tex
-```
-
-## Public Release
-
-Do not publish the current Git history because earlier local commits may contain
-removed submission metadata or personal information. Create a clean,
-history-free snapshot and initialize a new public repository from it:
-
-```bash
-python scripts/audit-public-release.py
-python scripts/export-public-repository.py --output ../reflexlm-public
-```
-
-Review the exported tree, then initialize Git inside that new directory.
+The deposited archive contains benchmark traces, checksums, and a manifest for
+the bounded command-selection experiments.
 
 ## Claim Boundary
 

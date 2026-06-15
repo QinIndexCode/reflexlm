@@ -154,7 +154,7 @@ def _valid_proposal() -> dict:
             "starts_sealed_eval": False,
         },
         "claim_policy": {
-            "scientific_data_submission_unchanged": True,
+            "baseline_dataset_scope_unchanged": True,
             "uses_phase2s_to_upgrade_data_descriptor_claim": False,
             "bounded_until_gates_pass": True,
             "claims_production_autonomy": False,

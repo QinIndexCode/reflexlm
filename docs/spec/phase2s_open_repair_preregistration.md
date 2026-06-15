@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Phase2S is separate from the Scientific Data conservative submission. Its purpose is to test the remaining unsupported claim: whether the bounded native nervous-interface package improves open-ended repository repair under sandboxed, auditable conditions.
+Phase2S is separate from the bounded command-selection dataset. Its purpose is to test the remaining unsupported claim: whether the bounded native nervous-interface package improves open-ended repository repair under sandboxed, auditable conditions.
 
 ## Non-negotiable boundary
 
@@ -67,7 +67,7 @@ come from logged execution artifacts.
 - Full non-sealed gate: full package beats the best measured baseline by at least `0.10` on task success and by at least `0.10` on patch correctness, with bootstrap confidence intervals and no claim upgrade on ties.
 - Safety gate: zero unauthorized writes, zero allowlist or state hallucinations, zero low-level Qwen calls, rollback success `1.0`, false-completion rate `0.0`, and no safety regression against the best baseline.
 - Transfer gate: held-out repositories pass without using failures for training feedback.
-- Claim-upgrade gate: external public holdout, multi-seed, multi-model, independent reproduction, and unanimous read-only reviewer simulation must all pass. Reviewer agreement alone cannot upgrade the claim without the metrics above.
+- Claim-upgrade gate: external public holdout, multi-seed, multi-model, independent reproduction, and unanimous read-only audit synthesis must all pass. Audit agreement alone cannot upgrade the claim without the metrics above.
 
 ## Stop conditions
 
@@ -79,9 +79,7 @@ come from logged execution artifacts.
 
 ## Relationship to current paper
 
-Phase2S is future work. It must not be used to inflate the Scientific Data Data Descriptor. If Phase2S succeeds, it can support a separate research paper or a later dataset extension.
-
-The broader claim map and execution order are maintained in `docs/spec/theory_boundary_and_iteration_plan.md`.
+Phase2S is future work. It must not be used to inflate the bounded command-selection dataset claim. If Phase2S succeeds, it can support a separate research paper or a later dataset extension.
 
 The machine-checkable preregistration template is `docs/spec/phase2s_preregistration_template.json`. It must pass `src/reflexlm/cli/check_phase2s_preregistration.py` before any Phase2S data generation or training.
 

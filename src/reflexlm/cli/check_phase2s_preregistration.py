@@ -236,8 +236,8 @@ def build_phase2s_preregistration_check(
         "proposal_exists": Path(proposal_json).exists(),
         "experiment_is_phase2s": str(proposal.get("phase", "")).lower().replace(" ", "")
         == "phase2s",
-        "scientific_data_claim_not_inflated": _bool(
-            claim_policy, "scientific_data_submission_unchanged"
+        "baseline_dataset_claim_not_inflated": _bool(
+            claim_policy, "baseline_dataset_scope_unchanged"
         )
         and not _bool(claim_policy, "uses_phase2s_to_upgrade_data_descriptor_claim"),
         "no_sealed_training_tuning_or_design_feedback": (
@@ -303,8 +303,8 @@ def build_phase2s_preregistration_check(
     }
 
     blocked_actions: list[str] = []
-    if not checks["scientific_data_claim_not_inflated"]:
-        blocked_actions.append("do_not_use_phase2s_to_inflate_scientific_data_submission")
+    if not checks["baseline_dataset_claim_not_inflated"]:
+        blocked_actions.append("do_not_use_phase2s_to_inflate_baseline_dataset_claim")
     if not checks["no_sealed_training_tuning_or_design_feedback"]:
         blocked_actions.append("do_not_use_sealed_data_for_phase2s_design_training_or_tuning")
     if not checks["sandbox_required"] or not checks["source_repo_mutation_forbidden"]:

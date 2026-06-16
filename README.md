@@ -86,8 +86,7 @@ AGI, or an epoch-making architecture claim.
 ## License
 
 Project-authored code is available under the MIT License; see
-[LICENSE.txt](LICENSE.txt). A duplicate [LICENCE.txt](LICENCE.txt) is kept for
-SoftwareX metadata compatibility.
+[LICENSE.txt](LICENSE.txt).
 
 Source-derived datasets and traces retain their upstream provenance and license
 constraints; see [DATA_LICENSE_NOTICE.md](DATA_LICENSE_NOTICE.md).

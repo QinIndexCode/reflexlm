@@ -62,7 +62,13 @@ The full suite contains long-running integration and reproduction tests.
 
 ## Data Availability
 
-The latest public dataset archive is available through its Zenodo concept DOI:
+The current public dataset release used by the manuscript is Zenodo version 2:
+
+https://doi.org/10.5281/zenodo.20703387
+
+The latest public dataset archive is also available through its Zenodo concept
+DOI:
+
 https://doi.org/10.5281/zenodo.20688824
 
 The deposited archive contains benchmark traces, checksums, and a manifest for

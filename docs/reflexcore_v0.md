@@ -2007,8 +2007,12 @@ audit-reflexcore-runtime-evidence `
   --matrix-report-json <profile-matrix-report.json> `
   --output-json docs/reflexcore_evidence/reflexcore_numeric_action_aux025_runtime_evidence_audit_20260621.json
 
+audit-reflexcore-homeostatic-motor `
+  --output-json docs/reflexcore_evidence/reflexcore_homeostatic_motor_audit_20260621.json
+
 build-reflexcore-mechanism-dossier `
   --architecture-audit-json docs/reflexcore_evidence/reflexcore_local_pe_calibrated_architecture_audit_20260621.json `
+  --homeostatic-motor-audit-json docs/reflexcore_evidence/reflexcore_homeostatic_motor_audit_20260621.json `
   --runtime-evidence-audit-json docs/reflexcore_evidence/reflexcore_numeric_action_aux025_runtime_evidence_audit_20260621.json `
   --accepted-rollup-json docs/reflexcore_evidence/reflexcore_numeric_action_aux025_fullprofile_ablation_rollup_20260620.json `
   --sensory-ablation-json docs/reflexcore_evidence/reflexcore_numeric_action_aux025_formal_sensory_ablation_matrix_20260620.json `
@@ -2043,6 +2047,13 @@ Dossier result:
   terminal observation steps/run
 - observed prediction-error availability: min 36 examples/run, min mean 0.0867,
   min max 0.1933
+- homeostatic motor audit artifact:
+  `docs/reflexcore_evidence/reflexcore_homeostatic_motor_audit_20260621.json`
+- homeostatic motor verdict: `bounded_reflexcore_v0_homeostatic_motor_ready`
+- homeostatic motor checks: high risk blocks `RUN_COMMAND`, model
+  prediction-error plus salience refreshes idle state, observed prediction-error
+  feedback refreshes idle state, low-error idle state remains `WAIT`, and active
+  process state masks prediction-error refresh
 - required parameter range: 20M-100M; observed: 53,132,444
 - offline prompt-only margin: 0.3125
 - closed-loop prompt-only margin: 0.417
@@ -2057,7 +2068,7 @@ Dossier result:
 - source artifact integrity: recorded size and SHA-256 for architecture audit,
   accepted rollup, sensory ablation matrix, and negative-control JSON
 - reproducibility fingerprint:
-  `11c45a81eaf14e88c1f58a273fa56695e350cc0a88ec4ea892275aece1589534`
+  `4bd9734ceb0137872db6b3b25bc66f45e6f01b0be053647962859852423eca35`
 - verifier verdict: `bounded_reflexcore_v0_mechanism_dossier_verified`
 
 This combined gate is now the preferred audit artifact for the accepted V0

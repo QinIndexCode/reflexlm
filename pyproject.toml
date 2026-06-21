@@ -18,6 +18,7 @@ dependencies = [
 
 [project.scripts]
 audit-reflexcore-architecture = "reflexlm.cli.audit_reflexcore_architecture:main"
+audit-reflexcore-homeostatic-motor = "reflexlm.cli.audit_reflexcore_homeostatic_motor:main"
 audit-reflexcore-runtime-evidence = "reflexlm.cli.audit_reflexcore_runtime_evidence:main"
 build-reflexcore-dataset = "reflexlm.cli.build_reflexcore_dataset:main"
 build-reflexcore-benchmark = "reflexlm.cli.build_reflexcore_benchmark:main"

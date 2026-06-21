@@ -1,0 +1,94 @@
+{
+  "artifact_family": "reflexcore_v0_homeostatic_motor_audit",
+  "checks": {
+    "active_process_masks_prediction_error_refresh": {
+      "name": "active_process_masks_prediction_error_refresh",
+      "observed": {
+        "action": "WAIT",
+        "reason": null,
+        "signal": {
+          "prediction_error": 0.07000000029802322,
+          "process_status": "running",
+          "salience": 0.800000011920929
+        }
+      },
+      "passed": true,
+      "required": {
+        "action": "WAIT",
+        "reason": null
+      }
+    },
+    "high_risk_blocks_run_command": {
+      "name": "high_risk_blocks_run_command",
+      "observed": {
+        "action": "BLOCK",
+        "reason": "reflexcore_risk_threshold",
+        "signal": {
+          "risk": 0.949999988079071
+        }
+      },
+      "passed": true,
+      "required": {
+        "action": "BLOCK",
+        "reason": "reflexcore_risk_threshold"
+      }
+    },
+    "low_error_idle_waits": {
+      "name": "low_error_idle_waits",
+      "observed": {
+        "action": "WAIT",
+        "reason": null,
+        "signal": {
+          "prediction_error": 0.029999999329447746,
+          "salience": 0.800000011920929
+        }
+      },
+      "passed": true,
+      "required": {
+        "action": "WAIT",
+        "reason": null
+      }
+    },
+    "observed_prediction_error_refreshes_idle": {
+      "name": "observed_prediction_error_refreshes_idle",
+      "observed": {
+        "action": "REFRESH_STATE",
+        "reason": "reflexcore_observed_prediction_error_refresh",
+        "signal": {
+          "observed_prediction_error": 0.6
+        }
+      },
+      "passed": true,
+      "required": {
+        "action": "REFRESH_STATE",
+        "reason": "reflexcore_observed_prediction_error_refresh"
+      }
+    },
+    "prediction_error_refreshes_idle": {
+      "name": "prediction_error_refreshes_idle",
+      "observed": {
+        "action": "REFRESH_STATE",
+        "reason": "reflexcore_prediction_error_refresh",
+        "signal": {
+          "prediction_error": 0.07000000029802322,
+          "salience": 0.800000011920929
+        }
+      },
+      "passed": true,
+      "required": {
+        "action": "REFRESH_STATE",
+        "reason": "reflexcore_prediction_error_refresh"
+      }
+    }
+  },
+  "claim_boundary": "Audits typed motor-head modulation by bounded risk, salience, model prediction-error, and observed prediction-error signals. It does not bypass the safety layer and does not support GUI, free-shell, robotics, or production autonomy claims.",
+  "config": {
+    "observed_prediction_error_refresh_threshold": 0.5,
+    "output_json": "docs\\reflexcore_evidence\\reflexcore_homeostatic_motor_audit_20260621.json",
+    "prediction_error_refresh_threshold": 0.05,
+    "risk_block_threshold": 0.9,
+    "salience_refresh_threshold": 0.75
+  },
+  "passed": true,
+  "verdict": "bounded_reflexcore_v0_homeostatic_motor_ready"
+}

@@ -95,6 +95,10 @@ from reflexlm.core.runtime_evidence_audit import (
     ReflexCoreRuntimeEvidenceAuditConfig,
     audit_reflexcore_runtime_evidence,
 )
+from reflexlm.core.homeostatic_motor_audit import (
+    ReflexCoreHomeostaticMotorAuditConfig,
+    audit_reflexcore_homeostatic_motor,
+)
 from reflexlm.core.mechanism_dossier import (
     ReflexCoreMechanismDossierConfig,
     build_reflexcore_mechanism_dossier,
@@ -3577,6 +3581,62 @@ def test_reflexcore_runtime_evidence_audit_rejects_missing_prediction_error(
     gate = report["checks"]["observed_prediction_error_examples_floor"]
     assert gate["passed"] is False
     assert gate["observed"]["min"] == 0
+
+
+def test_reflexcore_homeostatic_motor_audit_accepts_bounded_modulation(
+    tmp_path: Path,
+) -> None:
+    report = audit_reflexcore_homeostatic_motor(
+        ReflexCoreHomeostaticMotorAuditConfig(
+            output_json=tmp_path / "homeostatic_audit.json"
+        )
+    )
+
+    assert report["passed"] is True
+    assert report["verdict"] == "bounded_reflexcore_v0_homeostatic_motor_ready"
+    assert report["checks"]["high_risk_blocks_run_command"]["passed"] is True
+    assert report["checks"]["prediction_error_refreshes_idle"]["passed"] is True
+    assert (
+        report["checks"]["observed_prediction_error_refreshes_idle"]["passed"]
+        is True
+    )
+    assert report["checks"]["active_process_masks_prediction_error_refresh"][
+        "passed"
+    ] is True
+    assert (tmp_path / "homeostatic_audit.json").exists()
+
+
+def test_reflexcore_mechanism_dossier_rejects_failed_homeostatic_motor_audit(
+    tmp_path: Path,
+) -> None:
+    accepted_path = _write_json(
+        tmp_path / "accepted.json",
+        {"summary": _reflexcore_dossier_rollup_summary()},
+    )
+    sensory_path = _write_json(
+        tmp_path / "sensory.json",
+        _reflexcore_dossier_sensory_payload(),
+    )
+    homeostatic_audit_path = _write_json(
+        tmp_path / "homeostatic_audit.json",
+        {
+            "artifact_family": "reflexcore_v0_homeostatic_motor_audit",
+            "passed": False,
+            "verdict": "repair_reflexcore_v0_homeostatic_motor",
+            "checks": {},
+        },
+    )
+
+    report = build_reflexcore_mechanism_dossier(
+        ReflexCoreMechanismDossierConfig(
+            accepted_rollup_json=accepted_path,
+            sensory_ablation_json=sensory_path,
+            homeostatic_motor_audit_json=homeostatic_audit_path,
+        )
+    )
+
+    assert report["passed"] is False
+    assert report["checks"]["homeostatic_motor_audit_passed"]["passed"] is False
 
 
 def test_reflexcore_mechanism_dossier_rejects_failed_runtime_evidence_audit(

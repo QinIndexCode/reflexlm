@@ -23,6 +23,97 @@
       "required_min": 0.6,
       "source": "accepted_rollup"
     },
+    "homeostatic_motor_audit_passed": {
+      "observed": {
+        "artifact_family": "reflexcore_v0_homeostatic_motor_audit",
+        "checks": {
+          "active_process_masks_prediction_error_refresh": {
+            "name": "active_process_masks_prediction_error_refresh",
+            "observed": {
+              "action": "WAIT",
+              "reason": null,
+              "signal": {
+                "prediction_error": 0.07000000029802322,
+                "process_status": "running",
+                "salience": 0.800000011920929
+              }
+            },
+            "passed": true,
+            "required": {
+              "action": "WAIT",
+              "reason": null
+            }
+          },
+          "high_risk_blocks_run_command": {
+            "name": "high_risk_blocks_run_command",
+            "observed": {
+              "action": "BLOCK",
+              "reason": "reflexcore_risk_threshold",
+              "signal": {
+                "risk": 0.949999988079071
+              }
+            },
+            "passed": true,
+            "required": {
+              "action": "BLOCK",
+              "reason": "reflexcore_risk_threshold"
+            }
+          },
+          "low_error_idle_waits": {
+            "name": "low_error_idle_waits",
+            "observed": {
+              "action": "WAIT",
+              "reason": null,
+              "signal": {
+                "prediction_error": 0.029999999329447746,
+                "salience": 0.800000011920929
+              }
+            },
+            "passed": true,
+            "required": {
+              "action": "WAIT",
+              "reason": null
+            }
+          },
+          "observed_prediction_error_refreshes_idle": {
+            "name": "observed_prediction_error_refreshes_idle",
+            "observed": {
+              "action": "REFRESH_STATE",
+              "reason": "reflexcore_observed_prediction_error_refresh",
+              "signal": {
+                "observed_prediction_error": 0.6
+              }
+            },
+            "passed": true,
+            "required": {
+              "action": "REFRESH_STATE",
+              "reason": "reflexcore_observed_prediction_error_refresh"
+            }
+          },
+          "prediction_error_refreshes_idle": {
+            "name": "prediction_error_refreshes_idle",
+            "observed": {
+              "action": "REFRESH_STATE",
+              "reason": "reflexcore_prediction_error_refresh",
+              "signal": {
+                "prediction_error": 0.07000000029802322,
+                "salience": 0.800000011920929
+              }
+            },
+            "passed": true,
+            "required": {
+              "action": "REFRESH_STATE",
+              "reason": "reflexcore_prediction_error_refresh"
+            }
+          }
+        },
+        "passed": true,
+        "verdict": "bounded_reflexcore_v0_homeostatic_motor_ready"
+      },
+      "passed": true,
+      "required": "homeostatic motor audit must pass when provided",
+      "source": "homeostatic_motor_audit"
+    },
     "negative_controls_rejected": {
       "observed": [
         {
@@ -229,6 +320,7 @@
   "config": {
     "accepted_rollup_json": "docs/reflexcore_evidence/reflexcore_numeric_action_aux025_fullprofile_ablation_rollup_20260620.json",
     "architecture_audit_json": "docs/reflexcore_evidence/reflexcore_local_pe_calibrated_architecture_audit_20260621.json",
+    "homeostatic_motor_audit_json": "docs/reflexcore_evidence/reflexcore_homeostatic_motor_audit_20260621.json",
     "max_parameter_count": 100000000,
     "min_closed_loop_margin": 0.3,
     "min_closed_loop_success_rate": 0.6,
@@ -312,9 +404,9 @@
     },
     "generator": {
       "path": "mechanism_dossier.py",
-      "sha256": "6e2220511b7ada7e2983c499046bc6f4553f4d9b915bec14da8a25eb44d63a3f"
+      "sha256": "e4f445a9293f8751e8f4f5416125c100027780286a3241c12f3863ef589026c7"
     },
-    "sha256": "11c45a81eaf14e88c1f58a273fa56695e350cc0a88ec4ea892275aece1589534"
+    "sha256": "4bd9734ceb0137872db6b3b25bc66f45e6f01b0be053647962859852423eca35"
   },
   "source_artifact_integrity": {
     "accepted_rollup_json": {
@@ -326,6 +418,11 @@
       "path": "docs/reflexcore_evidence/reflexcore_local_pe_calibrated_architecture_audit_20260621.json",
       "sha256": "b6643029c0515e7063e8f5ff9f04569eab0a68f76596a6b9dab8261c68ef19a4",
       "size_bytes": 7002
+    },
+    "homeostatic_motor_audit_json": {
+      "path": "docs/reflexcore_evidence/reflexcore_homeostatic_motor_audit_20260621.json",
+      "sha256": "6801088cc0fd79a6bbac6540c862af0743f45c0fa9416622827d9bf79d6a90dc",
+      "size_bytes": 2980
     },
     "negative_control_jsons": [
       {
@@ -348,6 +445,7 @@
   "source_artifacts": {
     "accepted_rollup_json": "docs/reflexcore_evidence/reflexcore_numeric_action_aux025_fullprofile_ablation_rollup_20260620.json",
     "architecture_audit_json": "docs/reflexcore_evidence/reflexcore_local_pe_calibrated_architecture_audit_20260621.json",
+    "homeostatic_motor_audit_json": "docs/reflexcore_evidence/reflexcore_homeostatic_motor_audit_20260621.json",
     "negative_control_jsons": [
       "docs/reflexcore_evidence/reflexcore_numeric_action_aux_fullprofile_diagnostic_20260620.json"
     ],

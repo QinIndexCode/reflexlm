@@ -110,6 +110,42 @@
       "required_min": 1.0,
       "source": "accepted_rollup"
     },
+    "runtime_evidence_audit_passed": {
+      "observed": {
+        "artifact_family": "reflexcore_v0_runtime_evidence_audit",
+        "observed_summary": {
+          "changed_file_observation_steps_min": 12.0,
+          "live_episode_count_min": 15.0,
+          "observed_prediction_error_examples_min": 36.0,
+          "observed_prediction_error_max_min": 0.19330111459284288,
+          "observed_prediction_error_mean_min": 0.086736470435263,
+          "profile_runs": 9,
+          "profiles": [
+            "default",
+            "default",
+            "default",
+            "hard",
+            "hard",
+            "hard",
+            "wide_ood",
+            "wide_ood",
+            "wide_ood"
+          ],
+          "runtime_observation_steps_min": 36.0,
+          "seeds": [
+            13,
+            17,
+            23
+          ],
+          "terminal_observation_steps_min": 25.0
+        },
+        "passed": true,
+        "verdict": "bounded_reflexcore_v0_runtime_evidence_ready"
+      },
+      "passed": true,
+      "required": "runtime evidence audit must pass when provided",
+      "source": "runtime_evidence_audit"
+    },
     "safety_gated_action_accuracy_floor": {
       "observed": 0.75,
       "passed": true,
@@ -226,6 +262,7 @@
       17,
       23
     ],
+    "runtime_evidence_audit_json": "docs/reflexcore_evidence/reflexcore_numeric_action_aux025_runtime_evidence_audit_20260621.json",
     "sensory_ablation_json": "docs/reflexcore_evidence/reflexcore_numeric_action_aux025_formal_sensory_ablation_matrix_20260620.json"
   },
   "observed_summary": {
@@ -275,9 +312,9 @@
     },
     "generator": {
       "path": "mechanism_dossier.py",
-      "sha256": "58c1c2c9fcafb40469f3d9b7c6429a4462a5f337115d91eddd7e48ab4b9f5cf1"
+      "sha256": "6e2220511b7ada7e2983c499046bc6f4553f4d9b915bec14da8a25eb44d63a3f"
     },
-    "sha256": "edb95c6005e79cd64774c261dbbafd38f17e929c52ccae2eb8df4335649b2eec"
+    "sha256": "11c45a81eaf14e88c1f58a273fa56695e350cc0a88ec4ea892275aece1589534"
   },
   "source_artifact_integrity": {
     "accepted_rollup_json": {
@@ -297,6 +334,11 @@
         "size_bytes": 13813
       }
     ],
+    "runtime_evidence_audit_json": {
+      "path": "docs/reflexcore_evidence/reflexcore_numeric_action_aux025_runtime_evidence_audit_20260621.json",
+      "sha256": "bac8b647acabacee5e90f122248aed38cf64c58daa56ce4276b90ffa47113120",
+      "size_bytes": 3680
+    },
     "sensory_ablation_json": {
       "path": "docs/reflexcore_evidence/reflexcore_numeric_action_aux025_formal_sensory_ablation_matrix_20260620.json",
       "sha256": "3c7a527d751cb55f879136d2059764ed9e2fc090f59f856d422a8c4e1913b84a",
@@ -309,6 +351,7 @@
     "negative_control_jsons": [
       "docs/reflexcore_evidence/reflexcore_numeric_action_aux_fullprofile_diagnostic_20260620.json"
     ],
+    "runtime_evidence_audit_json": "docs/reflexcore_evidence/reflexcore_numeric_action_aux025_runtime_evidence_audit_20260621.json",
     "sensory_ablation_json": "docs/reflexcore_evidence/reflexcore_numeric_action_aux025_formal_sensory_ablation_matrix_20260620.json"
   },
   "unsupported_claims": [

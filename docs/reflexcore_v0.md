@@ -2003,8 +2003,13 @@ audit-reflexcore-architecture `
   --min-numeric-action-aux-weight 0.25 `
   --output-json docs/reflexcore_evidence/reflexcore_local_pe_calibrated_architecture_audit_20260621.json
 
+audit-reflexcore-runtime-evidence `
+  --matrix-report-json <profile-matrix-report.json> `
+  --output-json docs/reflexcore_evidence/reflexcore_numeric_action_aux025_runtime_evidence_audit_20260621.json
+
 build-reflexcore-mechanism-dossier `
   --architecture-audit-json docs/reflexcore_evidence/reflexcore_local_pe_calibrated_architecture_audit_20260621.json `
+  --runtime-evidence-audit-json docs/reflexcore_evidence/reflexcore_numeric_action_aux025_runtime_evidence_audit_20260621.json `
   --accepted-rollup-json docs/reflexcore_evidence/reflexcore_numeric_action_aux025_fullprofile_ablation_rollup_20260620.json `
   --sensory-ablation-json docs/reflexcore_evidence/reflexcore_numeric_action_aux025_formal_sensory_ablation_matrix_20260620.json `
   --negative-control-json docs/reflexcore_evidence/reflexcore_numeric_action_aux_fullprofile_diagnostic_20260620.json `
@@ -2028,6 +2033,16 @@ Dossier result:
 - safety/runtime invariants: non-allowlisted candidates rejected, `RUN_COMMAND`
   requires a command payload, safety blocks non-allowlisted and dangerous
   commands, runner command execution uses `shell=False`
+- runtime evidence audit artifact:
+  `docs/reflexcore_evidence/reflexcore_numeric_action_aux025_runtime_evidence_audit_20260621.json`
+- runtime evidence verdict: `bounded_reflexcore_v0_runtime_evidence_ready`
+- runtime evidence coverage: 9 profile runs, seeds `13`, `17`, `23`; profiles
+  `default`, `hard`, `wide_ood`
+- real-sandbox live observation: min 15 live episodes/run, min 36 runtime
+  observation steps/run, min 12 changed-file observation steps/run, min 25
+  terminal observation steps/run
+- observed prediction-error availability: min 36 examples/run, min mean 0.0867,
+  min max 0.1933
 - required parameter range: 20M-100M; observed: 53,132,444
 - offline prompt-only margin: 0.3125
 - closed-loop prompt-only margin: 0.417
@@ -2042,7 +2057,7 @@ Dossier result:
 - source artifact integrity: recorded size and SHA-256 for architecture audit,
   accepted rollup, sensory ablation matrix, and negative-control JSON
 - reproducibility fingerprint:
-  `edb95c6005e79cd64774c261dbbafd38f17e929c52ccae2eb8df4335649b2eec`
+  `11c45a81eaf14e88c1f58a273fa56695e350cc0a88ec4ea892275aece1589534`
 - verifier verdict: `bounded_reflexcore_v0_mechanism_dossier_verified`
 
 This combined gate is now the preferred audit artifact for the accepted V0

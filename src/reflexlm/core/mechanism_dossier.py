@@ -33,6 +33,7 @@ class ReflexCoreMechanismDossierConfig:
     sensory_ablation_json: Path
     output_json: Path | None = None
     architecture_audit_json: Path | None = None
+    runtime_evidence_audit_json: Path | None = None
     negative_control_jsons: tuple[Path, ...] = ()
     min_parameter_count: int = 20_000_000
     max_parameter_count: int = 100_000_000
@@ -66,6 +67,11 @@ def build_reflexcore_mechanism_dossier(
         if config.architecture_audit_json is not None
         else None
     )
+    runtime_evidence_audit = (
+        _read_json(config.runtime_evidence_audit_json)
+        if config.runtime_evidence_audit_json is not None
+        else None
+    )
     negative_controls = [
         (path, _read_json(path)) for path in config.negative_control_jsons
     ]
@@ -75,6 +81,9 @@ def build_reflexcore_mechanism_dossier(
     checks: dict[str, object] = {}
     checks["architecture_audit_passed"] = _architecture_audit_check(
         architecture_audit,
+    )
+    checks["runtime_evidence_audit_passed"] = _runtime_evidence_audit_check(
+        runtime_evidence_audit,
     )
     checks.update(_rollup_checks(rollup_summary, config, source="accepted_rollup"))
     checks.update(_sensory_checks(sensory, sensory_summary, config))
@@ -101,6 +110,11 @@ def build_reflexcore_mechanism_dossier(
             "architecture_audit_json": (
                 _path_label(config.architecture_audit_json)
                 if config.architecture_audit_json
+                else None
+            ),
+            "runtime_evidence_audit_json": (
+                _path_label(config.runtime_evidence_audit_json)
+                if config.runtime_evidence_audit_json
                 else None
             ),
             "accepted_rollup_json": _path_label(config.accepted_rollup_json),
@@ -392,6 +406,29 @@ def _architecture_audit_check(
     }
 
 
+def _runtime_evidence_audit_check(
+    runtime_evidence_audit: dict[str, object] | None,
+) -> dict[str, object]:
+    if runtime_evidence_audit is None:
+        return {
+            "passed": True,
+            "observed": None,
+            "required": "optional runtime evidence audit not provided",
+            "source": "runtime_evidence_audit",
+        }
+    return {
+        "passed": runtime_evidence_audit.get("passed") is True,
+        "observed": {
+            "artifact_family": runtime_evidence_audit.get("artifact_family"),
+            "verdict": runtime_evidence_audit.get("verdict"),
+            "passed": runtime_evidence_audit.get("passed"),
+            "observed_summary": runtime_evidence_audit.get("observed_summary"),
+        },
+        "required": "runtime evidence audit must pass when provided",
+        "source": "runtime_evidence_audit",
+    }
+
+
 def _observed_summary(
     rollup_summary: dict[str, object],
     sensory_summary: dict[str, object],
@@ -446,6 +483,11 @@ def _validate_config(config: ReflexCoreMechanismDossierConfig) -> None:
         raise FileNotFoundError(
             f"architecture_audit_json does not exist: {config.architecture_audit_json}"
         )
+    if config.runtime_evidence_audit_json is not None and not config.runtime_evidence_audit_json.exists():
+        raise FileNotFoundError(
+            "runtime_evidence_audit_json does not exist: "
+            f"{config.runtime_evidence_audit_json}"
+        )
     for path in config.negative_control_jsons:
         if not path.exists():
             raise FileNotFoundError(f"negative_control_json does not exist: {path}")
@@ -476,6 +518,11 @@ def _json_config(config: ReflexCoreMechanismDossierConfig) -> dict[str, object]:
         if config.architecture_audit_json
         else None
     )
+    payload["runtime_evidence_audit_json"] = (
+        _path_label(config.runtime_evidence_audit_json)
+        if config.runtime_evidence_audit_json
+        else None
+    )
     payload["negative_control_jsons"] = [
         _path_label(path) for path in config.negative_control_jsons
     ]
@@ -492,6 +539,11 @@ def _source_artifact_integrity(
         "architecture_audit_json": (
             _artifact_metadata(config.architecture_audit_json)
             if config.architecture_audit_json
+            else None
+        ),
+        "runtime_evidence_audit_json": (
+            _artifact_metadata(config.runtime_evidence_audit_json)
+            if config.runtime_evidence_audit_json
             else None
         ),
         "accepted_rollup_json": _artifact_metadata(config.accepted_rollup_json),
@@ -527,6 +579,10 @@ def _verify_source_artifact_integrity(
             source_integrity.get("architecture_audit_json"),
             base_dir,
         ),
+        "runtime_evidence_audit_json": _verify_artifact_metadata(
+            source_integrity.get("runtime_evidence_audit_json"),
+            base_dir,
+        ),
         "accepted_rollup_json": _verify_artifact_metadata(
             source_integrity.get("accepted_rollup_json"),
             base_dir,
@@ -547,6 +603,8 @@ def _verify_source_artifact_integrity(
     ]
     if observed["architecture_audit_json"] is not None:
         required.append(observed["architecture_audit_json"])
+    if observed["runtime_evidence_audit_json"] is not None:
+        required.append(observed["runtime_evidence_audit_json"])
     return {
         "passed": all(
             isinstance(item, dict) and item.get("passed") is True for item in required

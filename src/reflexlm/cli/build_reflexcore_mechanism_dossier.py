@@ -18,6 +18,7 @@ def main() -> None:
     parser.add_argument("--sensory-ablation-json", required=True)
     parser.add_argument("--output-json")
     parser.add_argument("--architecture-audit-json")
+    parser.add_argument("--runtime-evidence-audit-json")
     parser.add_argument("--negative-control-json", action="append", default=[])
     parser.add_argument("--min-parameter-count", type=int, default=20_000_000)
     parser.add_argument("--max-parameter-count", type=int, default=100_000_000)
@@ -52,6 +53,11 @@ def main() -> None:
             architecture_audit_json=(
                 Path(args.architecture_audit_json)
                 if args.architecture_audit_json
+                else None
+            ),
+            runtime_evidence_audit_json=(
+                Path(args.runtime_evidence_audit_json)
+                if args.runtime_evidence_audit_json
                 else None
             ),
             negative_control_jsons=tuple(

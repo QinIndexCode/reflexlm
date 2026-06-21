@@ -91,6 +91,10 @@ from reflexlm.core.architecture_audit import (
     ReflexCoreArchitectureAuditConfig,
     audit_reflexcore_architecture,
 )
+from reflexlm.core.runtime_evidence_audit import (
+    ReflexCoreRuntimeEvidenceAuditConfig,
+    audit_reflexcore_runtime_evidence,
+)
 from reflexlm.core.mechanism_dossier import (
     ReflexCoreMechanismDossierConfig,
     build_reflexcore_mechanism_dossier,
@@ -3499,6 +3503,113 @@ def test_reflexcore_mechanism_dossier_fingerprint_tracks_source_changes(
         first_report["reproducibility_fingerprint"]["sha256"]
         != second_report["reproducibility_fingerprint"]["sha256"]
     )
+
+
+def _runtime_evidence_matrix_payload(
+    *,
+    observed_prediction_error_examples: int = 36,
+    passed: bool = True,
+) -> dict[str, object]:
+    profile_runs = []
+    for seed in (13, 17, 23):
+        for profile in ("default", "hard", "wide_ood"):
+            profile_runs.append(
+                {
+                    "seed": seed,
+                    "train_profile": profile,
+                    "eval_profile": profile,
+                    "passed": passed,
+                    "real_sandbox_live_observation": True,
+                    "real_sandbox_live_episode_count": 15,
+                    "real_sandbox_runtime_observation_steps": 36,
+                    "real_sandbox_changed_file_observation_steps": 12,
+                    "real_sandbox_terminal_observation_steps": 24,
+                    "real_sandbox_observed_prediction_error_examples": (
+                        observed_prediction_error_examples
+                    ),
+                    "real_sandbox_observed_prediction_error_mean": 0.08,
+                    "real_sandbox_observed_prediction_error_max": 0.19,
+                }
+            )
+    return {
+        "passed": passed,
+        "profile_pass_rate": 1.0 if passed else 0.0,
+        "profile_runs": profile_runs,
+    }
+
+
+def test_reflexcore_runtime_evidence_audit_accepts_live_prediction_error_matrix(
+    tmp_path: Path,
+) -> None:
+    matrix_path = _write_json(
+        tmp_path / "matrix.json",
+        _runtime_evidence_matrix_payload(),
+    )
+
+    report = audit_reflexcore_runtime_evidence(
+        ReflexCoreRuntimeEvidenceAuditConfig(
+            matrix_report_json=matrix_path,
+            output_json=tmp_path / "runtime_audit.json",
+        )
+    )
+
+    assert report["passed"] is True
+    assert report["verdict"] == "bounded_reflexcore_v0_runtime_evidence_ready"
+    assert report["observed_summary"]["profile_runs"] == 9
+    assert report["observed_summary"]["runtime_observation_steps_min"] == 36
+    assert report["checks"]["observed_prediction_error_examples_floor"]["passed"] is True
+    assert (tmp_path / "runtime_audit.json").exists()
+
+
+def test_reflexcore_runtime_evidence_audit_rejects_missing_prediction_error(
+    tmp_path: Path,
+) -> None:
+    matrix_path = _write_json(
+        tmp_path / "matrix.json",
+        _runtime_evidence_matrix_payload(observed_prediction_error_examples=0),
+    )
+
+    report = audit_reflexcore_runtime_evidence(
+        ReflexCoreRuntimeEvidenceAuditConfig(matrix_report_json=matrix_path)
+    )
+
+    assert report["passed"] is False
+    gate = report["checks"]["observed_prediction_error_examples_floor"]
+    assert gate["passed"] is False
+    assert gate["observed"]["min"] == 0
+
+
+def test_reflexcore_mechanism_dossier_rejects_failed_runtime_evidence_audit(
+    tmp_path: Path,
+) -> None:
+    accepted_path = _write_json(
+        tmp_path / "accepted.json",
+        {"summary": _reflexcore_dossier_rollup_summary()},
+    )
+    sensory_path = _write_json(
+        tmp_path / "sensory.json",
+        _reflexcore_dossier_sensory_payload(),
+    )
+    runtime_audit_path = _write_json(
+        tmp_path / "runtime_audit.json",
+        {
+            "artifact_family": "reflexcore_v0_runtime_evidence_audit",
+            "passed": False,
+            "verdict": "repair_reflexcore_v0_runtime_evidence",
+            "observed_summary": {"profile_runs": 9},
+        },
+    )
+
+    report = build_reflexcore_mechanism_dossier(
+        ReflexCoreMechanismDossierConfig(
+            accepted_rollup_json=accepted_path,
+            sensory_ablation_json=sensory_path,
+            runtime_evidence_audit_json=runtime_audit_path,
+        )
+    )
+
+    assert report["passed"] is False
+    assert report["checks"]["runtime_evidence_audit_passed"]["passed"] is False
 
 
 def test_verify_reflexcore_mechanism_dossier_detects_source_tampering(

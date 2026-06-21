@@ -275,9 +275,9 @@
     },
     "generator": {
       "path": "mechanism_dossier.py",
-      "sha256": "e4dbc6cc2b213a4c0549ae7adfcc8a653627f4322e9bfde59c1ca239bc5f680f"
+      "sha256": "58c1c2c9fcafb40469f3d9b7c6429a4462a5f337115d91eddd7e48ab4b9f5cf1"
     },
-    "sha256": "c2d03e1c25a51c351b34ce97fbb3d3deec8f45c362261b025c8e2103777c3ff8"
+    "sha256": "edb95c6005e79cd64774c261dbbafd38f17e929c52ccae2eb8df4335649b2eec"
   },
   "source_artifact_integrity": {
     "accepted_rollup_json": {

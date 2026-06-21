@@ -129,6 +129,49 @@ def build_reflexcore_mechanism_dossier(
     return report
 
 
+def verify_reflexcore_mechanism_dossier(
+    dossier_json: Path,
+    *,
+    base_dir: Path | None = None,
+) -> dict[str, object]:
+    dossier = _read_json(dossier_json)
+    base_path = base_dir if base_dir is not None else Path.cwd()
+    source_integrity = _object(dossier.get("source_artifact_integrity"))
+    source_checks = _verify_source_artifact_integrity(source_integrity, base_path)
+    generator_check = _verify_generator_integrity(dossier)
+    fingerprint_check = _verify_reproducibility_fingerprint(dossier)
+    checks = {
+        "dossier_passed": _bool_check(
+            dossier.get("passed") is True,
+            required=True,
+            source="mechanism_dossier",
+        ),
+        "source_artifact_integrity": source_checks,
+        "generator_integrity": generator_check,
+        "reproducibility_fingerprint": fingerprint_check,
+    }
+    passed = all(
+        isinstance(check, dict) and check.get("passed") is True
+        for check in checks.values()
+    )
+    return {
+        "artifact_family": "reflexcore_v0_mechanism_dossier_verification",
+        "dossier_json": _path_label(dossier_json),
+        "passed": passed,
+        "verdict": (
+            "bounded_reflexcore_v0_mechanism_dossier_verified"
+            if passed
+            else "repair_reflexcore_v0_mechanism_dossier_verification"
+        ),
+        "checks": checks,
+        "claim_boundary": (
+            "Verifies dossier integrity against local source artifacts and the "
+            "current mechanism_dossier generator. It does not rerun model "
+            "training or benchmark experiments."
+        ),
+    }
+
+
 def _rollup_checks(
     summary: dict[str, object],
     config: ReflexCoreMechanismDossierConfig,
@@ -473,6 +516,119 @@ def _file_sha256(path: Path) -> str:
         for chunk in iter(lambda: handle.read(1024 * 1024), b""):
             digest.update(chunk)
     return digest.hexdigest()
+
+
+def _verify_source_artifact_integrity(
+    source_integrity: dict[str, object],
+    base_dir: Path,
+) -> dict[str, object]:
+    observed = {
+        "architecture_audit_json": _verify_artifact_metadata(
+            source_integrity.get("architecture_audit_json"),
+            base_dir,
+        ),
+        "accepted_rollup_json": _verify_artifact_metadata(
+            source_integrity.get("accepted_rollup_json"),
+            base_dir,
+        ),
+        "sensory_ablation_json": _verify_artifact_metadata(
+            source_integrity.get("sensory_ablation_json"),
+            base_dir,
+        ),
+        "negative_control_jsons": [
+            _verify_artifact_metadata(item, base_dir)
+            for item in _list(source_integrity.get("negative_control_jsons"))
+        ],
+    }
+    required = [
+        observed["accepted_rollup_json"],
+        observed["sensory_ablation_json"],
+        *observed["negative_control_jsons"],
+    ]
+    if observed["architecture_audit_json"] is not None:
+        required.append(observed["architecture_audit_json"])
+    return {
+        "passed": all(
+            isinstance(item, dict) and item.get("passed") is True for item in required
+        ),
+        "observed": observed,
+        "required": "recorded source artifact size and sha256 must match local files",
+        "source": "source_artifact_integrity",
+    }
+
+
+def _verify_artifact_metadata(
+    metadata: object,
+    base_dir: Path,
+) -> dict[str, object] | None:
+    if metadata is None:
+        return None
+    metadata_obj = _object(metadata)
+    path_value = metadata_obj.get("path")
+    expected_size = metadata_obj.get("size_bytes")
+    expected_sha256 = metadata_obj.get("sha256")
+    if not isinstance(path_value, str):
+        return {
+            "passed": False,
+            "path": None,
+            "reason": "missing artifact path",
+        }
+    path = Path(path_value)
+    if not path.is_absolute():
+        path = base_dir / path
+    if not path.exists():
+        return {
+            "passed": False,
+            "path": path_value,
+            "reason": "artifact missing",
+        }
+    observed_size = path.stat().st_size
+    observed_sha256 = _file_sha256(path)
+    return {
+        "passed": observed_size == expected_size and observed_sha256 == expected_sha256,
+        "path": path_value,
+        "observed_size_bytes": observed_size,
+        "expected_size_bytes": expected_size,
+        "observed_sha256": observed_sha256,
+        "expected_sha256": expected_sha256,
+    }
+
+
+def _verify_generator_integrity(dossier: dict[str, object]) -> dict[str, object]:
+    fingerprint = _object(dossier.get("reproducibility_fingerprint"))
+    generator = _object(fingerprint.get("generator"))
+    expected_sha256 = generator.get("sha256")
+    observed_sha256 = _file_sha256(Path(__file__))
+    return {
+        "passed": observed_sha256 == expected_sha256,
+        "observed": {
+            "path": Path(__file__).name,
+            "sha256": observed_sha256,
+        },
+        "required": generator,
+        "source": "reproducibility_fingerprint.generator",
+    }
+
+
+def _verify_reproducibility_fingerprint(
+    dossier: dict[str, object],
+) -> dict[str, object]:
+    fingerprint = _object(dossier.get("reproducibility_fingerprint"))
+    payload = {
+        "config": _object(dossier.get("config")),
+        "environment": _object(fingerprint.get("environment")),
+        "generator": _object(fingerprint.get("generator")),
+        "source_artifact_integrity": _object(dossier.get("source_artifact_integrity")),
+    }
+    encoded = json.dumps(payload, sort_keys=True, separators=(",", ":")).encode("utf-8")
+    observed_sha256 = hashlib.sha256(encoded).hexdigest()
+    expected_sha256 = fingerprint.get("sha256")
+    return {
+        "passed": observed_sha256 == expected_sha256,
+        "observed_sha256": observed_sha256,
+        "expected_sha256": expected_sha256,
+        "source": "reproducibility_fingerprint",
+    }
 
 
 def _reproducibility_fingerprint(

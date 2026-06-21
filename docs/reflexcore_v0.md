@@ -2009,6 +2009,9 @@ build-reflexcore-mechanism-dossier `
   --sensory-ablation-json docs/reflexcore_evidence/reflexcore_numeric_action_aux025_formal_sensory_ablation_matrix_20260620.json `
   --negative-control-json docs/reflexcore_evidence/reflexcore_numeric_action_aux_fullprofile_diagnostic_20260620.json `
   --output-json docs/reflexcore_evidence/reflexcore_numeric_action_aux025_mechanism_dossier_20260621.json
+
+verify-reflexcore-mechanism-dossier `
+  --dossier-json docs/reflexcore_evidence/reflexcore_numeric_action_aux025_mechanism_dossier_20260621.json
 ```
 
 Dossier result:
@@ -2036,6 +2039,11 @@ Dossier result:
 - negative control: the `numeric_action_aux_weight=0.35` diagnostic was rejected
   by the primary rollup gate because strict real-sandbox success fell to 0.933
   even though its sensory-ablation drop was stronger
+- source artifact integrity: recorded size and SHA-256 for architecture audit,
+  accepted rollup, sensory ablation matrix, and negative-control JSON
+- reproducibility fingerprint:
+  `edb95c6005e79cd64774c261dbbafd38f17e929c52ccae2eb8df4335649b2eec`
+- verifier verdict: `bounded_reflexcore_v0_mechanism_dossier_verified`
 
 This combined gate is now the preferred audit artifact for the accepted V0
 mechanism claim. A run that improves one diagnostic but fails behavior, safety,

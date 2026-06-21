@@ -94,6 +94,7 @@ from reflexlm.core.architecture_audit import (
 from reflexlm.core.mechanism_dossier import (
     ReflexCoreMechanismDossierConfig,
     build_reflexcore_mechanism_dossier,
+    verify_reflexcore_mechanism_dossier,
 )
 from reflexlm.core.prediction_error_report import (
     ReflexCorePredictionErrorReportConfig,
@@ -3498,6 +3499,51 @@ def test_reflexcore_mechanism_dossier_fingerprint_tracks_source_changes(
         first_report["reproducibility_fingerprint"]["sha256"]
         != second_report["reproducibility_fingerprint"]["sha256"]
     )
+
+
+def test_verify_reflexcore_mechanism_dossier_detects_source_tampering(
+    tmp_path: Path,
+) -> None:
+    accepted_path = _write_json(
+        tmp_path / "accepted.json",
+        {"summary": _reflexcore_dossier_rollup_summary()},
+    )
+    sensory_path = _write_json(
+        tmp_path / "sensory.json",
+        _reflexcore_dossier_sensory_payload(),
+    )
+    dossier_path = tmp_path / "dossier.json"
+    build_reflexcore_mechanism_dossier(
+        ReflexCoreMechanismDossierConfig(
+            accepted_rollup_json=accepted_path,
+            sensory_ablation_json=sensory_path,
+            output_json=dossier_path,
+        )
+    )
+
+    verified = verify_reflexcore_mechanism_dossier(
+        dossier_path,
+        base_dir=tmp_path,
+    )
+    assert verified["passed"] is True
+
+    _write_json(
+        accepted_path,
+        {
+            "summary": _reflexcore_dossier_rollup_summary(
+                raw_action_accuracy_min=0.95,
+            )
+        },
+    )
+    tampered = verify_reflexcore_mechanism_dossier(
+        dossier_path,
+        base_dir=tmp_path,
+    )
+
+    assert tampered["passed"] is False
+    source_gate = tampered["checks"]["source_artifact_integrity"]
+    assert source_gate["passed"] is False
+    assert source_gate["observed"]["accepted_rollup_json"]["passed"] is False
 
 
 def test_reflexcore_mechanism_dossier_rejects_undersized_model(

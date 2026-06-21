@@ -1995,7 +1995,16 @@ Formal gate result:
 Combined mechanism dossier gate, generated on 2026-06-21:
 
 ```powershell
+audit-reflexcore-architecture `
+  --config configs/reflexcore/local_pe_calibrated.yaml `
+  --input-dim 372 `
+  --min-parameter-count 20000000 `
+  --max-parameter-count 100000000 `
+  --min-numeric-action-aux-weight 0.25 `
+  --output-json docs/reflexcore_evidence/reflexcore_local_pe_calibrated_architecture_audit_20260621.json
+
 build-reflexcore-mechanism-dossier `
+  --architecture-audit-json docs/reflexcore_evidence/reflexcore_local_pe_calibrated_architecture_audit_20260621.json `
   --accepted-rollup-json docs/reflexcore_evidence/reflexcore_numeric_action_aux025_fullprofile_ablation_rollup_20260620.json `
   --sensory-ablation-json docs/reflexcore_evidence/reflexcore_numeric_action_aux025_formal_sensory_ablation_matrix_20260620.json `
   --negative-control-json docs/reflexcore_evidence/reflexcore_numeric_action_aux_fullprofile_diagnostic_20260620.json `
@@ -2004,10 +2013,18 @@ build-reflexcore-mechanism-dossier `
 
 Dossier result:
 
+- architecture audit artifact:
+  `docs/reflexcore_evidence/reflexcore_local_pe_calibrated_architecture_audit_20260621.json`
 - evidence artifact:
   `docs/reflexcore_evidence/reflexcore_numeric_action_aux025_mechanism_dossier_20260621.json`
 - verdict: `bounded_reflexcore_v0_mechanism_evidence_ready`
 - gate `passed`: true
+- architecture audit `passed`: true
+- audited heads: text, action, target, route, command-slot, file-slot, risk,
+  salience, prediction-error, and next-state
+- safety/runtime invariants: non-allowlisted candidates rejected, `RUN_COMMAND`
+  requires a command payload, safety blocks non-allowlisted and dangerous
+  commands, runner command execution uses `shell=False`
 - required parameter range: 20M-100M; observed: 53,132,444
 - offline prompt-only margin: 0.3125
 - closed-loop prompt-only margin: 0.417

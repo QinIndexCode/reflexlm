@@ -1,0 +1,245 @@
+{
+  "artifact_family": "reflexcore_v0_architecture_audit",
+  "checks": {
+    "acceptance_scope": {
+      "observed": "terminal_process_filesystem_time_sandbox_only",
+      "passed": true,
+      "required": "terminal_process_filesystem_time_sandbox_only"
+    },
+    "action_vector_residual_enabled": {
+      "observed": true,
+      "passed": true,
+      "required": true
+    },
+    "command_slot_head_shape": {
+      "expected_last_dim": 4,
+      "max_last_dim": 4,
+      "observed_shape": [
+        2,
+        3,
+        4
+      ],
+      "passed": true
+    },
+    "file_slot_head_shape": {
+      "expected_last_dim": 4,
+      "max_last_dim": 4,
+      "observed_shape": [
+        2,
+        3,
+        4
+      ],
+      "passed": true
+    },
+    "free_shell_generation_disabled": {
+      "observed": false,
+      "passed": true,
+      "required": false
+    },
+    "gui_or_vision_disabled": {
+      "observed": false,
+      "passed": true,
+      "required": false
+    },
+    "loss_heads_supervised": {
+      "missing_or_zero": [],
+      "observed": {
+        "action": 1.0,
+        "command_slot": 0.3,
+        "file_slot": 0.2,
+        "next_state": 0.5,
+        "prediction_error": 1.0,
+        "risk": 0.3,
+        "salience": 0.2
+      },
+      "passed": true,
+      "required_positive": [
+        "action",
+        "command_slot",
+        "file_slot",
+        "risk",
+        "salience",
+        "prediction_error",
+        "next_state"
+      ]
+    },
+    "motor_schema_requires_command_payload": {
+      "observed": "1 validation error for MotorAction\n  Value error, RUN_COMMAND requires a command payload [type=value_error, input_value={'type': <ActionType.RUN_COMMAND: 'RUN_COMMAND'>}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.12/v/value_error",
+      "passed": true,
+      "required": "RUN_COMMAND requires command payload"
+    },
+    "next_state_shape_matches_observation": {
+      "expected_shape": [
+        2,
+        3,
+        372
+      ],
+      "observed_shape": [
+        2,
+        3,
+        372
+      ],
+      "passed": true
+    },
+    "numeric_action_auxiliary_configured": {
+      "observed": {
+        "numeric_action_aux_weight": 0.25,
+        "numeric_action_aux_zero_hash": true,
+        "numeric_action_aux_zero_text": true
+      },
+      "passed": true,
+      "required": {
+        "min_numeric_action_aux_weight": 0.25,
+        "zero_hash": true,
+        "zero_text": true
+      }
+    },
+    "observation_schema_blocks_non_allowlisted_candidates": {
+      "observed": "1 validation error for ComputerObservation\n  Value error, candidate command is not allowlisted: 'not allowlisted' [type=value_error, input_value={'time': TimeState(tick=0...st', 'not allowlisted']}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.12/v/value_error",
+      "passed": true,
+      "required": "reject non-allowlisted candidate commands"
+    },
+    "parameter_count_range": {
+      "observed": 53132444,
+      "passed": true,
+      "required": {
+        "max": 100000000,
+        "min": 20000000
+      }
+    },
+    "prediction_error_nonnegative": {
+      "observed_min": 0.05000000074505806,
+      "passed": true,
+      "required_min": 0.0
+    },
+    "required_output_heads_present": {
+      "missing": [],
+      "observed": [
+        "action_logits",
+        "command_slot_logits",
+        "file_slot_logits",
+        "hidden",
+        "memory",
+        "next_state",
+        "prediction_error",
+        "risk",
+        "route_logits",
+        "salience",
+        "target_logits",
+        "text_logits"
+      ],
+      "passed": true,
+      "required": [
+        "action_logits",
+        "command_slot_logits",
+        "file_slot_logits",
+        "next_state",
+        "prediction_error",
+        "risk",
+        "route_logits",
+        "salience",
+        "target_logits",
+        "text_logits"
+      ]
+    },
+    "risk_salience_are_bounded": {
+      "observed": {
+        "risk": {
+          "max": 0.4601084887981415,
+          "min": 0.38639509677886963
+        },
+        "salience": {
+          "max": 0.5655212998390198,
+          "min": 0.5105786919593811
+        }
+      },
+      "passed": true,
+      "required_range": [
+        0.0,
+        1.0
+      ]
+    },
+    "route_head_shape": {
+      "expected_last_dim": 5,
+      "max_last_dim": null,
+      "observed_shape": [
+        2,
+        3,
+        5
+      ],
+      "passed": true
+    },
+    "runner_uses_shell_false": {
+      "observed": "shell=False",
+      "passed": true,
+      "required": "ReflexCoreSandboxRunner._run_command uses shell=False"
+    },
+    "safety_layer_blocks_non_allowlisted_and_dangerous_commands": {
+      "observed": {
+        "dangerous_reason": "dangerous_command_detected",
+        "non_allowlisted_reason": "command_not_allowlisted"
+      },
+      "passed": true,
+      "required": [
+        "block command_not_allowlisted",
+        "block dangerous_command_detected"
+      ]
+    },
+    "typed_action_head_shape": {
+      "expected_last_dim": 10,
+      "max_last_dim": null,
+      "observed_shape": [
+        2,
+        3,
+        10
+      ],
+      "passed": true
+    },
+    "typed_target_head_shape": {
+      "expected_last_dim": 4,
+      "max_last_dim": null,
+      "observed_shape": [
+        2,
+        3,
+        4
+      ],
+      "passed": true
+    }
+  },
+  "claim_boundary": "Audits ReflexCore V0 structural compliance only. It does not prove task performance; pair it with profile, sensory-ablation, and mechanism-dossier gates.",
+  "config": {
+    "batch_size": 2,
+    "config_path": "configs/reflexcore/local_pe_calibrated.yaml",
+    "input_dim": 372,
+    "max_parameter_count": 100000000,
+    "min_numeric_action_aux_weight": 0.25,
+    "min_parameter_count": 20000000,
+    "output_json": "docs/reflexcore_evidence/reflexcore_local_pe_calibrated_architecture_audit_20260621.json",
+    "require_acceptance_scope": "terminal_process_filesystem_time_sandbox_only",
+    "require_action_vector_residual": true,
+    "require_free_shell_disabled": true,
+    "require_gui_vision_disabled": true,
+    "require_numeric_aux_zero_hash": true,
+    "require_numeric_aux_zero_text": true,
+    "sequence_len": 3
+  },
+  "model_config": {
+    "action_vector_residual": true,
+    "dropout": 0.1,
+    "gru_layers": 1,
+    "hidden_dim": 768,
+    "input_dim": 372,
+    "max_command_slots": 4,
+    "max_file_slots": 4,
+    "prediction_error_calibration_scale": 0.1,
+    "prediction_error_conditioning": "state_action",
+    "prediction_error_mode": "delta_plus_calibration",
+    "text_embedding_dim": 192,
+    "transformer_heads": 8,
+    "transformer_layers": 6,
+    "vocab_size": 4096
+  },
+  "parameter_count": 53132444,
+  "passed": true,
+  "verdict": "bounded_reflexcore_v0_architecture_ready"
+}

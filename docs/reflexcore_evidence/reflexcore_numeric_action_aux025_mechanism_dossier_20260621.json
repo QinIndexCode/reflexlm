@@ -1,6 +1,16 @@
 {
   "artifact_family": "reflexcore_v0_mechanism_dossier",
   "checks": {
+    "architecture_audit_passed": {
+      "observed": {
+        "artifact_family": "reflexcore_v0_architecture_audit",
+        "passed": true,
+        "verdict": "bounded_reflexcore_v0_architecture_ready"
+      },
+      "passed": true,
+      "required": "architecture audit must pass when provided",
+      "source": "architecture_audit"
+    },
     "closed_loop_prompt_only_margin": {
       "observed": 0.41666666666666663,
       "passed": true,
@@ -182,6 +192,7 @@
   "claim_boundary": "Supports bounded ReflexCore V0 evidence for a 20-100M local computer-native sensory-motor core over terminal/process/filesystem/time observations with typed motor heads and allowlisted RUN_COMMAND. It does not support GUI control, vision, unrestricted shell generation, robotics, production autonomy, consciousness, AGI, or a full LLM replacement claim.",
   "config": {
     "accepted_rollup_json": "docs/reflexcore_evidence/reflexcore_numeric_action_aux025_fullprofile_ablation_rollup_20260620.json",
+    "architecture_audit_json": "docs/reflexcore_evidence/reflexcore_local_pe_calibrated_architecture_audit_20260621.json",
     "max_parameter_count": 100000000,
     "min_closed_loop_margin": 0.3,
     "min_closed_loop_success_rate": 0.6,
@@ -253,6 +264,7 @@
   "passed": true,
   "source_artifacts": {
     "accepted_rollup_json": "docs/reflexcore_evidence/reflexcore_numeric_action_aux025_fullprofile_ablation_rollup_20260620.json",
+    "architecture_audit_json": "docs/reflexcore_evidence/reflexcore_local_pe_calibrated_architecture_audit_20260621.json",
     "negative_control_jsons": [
       "docs/reflexcore_evidence/reflexcore_numeric_action_aux_fullprofile_diagnostic_20260620.json"
     ],

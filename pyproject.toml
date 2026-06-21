@@ -17,6 +17,7 @@ dependencies = [
 ]
 
 [project.scripts]
+audit-reflexcore-architecture = "reflexlm.cli.audit_reflexcore_architecture:main"
 build-reflexcore-dataset = "reflexlm.cli.build_reflexcore_dataset:main"
 build-reflexcore-benchmark = "reflexlm.cli.build_reflexcore_benchmark:main"
 build-reflexcore-real-sandbox-dataset = "reflexlm.cli.build_reflexcore_real_sandbox_dataset:main"

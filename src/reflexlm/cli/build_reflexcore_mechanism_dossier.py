@@ -17,6 +17,7 @@ def main() -> None:
     parser.add_argument("--accepted-rollup-json", required=True)
     parser.add_argument("--sensory-ablation-json", required=True)
     parser.add_argument("--output-json")
+    parser.add_argument("--architecture-audit-json")
     parser.add_argument("--negative-control-json", action="append", default=[])
     parser.add_argument("--min-parameter-count", type=int, default=20_000_000)
     parser.add_argument("--max-parameter-count", type=int, default=100_000_000)
@@ -48,6 +49,11 @@ def main() -> None:
             accepted_rollup_json=Path(args.accepted_rollup_json),
             sensory_ablation_json=Path(args.sensory_ablation_json),
             output_json=Path(args.output_json) if args.output_json else None,
+            architecture_audit_json=(
+                Path(args.architecture_audit_json)
+                if args.architecture_audit_json
+                else None
+            ),
             negative_control_jsons=tuple(
                 Path(path) for path in args.negative_control_json
             ),

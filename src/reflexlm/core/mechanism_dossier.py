@@ -30,6 +30,7 @@ class ReflexCoreMechanismDossierConfig:
     accepted_rollup_json: Path
     sensory_ablation_json: Path
     output_json: Path | None = None
+    architecture_audit_json: Path | None = None
     negative_control_jsons: tuple[Path, ...] = ()
     min_parameter_count: int = 20_000_000
     max_parameter_count: int = 100_000_000
@@ -58,6 +59,11 @@ def build_reflexcore_mechanism_dossier(
     _validate_config(config)
     rollup = _read_json(config.accepted_rollup_json)
     sensory = _read_json(config.sensory_ablation_json)
+    architecture_audit = (
+        _read_json(config.architecture_audit_json)
+        if config.architecture_audit_json is not None
+        else None
+    )
     negative_controls = [
         (path, _read_json(path)) for path in config.negative_control_jsons
     ]
@@ -65,6 +71,9 @@ def build_reflexcore_mechanism_dossier(
     rollup_summary = _object(rollup.get("summary"))
     sensory_summary = _object(sensory.get("summary"))
     checks: dict[str, object] = {}
+    checks["architecture_audit_passed"] = _architecture_audit_check(
+        architecture_audit,
+    )
     checks.update(_rollup_checks(rollup_summary, config, source="accepted_rollup"))
     checks.update(_sensory_checks(sensory, sensory_summary, config))
     checks["negative_controls_rejected"] = _negative_control_check(
@@ -86,6 +95,11 @@ def build_reflexcore_mechanism_dossier(
         ),
         "config": _json_config(config),
         "source_artifacts": {
+            "architecture_audit_json": (
+                _path_label(config.architecture_audit_json)
+                if config.architecture_audit_json
+                else None
+            ),
             "accepted_rollup_json": _path_label(config.accepted_rollup_json),
             "sensory_ablation_json": _path_label(config.sensory_ablation_json),
             "negative_control_jsons": [
@@ -305,6 +319,28 @@ def _negative_control_check(
     }
 
 
+def _architecture_audit_check(
+    architecture_audit: dict[str, object] | None,
+) -> dict[str, object]:
+    if architecture_audit is None:
+        return {
+            "passed": True,
+            "observed": None,
+            "required": "optional architecture audit not provided",
+            "source": "architecture_audit",
+        }
+    return {
+        "passed": architecture_audit.get("passed") is True,
+        "observed": {
+            "artifact_family": architecture_audit.get("artifact_family"),
+            "verdict": architecture_audit.get("verdict"),
+            "passed": architecture_audit.get("passed"),
+        },
+        "required": "architecture audit must pass when provided",
+        "source": "architecture_audit",
+    }
+
+
 def _observed_summary(
     rollup_summary: dict[str, object],
     sensory_summary: dict[str, object],
@@ -355,6 +391,10 @@ def _validate_config(config: ReflexCoreMechanismDossierConfig) -> None:
         raise FileNotFoundError(
             f"sensory_ablation_json does not exist: {config.sensory_ablation_json}"
         )
+    if config.architecture_audit_json is not None and not config.architecture_audit_json.exists():
+        raise FileNotFoundError(
+            f"architecture_audit_json does not exist: {config.architecture_audit_json}"
+        )
     for path in config.negative_control_jsons:
         if not path.exists():
             raise FileNotFoundError(f"negative_control_json does not exist: {path}")
@@ -380,6 +420,11 @@ def _json_config(config: ReflexCoreMechanismDossierConfig) -> dict[str, object]:
     payload["accepted_rollup_json"] = _path_label(config.accepted_rollup_json)
     payload["sensory_ablation_json"] = _path_label(config.sensory_ablation_json)
     payload["output_json"] = _path_label(config.output_json) if config.output_json else None
+    payload["architecture_audit_json"] = (
+        _path_label(config.architecture_audit_json)
+        if config.architecture_audit_json
+        else None
+    )
     payload["negative_control_jsons"] = [
         _path_label(path) for path in config.negative_control_jsons
     ]

@@ -87,6 +87,10 @@ from reflexlm.core.sensory_ablation_matrix import (
     ReflexCoreSensoryAblationMatrixConfig,
     run_reflexcore_sensory_ablation_matrix,
 )
+from reflexlm.core.architecture_audit import (
+    ReflexCoreArchitectureAuditConfig,
+    audit_reflexcore_architecture,
+)
 from reflexlm.core.mechanism_dossier import (
     ReflexCoreMechanismDossierConfig,
     build_reflexcore_mechanism_dossier,
@@ -3252,6 +3256,94 @@ def _write_json(path: Path, payload: dict[str, object]) -> Path:
     return path
 
 
+def _write_reflexcore_architecture_config(
+    path: Path,
+    *,
+    free_shell_generation: bool = False,
+) -> Path:
+    path.write_text(
+        "\n".join(
+            [
+                "model:",
+                "  vocab_size: 128",
+                "  text_embedding_dim: 16",
+                "  hidden_dim: 32",
+                "  transformer_layers: 1",
+                "  transformer_heads: 2",
+                "  gru_layers: 1",
+                "  dropout: 0.0",
+                "  prediction_error_calibration_scale: 0.02",
+                "  prediction_error_mode: delta_plus_calibration",
+                "  prediction_error_conditioning: state_action",
+                "  action_vector_residual: true",
+                "loss_weights:",
+                "  text: 0.1",
+                "  action: 1.0",
+                "  command_slot: 0.2",
+                "  file_slot: 0.2",
+                "  risk: 0.2",
+                "  salience: 0.2",
+                "  prediction_error: 0.2",
+                "  next_state: 0.2",
+                "sensory_training:",
+                "  numeric_action_aux_weight: 0.25",
+                "  numeric_action_aux_zero_text: true",
+                "  numeric_action_aux_zero_hash: true",
+                "acceptance:",
+                "  scope: terminal_process_filesystem_time_sandbox_only",
+                f"  free_shell_generation: {str(free_shell_generation).lower()}",
+                "  gui_or_vision: false",
+            ]
+        ),
+        encoding="utf-8",
+    )
+    return path
+
+
+def test_reflexcore_architecture_audit_accepts_bounded_core_config(
+    tmp_path: Path,
+) -> None:
+    config_path = _write_reflexcore_architecture_config(tmp_path / "config.yaml")
+
+    report = audit_reflexcore_architecture(
+        ReflexCoreArchitectureAuditConfig(
+            config_path=config_path,
+            output_json=tmp_path / "architecture.json",
+            input_dim=16,
+            min_numeric_action_aux_weight=0.2,
+        )
+    )
+
+    assert report["passed"] is True
+    assert (tmp_path / "architecture.json").exists()
+    assert report["checks"]["required_output_heads_present"]["passed"] is True
+    assert report["checks"]["typed_action_head_shape"]["passed"] is True
+    assert report["checks"]["runner_uses_shell_false"]["passed"] is True
+    assert report["checks"]["observation_schema_blocks_non_allowlisted_candidates"][
+        "passed"
+    ] is True
+
+
+def test_reflexcore_architecture_audit_rejects_free_shell_config(
+    tmp_path: Path,
+) -> None:
+    config_path = _write_reflexcore_architecture_config(
+        tmp_path / "config.yaml",
+        free_shell_generation=True,
+    )
+
+    report = audit_reflexcore_architecture(
+        ReflexCoreArchitectureAuditConfig(
+            config_path=config_path,
+            input_dim=16,
+            min_numeric_action_aux_weight=0.2,
+        )
+    )
+
+    assert report["passed"] is False
+    assert report["checks"]["free_shell_generation_disabled"]["passed"] is False
+
+
 def _reflexcore_dossier_rollup_summary(
     **overrides: object,
 ) -> dict[str, object]:
@@ -3332,12 +3424,21 @@ def test_reflexcore_mechanism_dossier_accepts_full_evidence_bundle(
             )
         },
     )
+    architecture_path = _write_json(
+        tmp_path / "architecture.json",
+        {
+            "artifact_family": "reflexcore_v0_architecture_audit",
+            "passed": True,
+            "verdict": "bounded_reflexcore_v0_architecture_ready",
+        },
+    )
 
     report = build_reflexcore_mechanism_dossier(
         ReflexCoreMechanismDossierConfig(
             accepted_rollup_json=accepted_path,
             sensory_ablation_json=sensory_path,
             output_json=tmp_path / "dossier.json",
+            architecture_audit_json=architecture_path,
             negative_control_jsons=(negative_path,),
         )
     )
@@ -3346,6 +3447,7 @@ def test_reflexcore_mechanism_dossier_accepts_full_evidence_bundle(
     assert report["verdict"] == "bounded_reflexcore_v0_mechanism_evidence_ready"
     assert (tmp_path / "dossier.json").exists()
     assert report["checks"]["parameter_count_in_local_range"]["passed"] is True
+    assert report["checks"]["architecture_audit_passed"]["passed"] is True
     assert report["checks"]["sensory_profile_coverage"]["passed"] is True
     assert report["checks"]["negative_controls_rejected"]["passed"] is True
     assert "unrestricted shell generation" in report["unsupported_claims"]
@@ -3405,6 +3507,38 @@ def test_reflexcore_mechanism_dossier_rejects_unrejected_negative_control(
     negative_gate = report["checks"]["negative_controls_rejected"]
     assert negative_gate["passed"] is False
     assert negative_gate["observed"][0]["accepted_by_primary_rollup_gate"] is True
+
+
+def test_reflexcore_mechanism_dossier_rejects_failed_architecture_audit(
+    tmp_path: Path,
+) -> None:
+    accepted_path = _write_json(
+        tmp_path / "accepted.json",
+        {"summary": _reflexcore_dossier_rollup_summary()},
+    )
+    sensory_path = _write_json(
+        tmp_path / "sensory.json",
+        _reflexcore_dossier_sensory_payload(),
+    )
+    architecture_path = _write_json(
+        tmp_path / "architecture.json",
+        {
+            "artifact_family": "reflexcore_v0_architecture_audit",
+            "passed": False,
+            "verdict": "repair_reflexcore_v0_architecture",
+        },
+    )
+
+    report = build_reflexcore_mechanism_dossier(
+        ReflexCoreMechanismDossierConfig(
+            accepted_rollup_json=accepted_path,
+            sensory_ablation_json=sensory_path,
+            architecture_audit_json=architecture_path,
+        )
+    )
+
+    assert report["passed"] is False
+    assert report["checks"]["architecture_audit_passed"]["passed"] is False
 
 
 def test_reflexcore_profile_matrix_rejects_negative_prediction_error_gate(

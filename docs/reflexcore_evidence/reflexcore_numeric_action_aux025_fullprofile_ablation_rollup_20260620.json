@@ -1,0 +1,353 @@
+{
+  "source": "C:\\Users\\Admin\\AppData\\Local\\Temp\\reflexcore_local53m_numeric_action_aux025_seed13_17_23_fullprofile_20260620_225947",
+  "claim_boundary": "Accepted local 53M numeric-action auxiliary matrix. Supports bounded terminal/process/filesystem/time ReflexCore V0 sensory-motor behavior only; no GUI, free-shell, robotics, or production autonomy claim.",
+  "summary": {
+    "runs": 9,
+    "matrix_passed": true,
+    "profile_pass_rate": 1.0,
+    "pass_rate": 1.0,
+    "parameter_count_min": 53132444,
+    "parameter_count_max": 53132444,
+    "numeric_action_aux_weight": 0.25,
+    "raw_action_accuracy_min": 0.875,
+    "safety_gated_action_accuracy_min": 0.75,
+    "prompt_only_offline_action_accuracy_max": 0.5625,
+    "closed_loop_success_rate_min": 0.6666666666666666,
+    "prompt_only_closed_loop_success_rate_max": 0.25,
+    "real_sandbox_success_rate_min": 1.0,
+    "prompt_only_real_sandbox_success_rate_max": 0.26666666666666666,
+    "next_state_relative_improvement_min": 0.4384331049179119,
+    "prediction_error_relative_improvement_min": 0.44680411501719725,
+    "zero_numeric_action_drop_min": 0.5,
+    "zero_numeric_world_drop_min": 5.960314689856117,
+    "zero_all_action_drop_min": 0.625,
+    "zero_all_world_drop_min": 5.986158572094203
+  },
+  "matrix_report_path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\reflexcore_local53m_numeric_action_aux025_seed13_17_23_fullprofile_20260620_225947\\real_sandbox_adaptation_profile_matrix_report.json",
+  "rows": [
+    {
+      "seed": 13,
+      "profile": "default",
+      "passed": true,
+      "parameter_count": 53132444,
+      "numeric_action_aux_weight": 0.25,
+      "raw_action_accuracy": 1.0,
+      "safety_gated_action_accuracy": 0.75,
+      "prompt_only_offline_action_accuracy": 0.5625,
+      "closed_loop_success_rate": 0.6666666666666666,
+      "prompt_only_closed_loop_success_rate": 0.25,
+      "real_sandbox_success_rate": 1.0,
+      "prompt_only_real_sandbox_success_rate": 0.26666666666666666,
+      "next_state_relative_improvement": 0.9004060512195775,
+      "prediction_error_relative_improvement": 0.6978915649620178,
+      "ablation": {
+        "zero_all": {
+          "action_accuracy": 0.25,
+          "action_accuracy_drop": 0.75,
+          "next_state_relative_improvement": -7.228586135884294,
+          "next_state_relative_improvement_drop": 8.128681027428996
+        },
+        "zero_hash": {
+          "action_accuracy": 1.0,
+          "action_accuracy_drop": 0.0,
+          "next_state_relative_improvement": 0.8998950380445111,
+          "next_state_relative_improvement_drop": 0.00019985350019124937
+        },
+        "zero_numeric": {
+          "action_accuracy": 0.25,
+          "action_accuracy_drop": 0.75,
+          "next_state_relative_improvement": -7.184561235228544,
+          "next_state_relative_improvement_drop": 8.084656126773247
+        }
+      }
+    },
+    {
+      "seed": 13,
+      "profile": "hard",
+      "passed": true,
+      "parameter_count": 53132444,
+      "numeric_action_aux_weight": 0.25,
+      "raw_action_accuracy": 1.0,
+      "safety_gated_action_accuracy": 0.75,
+      "prompt_only_offline_action_accuracy": 0.5625,
+      "closed_loop_success_rate": 0.6666666666666666,
+      "prompt_only_closed_loop_success_rate": 0.25,
+      "real_sandbox_success_rate": 1.0,
+      "prompt_only_real_sandbox_success_rate": 0.26666666666666666,
+      "next_state_relative_improvement": 0.8585047339635049,
+      "prediction_error_relative_improvement": 0.7142154250429835,
+      "ablation": {
+        "zero_all": {
+          "action_accuracy": 0.25,
+          "action_accuracy_drop": 0.75,
+          "next_state_relative_improvement": -7.1712091671745855,
+          "next_state_relative_improvement_drop": 8.02911402551172
+        },
+        "zero_hash": {
+          "action_accuracy": 1.0,
+          "action_accuracy_drop": 0.0,
+          "next_state_relative_improvement": 0.8395736411586555,
+          "next_state_relative_improvement_drop": 0.01833121717847941
+        },
+        "zero_numeric": {
+          "action_accuracy": 0.25,
+          "action_accuracy_drop": 0.75,
+          "next_state_relative_improvement": -7.138145226329664,
+          "next_state_relative_improvement_drop": 7.996050084666799
+        }
+      }
+    },
+    {
+      "seed": 13,
+      "profile": "wide_ood",
+      "passed": true,
+      "parameter_count": 53132444,
+      "numeric_action_aux_weight": 0.25,
+      "raw_action_accuracy": 1.0,
+      "safety_gated_action_accuracy": 0.75,
+      "prompt_only_offline_action_accuracy": 0.5625,
+      "closed_loop_success_rate": 0.6666666666666666,
+      "prompt_only_closed_loop_success_rate": 0.25,
+      "real_sandbox_success_rate": 1.0,
+      "prompt_only_real_sandbox_success_rate": 0.26666666666666666,
+      "next_state_relative_improvement": 0.9003603918052098,
+      "prediction_error_relative_improvement": 0.7017130366977993,
+      "ablation": {
+        "zero_all": {
+          "action_accuracy": 0.125,
+          "action_accuracy_drop": 0.875,
+          "next_state_relative_improvement": -7.626981301898002,
+          "next_state_relative_improvement_drop": 8.526897037929773
+        },
+        "zero_hash": {
+          "action_accuracy": 1.0,
+          "action_accuracy_drop": 0.0,
+          "next_state_relative_improvement": 0.8999577125473092,
+          "next_state_relative_improvement_drop": -4.197651553883297e-05
+        },
+        "zero_numeric": {
+          "action_accuracy": 0.3125,
+          "action_accuracy_drop": 0.6875,
+          "next_state_relative_improvement": -7.5879189722656495,
+          "next_state_relative_improvement_drop": 8.48783470829742
+        }
+      }
+    },
+    {
+      "seed": 17,
+      "profile": "default",
+      "passed": true,
+      "parameter_count": 53132444,
+      "numeric_action_aux_weight": 0.25,
+      "raw_action_accuracy": 1.0,
+      "safety_gated_action_accuracy": 0.75,
+      "prompt_only_offline_action_accuracy": 0.5625,
+      "closed_loop_success_rate": 0.6666666666666666,
+      "prompt_only_closed_loop_success_rate": 0.25,
+      "real_sandbox_success_rate": 1.0,
+      "prompt_only_real_sandbox_success_rate": 0.26666666666666666,
+      "next_state_relative_improvement": 0.8893239573854438,
+      "prediction_error_relative_improvement": 0.6282280703454114,
+      "ablation": {
+        "zero_all": {
+          "action_accuracy": 0.1875,
+          "action_accuracy_drop": 0.8125,
+          "next_state_relative_improvement": -5.220381234765396,
+          "next_state_relative_improvement_drop": 6.109617330434736
+        },
+        "zero_hash": {
+          "action_accuracy": 1.0,
+          "action_accuracy_drop": 0.0,
+          "next_state_relative_improvement": 0.8892071643258112,
+          "next_state_relative_improvement_drop": 2.8931343527882625e-05
+        },
+        "zero_numeric": {
+          "action_accuracy": 0.3125,
+          "action_accuracy_drop": 0.6875,
+          "next_state_relative_improvement": -5.218752444759394,
+          "next_state_relative_improvement_drop": 6.1079885404287335
+        }
+      }
+    },
+    {
+      "seed": 17,
+      "profile": "hard",
+      "passed": true,
+      "parameter_count": 53132444,
+      "numeric_action_aux_weight": 0.25,
+      "raw_action_accuracy": 1.0,
+      "safety_gated_action_accuracy": 0.75,
+      "prompt_only_offline_action_accuracy": 0.5625,
+      "closed_loop_success_rate": 0.6666666666666666,
+      "prompt_only_closed_loop_success_rate": 0.25,
+      "real_sandbox_success_rate": 1.0,
+      "prompt_only_real_sandbox_success_rate": 0.26666666666666666,
+      "next_state_relative_improvement": 0.889343280926641,
+      "prediction_error_relative_improvement": 0.6378791939500068,
+      "ablation": {
+        "zero_all": {
+          "action_accuracy": 0.1875,
+          "action_accuracy_drop": 0.8125,
+          "next_state_relative_improvement": -5.190000434284482,
+          "next_state_relative_improvement_drop": 6.079341624401828
+        },
+        "zero_hash": {
+          "action_accuracy": 1.0,
+          "action_accuracy_drop": 0.0,
+          "next_state_relative_improvement": 0.8892995387301587,
+          "next_state_relative_improvement_drop": 4.165138718836836e-05
+        },
+        "zero_numeric": {
+          "action_accuracy": 0.3125,
+          "action_accuracy_drop": 0.6875,
+          "next_state_relative_improvement": -5.189185096005758,
+          "next_state_relative_improvement_drop": 6.078526286123105
+        }
+      }
+    },
+    {
+      "seed": 17,
+      "profile": "wide_ood",
+      "passed": true,
+      "parameter_count": 53132444,
+      "numeric_action_aux_weight": 0.25,
+      "raw_action_accuracy": 1.0,
+      "safety_gated_action_accuracy": 0.75,
+      "prompt_only_offline_action_accuracy": 0.5625,
+      "closed_loop_success_rate": 0.6666666666666666,
+      "prompt_only_closed_loop_success_rate": 0.25,
+      "real_sandbox_success_rate": 1.0,
+      "prompt_only_real_sandbox_success_rate": 0.26666666666666666,
+      "next_state_relative_improvement": 0.8471993078932913,
+      "prediction_error_relative_improvement": 0.6081943595391929,
+      "ablation": {
+        "zero_all": {
+          "action_accuracy": 0.125,
+          "action_accuracy_drop": 0.875,
+          "next_state_relative_improvement": -5.451571912697088,
+          "next_state_relative_improvement_drop": 6.29874062465121
+        },
+        "zero_hash": {
+          "action_accuracy": 1.0,
+          "action_accuracy_drop": 0.0,
+          "next_state_relative_improvement": 0.8471140476270435,
+          "next_state_relative_improvement_drop": 5.466432707867952e-05
+        },
+        "zero_numeric": {
+          "action_accuracy": 0.3125,
+          "action_accuracy_drop": 0.6875,
+          "next_state_relative_improvement": -5.460397222916374,
+          "next_state_relative_improvement_drop": 6.307565934870496
+        }
+      }
+    },
+    {
+      "seed": 23,
+      "profile": "default",
+      "passed": true,
+      "parameter_count": 53132444,
+      "numeric_action_aux_weight": 0.25,
+      "raw_action_accuracy": 0.875,
+      "safety_gated_action_accuracy": 0.75,
+      "prompt_only_offline_action_accuracy": 0.4375,
+      "closed_loop_success_rate": 0.6666666666666666,
+      "prompt_only_closed_loop_success_rate": 0.25,
+      "real_sandbox_success_rate": 1.0,
+      "prompt_only_real_sandbox_success_rate": 0.26666666666666666,
+      "next_state_relative_improvement": 0.4420439011761588,
+      "prediction_error_relative_improvement": 0.4498481034120522,
+      "ablation": {
+        "zero_all": {
+          "action_accuracy": 0.25,
+          "action_accuracy_drop": 0.625,
+          "next_state_relative_improvement": -5.6585397741337315,
+          "next_state_relative_improvement_drop": 6.110394860859781
+        },
+        "zero_hash": {
+          "action_accuracy": 0.875,
+          "action_accuracy_drop": 0.0,
+          "next_state_relative_improvement": 0.4517214864947693,
+          "next_state_relative_improvement_drop": 0.00013360023128000664
+        },
+        "zero_numeric": {
+          "action_accuracy": 0.375,
+          "action_accuracy_drop": 0.5,
+          "next_state_relative_improvement": -5.607467723525714,
+          "next_state_relative_improvement_drop": 6.059322810251763
+        }
+      }
+    },
+    {
+      "seed": 23,
+      "profile": "hard",
+      "passed": true,
+      "parameter_count": 53132444,
+      "numeric_action_aux_weight": 0.25,
+      "raw_action_accuracy": 0.875,
+      "safety_gated_action_accuracy": 0.75,
+      "prompt_only_offline_action_accuracy": 0.4375,
+      "closed_loop_success_rate": 0.6666666666666666,
+      "prompt_only_closed_loop_success_rate": 0.25,
+      "real_sandbox_success_rate": 1.0,
+      "prompt_only_real_sandbox_success_rate": 0.26666666666666666,
+      "next_state_relative_improvement": 0.4384331049179119,
+      "prediction_error_relative_improvement": 0.44680411501719725,
+      "ablation": {
+        "zero_all": {
+          "action_accuracy": 0.125,
+          "action_accuracy_drop": 0.75,
+          "next_state_relative_improvement": -5.537578346107546,
+          "next_state_relative_improvement_drop": 5.986158572094203
+        },
+        "zero_hash": {
+          "action_accuracy": 0.875,
+          "action_accuracy_drop": 0.0,
+          "next_state_relative_improvement": 0.4471676367482991,
+          "next_state_relative_improvement_drop": 0.0014125892383579641
+        },
+        "zero_numeric": {
+          "action_accuracy": 0.125,
+          "action_accuracy_drop": 0.75,
+          "next_state_relative_improvement": -5.51173446386946,
+          "next_state_relative_improvement_drop": 5.960314689856117
+        }
+      }
+    },
+    {
+      "seed": 23,
+      "profile": "wide_ood",
+      "passed": true,
+      "parameter_count": 53132444,
+      "numeric_action_aux_weight": 0.25,
+      "raw_action_accuracy": 0.875,
+      "safety_gated_action_accuracy": 0.75,
+      "prompt_only_offline_action_accuracy": 0.4375,
+      "closed_loop_success_rate": 0.6666666666666666,
+      "prompt_only_closed_loop_success_rate": 0.25,
+      "real_sandbox_success_rate": 1.0,
+      "prompt_only_real_sandbox_success_rate": 0.26666666666666666,
+      "next_state_relative_improvement": 0.4532112215954256,
+      "prediction_error_relative_improvement": 0.4562286946382762,
+      "ablation": {
+        "zero_all": {
+          "action_accuracy": 0.25,
+          "action_accuracy_drop": 0.625,
+          "next_state_relative_improvement": -5.787761930951014,
+          "next_state_relative_improvement_drop": 6.247421342748098
+        },
+        "zero_hash": {
+          "action_accuracy": 0.875,
+          "action_accuracy_drop": 0.0,
+          "next_state_relative_improvement": 0.4584950015311888,
+          "next_state_relative_improvement_drop": 0.0011644102658953104
+        },
+        "zero_numeric": {
+          "action_accuracy": 0.25,
+          "action_accuracy_drop": 0.625,
+          "next_state_relative_improvement": -5.778277003980436,
+          "next_state_relative_improvement_drop": 6.2379364157775194
+        }
+      }
+    }
+  ]
+}

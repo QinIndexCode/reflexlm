@@ -1,0 +1,229 @@
+{
+  "claim_boundary": "This sensory-ablation matrix supports only bounded ReflexCore V0 dependence on terminal/process/filesystem/time observation vectors. It does not evaluate GUI, free shell generation, robotics, or production autonomy.",
+  "config": {
+    "batch_size": 16,
+    "device": "cpu",
+    "matrix_dir": "C:\\Users\\Admin\\AppData\\Local\\Temp\\reflexcore_local53m_numeric_action_aux025_seed13_17_23_fullprofile_20260620_225947",
+    "max_sequence_len": 8,
+    "min_action_accuracy_drop": 0.5,
+    "min_world_model_drop": 1.0,
+    "modes": [
+      "zero_numeric"
+    ],
+    "output_json": "D:\\MyCode\\myApp_\\llm_a\\docs\\reflexcore_evidence\\reflexcore_numeric_action_aux025_formal_sensory_ablation_matrix_20260620.json",
+    "profiles": [
+      "default",
+      "hard",
+      "wide_ood"
+    ],
+    "seeds": [
+      13,
+      17,
+      23
+    ],
+    "sequence_mode": true
+  },
+  "passed": true,
+  "rows": [
+    {
+      "checkpoint": "C:\\Users\\Admin\\AppData\\Local\\Temp\\reflexcore_local53m_numeric_action_aux025_seed13_17_23_fullprofile_20260620_225947\\seed_13\\train\\reflexcore_v0.pt",
+      "dataset": "C:\\Users\\Admin\\AppData\\Local\\Temp\\reflexcore_local53m_numeric_action_aux025_seed13_17_23_fullprofile_20260620_225947\\seed_13\\synthetic_benchmark\\reflexcore\\test.jsonl",
+      "full_action_accuracy": 1.0,
+      "full_next_state_relative_improvement": 0.9000948915447023,
+      "modes": {
+        "zero_numeric": {
+          "action_accuracy": 0.25,
+          "action_accuracy_drop": 0.75,
+          "action_accuracy_drop_passed": true,
+          "next_state_relative_improvement": -7.184561235228544,
+          "next_state_relative_improvement_drop": 8.084656126773247,
+          "next_state_relative_improvement_drop_passed": true,
+          "passed": true
+        }
+      },
+      "passed": true,
+      "profile": "default",
+      "seed": 13
+    },
+    {
+      "checkpoint": "C:\\Users\\Admin\\AppData\\Local\\Temp\\reflexcore_local53m_numeric_action_aux025_seed13_17_23_fullprofile_20260620_225947\\seed_13\\train\\reflexcore_v0.pt",
+      "dataset": "C:\\Users\\Admin\\AppData\\Local\\Temp\\reflexcore_local53m_numeric_action_aux025_seed13_17_23_fullprofile_20260620_225947\\seed_13\\eval_hard\\eval_benchmark\\reflexcore\\test.jsonl",
+      "full_action_accuracy": 1.0,
+      "full_next_state_relative_improvement": 0.8579048583371349,
+      "modes": {
+        "zero_numeric": {
+          "action_accuracy": 0.25,
+          "action_accuracy_drop": 0.75,
+          "action_accuracy_drop_passed": true,
+          "next_state_relative_improvement": -7.138145226329664,
+          "next_state_relative_improvement_drop": 7.996050084666799,
+          "next_state_relative_improvement_drop_passed": true,
+          "passed": true
+        }
+      },
+      "passed": true,
+      "profile": "hard",
+      "seed": 13
+    },
+    {
+      "checkpoint": "C:\\Users\\Admin\\AppData\\Local\\Temp\\reflexcore_local53m_numeric_action_aux025_seed13_17_23_fullprofile_20260620_225947\\seed_13\\train\\reflexcore_v0.pt",
+      "dataset": "C:\\Users\\Admin\\AppData\\Local\\Temp\\reflexcore_local53m_numeric_action_aux025_seed13_17_23_fullprofile_20260620_225947\\seed_13\\eval_wide_ood\\eval_benchmark\\reflexcore\\test.jsonl",
+      "full_action_accuracy": 1.0,
+      "full_next_state_relative_improvement": 0.8999157360317703,
+      "modes": {
+        "zero_numeric": {
+          "action_accuracy": 0.3125,
+          "action_accuracy_drop": 0.6875,
+          "action_accuracy_drop_passed": true,
+          "next_state_relative_improvement": -7.5879189722656495,
+          "next_state_relative_improvement_drop": 8.48783470829742,
+          "next_state_relative_improvement_drop_passed": true,
+          "passed": true
+        }
+      },
+      "passed": true,
+      "profile": "wide_ood",
+      "seed": 13
+    },
+    {
+      "checkpoint": "C:\\Users\\Admin\\AppData\\Local\\Temp\\reflexcore_local53m_numeric_action_aux025_seed13_17_23_fullprofile_20260620_225947\\seed_17\\train\\reflexcore_v0.pt",
+      "dataset": "C:\\Users\\Admin\\AppData\\Local\\Temp\\reflexcore_local53m_numeric_action_aux025_seed13_17_23_fullprofile_20260620_225947\\seed_17\\synthetic_benchmark\\reflexcore\\test.jsonl",
+      "full_action_accuracy": 1.0,
+      "full_next_state_relative_improvement": 0.889236095669339,
+      "modes": {
+        "zero_numeric": {
+          "action_accuracy": 0.3125,
+          "action_accuracy_drop": 0.6875,
+          "action_accuracy_drop_passed": true,
+          "next_state_relative_improvement": -5.218752444759394,
+          "next_state_relative_improvement_drop": 6.1079885404287335,
+          "next_state_relative_improvement_drop_passed": true,
+          "passed": true
+        }
+      },
+      "passed": true,
+      "profile": "default",
+      "seed": 17
+    },
+    {
+      "checkpoint": "C:\\Users\\Admin\\AppData\\Local\\Temp\\reflexcore_local53m_numeric_action_aux025_seed13_17_23_fullprofile_20260620_225947\\seed_17\\train\\reflexcore_v0.pt",
+      "dataset": "C:\\Users\\Admin\\AppData\\Local\\Temp\\reflexcore_local53m_numeric_action_aux025_seed13_17_23_fullprofile_20260620_225947\\seed_17\\eval_hard\\eval_benchmark\\reflexcore\\test.jsonl",
+      "full_action_accuracy": 1.0,
+      "full_next_state_relative_improvement": 0.889341190117347,
+      "modes": {
+        "zero_numeric": {
+          "action_accuracy": 0.3125,
+          "action_accuracy_drop": 0.6875,
+          "action_accuracy_drop_passed": true,
+          "next_state_relative_improvement": -5.189185096005758,
+          "next_state_relative_improvement_drop": 6.078526286123105,
+          "next_state_relative_improvement_drop_passed": true,
+          "passed": true
+        }
+      },
+      "passed": true,
+      "profile": "hard",
+      "seed": 17
+    },
+    {
+      "checkpoint": "C:\\Users\\Admin\\AppData\\Local\\Temp\\reflexcore_local53m_numeric_action_aux025_seed13_17_23_fullprofile_20260620_225947\\seed_17\\train\\reflexcore_v0.pt",
+      "dataset": "C:\\Users\\Admin\\AppData\\Local\\Temp\\reflexcore_local53m_numeric_action_aux025_seed13_17_23_fullprofile_20260620_225947\\seed_17\\eval_wide_ood\\eval_benchmark\\reflexcore\\test.jsonl",
+      "full_action_accuracy": 1.0,
+      "full_next_state_relative_improvement": 0.8471687119541221,
+      "modes": {
+        "zero_numeric": {
+          "action_accuracy": 0.3125,
+          "action_accuracy_drop": 0.6875,
+          "action_accuracy_drop_passed": true,
+          "next_state_relative_improvement": -5.460397222916374,
+          "next_state_relative_improvement_drop": 6.307565934870496,
+          "next_state_relative_improvement_drop_passed": true,
+          "passed": true
+        }
+      },
+      "passed": true,
+      "profile": "wide_ood",
+      "seed": 17
+    },
+    {
+      "checkpoint": "C:\\Users\\Admin\\AppData\\Local\\Temp\\reflexcore_local53m_numeric_action_aux025_seed13_17_23_fullprofile_20260620_225947\\seed_23\\train\\reflexcore_v0.pt",
+      "dataset": "C:\\Users\\Admin\\AppData\\Local\\Temp\\reflexcore_local53m_numeric_action_aux025_seed13_17_23_fullprofile_20260620_225947\\seed_23\\synthetic_benchmark\\reflexcore\\test.jsonl",
+      "full_action_accuracy": 0.875,
+      "full_next_state_relative_improvement": 0.4518550867260493,
+      "modes": {
+        "zero_numeric": {
+          "action_accuracy": 0.375,
+          "action_accuracy_drop": 0.5,
+          "action_accuracy_drop_passed": true,
+          "next_state_relative_improvement": -5.607467723525714,
+          "next_state_relative_improvement_drop": 6.059322810251763,
+          "next_state_relative_improvement_drop_passed": true,
+          "passed": true
+        }
+      },
+      "passed": true,
+      "profile": "default",
+      "seed": 23
+    },
+    {
+      "checkpoint": "C:\\Users\\Admin\\AppData\\Local\\Temp\\reflexcore_local53m_numeric_action_aux025_seed13_17_23_fullprofile_20260620_225947\\seed_23\\train\\reflexcore_v0.pt",
+      "dataset": "C:\\Users\\Admin\\AppData\\Local\\Temp\\reflexcore_local53m_numeric_action_aux025_seed13_17_23_fullprofile_20260620_225947\\seed_23\\eval_hard\\eval_benchmark\\reflexcore\\test.jsonl",
+      "full_action_accuracy": 0.875,
+      "full_next_state_relative_improvement": 0.4485802259866571,
+      "modes": {
+        "zero_numeric": {
+          "action_accuracy": 0.125,
+          "action_accuracy_drop": 0.75,
+          "action_accuracy_drop_passed": true,
+          "next_state_relative_improvement": -5.51173446386946,
+          "next_state_relative_improvement_drop": 5.960314689856117,
+          "next_state_relative_improvement_drop_passed": true,
+          "passed": true
+        }
+      },
+      "passed": true,
+      "profile": "hard",
+      "seed": 23
+    },
+    {
+      "checkpoint": "C:\\Users\\Admin\\AppData\\Local\\Temp\\reflexcore_local53m_numeric_action_aux025_seed13_17_23_fullprofile_20260620_225947\\seed_23\\train\\reflexcore_v0.pt",
+      "dataset": "C:\\Users\\Admin\\AppData\\Local\\Temp\\reflexcore_local53m_numeric_action_aux025_seed13_17_23_fullprofile_20260620_225947\\seed_23\\eval_wide_ood\\eval_benchmark\\reflexcore\\test.jsonl",
+      "full_action_accuracy": 0.875,
+      "full_next_state_relative_improvement": 0.4596594117970841,
+      "modes": {
+        "zero_numeric": {
+          "action_accuracy": 0.25,
+          "action_accuracy_drop": 0.625,
+          "action_accuracy_drop_passed": true,
+          "next_state_relative_improvement": -5.778277003980436,
+          "next_state_relative_improvement_drop": 6.2379364157775194,
+          "next_state_relative_improvement_drop_passed": true,
+          "passed": true
+        }
+      },
+      "passed": true,
+      "profile": "wide_ood",
+      "seed": 23
+    }
+  ],
+  "summary": {
+    "modes": {
+      "zero_numeric": {
+        "action_accuracy_drop": {
+          "max": 0.75,
+          "mean": 0.6805555555555556,
+          "min": 0.5
+        },
+        "next_state_relative_improvement_drop": {
+          "max": 8.48783470829742,
+          "mean": 6.813355066338356,
+          "min": 5.960314689856117
+        },
+        "passed": true
+      }
+    },
+    "passed": true,
+    "passed_rows": 9,
+    "row_count": 9
+  }
+}

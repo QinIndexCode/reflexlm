@@ -1,0 +1,62 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "reflexlm"
+version = "0.1.0"
+description = "Phase 1 Native Synaptic Interface runtime, dataset, training, and evaluation scaffold."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+  "numpy>=2.0",
+  "psutil>=7.2",
+  "pydantic>=2.12",
+  "pyyaml>=6.0",
+  "torch>=2.9",
+]
+
+[project.scripts]
+build-reflexcore-dataset = "reflexlm.cli.build_reflexcore_dataset:main"
+build-reflexcore-benchmark = "reflexlm.cli.build_reflexcore_benchmark:main"
+build-reflexcore-real-sandbox-dataset = "reflexlm.cli.build_reflexcore_real_sandbox_dataset:main"
+train-reflexcore-v0 = "reflexlm.cli.train_reflexcore_v0:main"
+adapt-reflexcore-from-experience = "reflexlm.cli.adapt_reflexcore_from_experience:main"
+run-reflexcore-online-adaptation-gate = "reflexlm.cli.run_reflexcore_online_adaptation_gate:main"
+run-reflexcore-family-holdout-matrix = "reflexlm.cli.run_reflexcore_family_holdout_matrix:main"
+eval-reflexcore-v0 = "reflexlm.cli.eval_reflexcore_v0:main"
+eval-reflexcore-closed-loop = "reflexlm.cli.eval_reflexcore_closed_loop:main"
+eval-reflexcore-real-sandbox = "reflexlm.cli.eval_reflexcore_real_sandbox:main"
+eval-reflexcore-prediction-error = "reflexlm.cli.eval_reflexcore_prediction_error:main"
+eval-reflexcore-sensory-ablation-matrix = "reflexlm.cli.eval_reflexcore_sensory_ablation_matrix:main"
+run-reflexcore-experiment = "reflexlm.cli.run_reflexcore_experiment:main"
+run-reflexcore-sandbox = "reflexlm.cli.run_reflexcore_sandbox:main"
+run-reflexcore-stability = "reflexlm.cli.run_reflexcore_stability:main"
+run-reflexcore-profile-matrix = "reflexlm.cli.run_reflexcore_profile_matrix:main"
+run-reflexcore-local-feasibility = "reflexlm.cli.run_reflexcore_local_feasibility:main"
+run-reflexcore-real-sandbox-adaptation = "reflexlm.cli.run_reflexcore_real_sandbox_adaptation:main"
+run-reflexcore-real-sandbox-adaptation-matrix = "reflexlm.cli.run_reflexcore_real_sandbox_adaptation_matrix:main"
+run-reflexcore-real-sandbox-adaptation-profile-matrix = "reflexlm.cli.run_reflexcore_real_sandbox_adaptation_profile_matrix:main"
+run-reflexcore-real-sandbox-capability-matrix = "reflexlm.cli.run_reflexcore_real_sandbox_capability_matrix:main"
+
+[project.optional-dependencies]
+dev = [
+  "matplotlib>=3.9",
+  "pytest>=9.0",
+]
+llm = [
+  "accelerate>=1.8",
+  "bitsandbytes>=0.48",
+  "peft>=0.17",
+  "transformers>=4.51",
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]

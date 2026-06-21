@@ -1,0 +1,44 @@
+model:
+  vocab_size: 4096
+  text_embedding_dim: 192
+  hidden_dim: 768
+  transformer_layers: 6
+  transformer_heads: 8
+  gru_layers: 1
+  dropout: 0.1
+  prediction_error_calibration_scale: 0.0
+  prediction_error_mode: delta_plus_calibration
+  prediction_error_conditioning: state_action
+  action_vector_residual: true
+training:
+  seed: 13
+  epochs: 5
+  batch_size: 16
+  learning_rate: 0.0003
+  device: cpu
+loss_weights:
+  text: 0.2
+  action: 1.0
+  command_slot: 0.3
+  file_slot: 0.2
+  risk: 0.3
+  salience: 0.2
+  prediction_error: 1.0
+  next_state: 0.5
+sensory_training:
+  numeric_action_aux_weight: 0.25
+  numeric_action_aux_zero_text: true
+  numeric_action_aux_zero_hash: true
+dataset:
+  hash_bins: 256
+  max_text_tokens: 128
+  sequence_mode: true
+  max_sequence_len: 8
+  split_policy: episode
+acceptance:
+  scope: terminal_process_filesystem_time_sandbox_only
+  parameter_target: 20-100M
+  free_shell_generation: false
+  gui_or_vision: false
+  require_world_model_improvement: true
+  require_prediction_error_improvement: true

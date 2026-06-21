@@ -1992,6 +1992,39 @@ Formal gate result:
 - `zero_numeric` world-model drop: min 5.960, mean 6.813, max 8.488
 - gate `passed`: true
 
+Combined mechanism dossier gate, generated on 2026-06-21:
+
+```powershell
+build-reflexcore-mechanism-dossier `
+  --accepted-rollup-json docs/reflexcore_evidence/reflexcore_numeric_action_aux025_fullprofile_ablation_rollup_20260620.json `
+  --sensory-ablation-json docs/reflexcore_evidence/reflexcore_numeric_action_aux025_formal_sensory_ablation_matrix_20260620.json `
+  --negative-control-json docs/reflexcore_evidence/reflexcore_numeric_action_aux_fullprofile_diagnostic_20260620.json `
+  --output-json docs/reflexcore_evidence/reflexcore_numeric_action_aux025_mechanism_dossier_20260621.json
+```
+
+Dossier result:
+
+- evidence artifact:
+  `docs/reflexcore_evidence/reflexcore_numeric_action_aux025_mechanism_dossier_20260621.json`
+- verdict: `bounded_reflexcore_v0_mechanism_evidence_ready`
+- gate `passed`: true
+- required parameter range: 20M-100M; observed: 53,132,444
+- offline prompt-only margin: 0.3125
+- closed-loop prompt-only margin: 0.417
+- real-sandbox prompt-only margin: 0.733
+- world-model relative-improvement floor: observed 0.438 vs required 0.300
+- prediction-error relative-improvement floor: observed 0.447 vs required 0.300
+- sensory matrix coverage: seeds `13`, `17`, `23`; profiles `default`,
+  `hard`, `wide_ood`; rows 9/9 passed
+- negative control: the `numeric_action_aux_weight=0.35` diagnostic was rejected
+  by the primary rollup gate because strict real-sandbox success fell to 0.933
+  even though its sensory-ablation drop was stronger
+
+This combined gate is now the preferred audit artifact for the accepted V0
+mechanism claim. A run that improves one diagnostic but fails behavior, safety,
+world-model, prediction-error, coverage, or negative-control rejection must not
+be described as accepted.
+
 Interpretation: this is the current accepted local 53M V0 configuration for
 bounded terminal/process/filesystem/time sensory-motor behavior. It repairs the
 previous seed17/default numeric-action weakness while preserving the strict

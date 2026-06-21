@@ -1,0 +1,270 @@
+{
+  "artifact_family": "reflexcore_v0_mechanism_dossier",
+  "checks": {
+    "closed_loop_prompt_only_margin": {
+      "observed": 0.41666666666666663,
+      "passed": true,
+      "required_min": 0.3,
+      "source": "accepted_rollup"
+    },
+    "closed_loop_success_floor": {
+      "observed": 0.6666666666666666,
+      "passed": true,
+      "required_min": 0.6,
+      "source": "accepted_rollup"
+    },
+    "negative_controls_rejected": {
+      "observed": [
+        {
+          "accepted_by_primary_rollup_gate": false,
+          "matrix_passed": false,
+          "pass_rate": 1.0,
+          "path": "docs/reflexcore_evidence/reflexcore_numeric_action_aux_fullprofile_diagnostic_20260620.json",
+          "profile_pass_rate": 1.0,
+          "real_sandbox_success_rate_min": 0.9333333333333333
+        }
+      ],
+      "passed": true,
+      "required": "each negative control must fail the primary rollup gate",
+      "source": "negative_controls"
+    },
+    "offline_prompt_only_margin": {
+      "observed": 0.3125,
+      "passed": true,
+      "required_min": 0.2,
+      "source": "accepted_rollup"
+    },
+    "parameter_count_in_local_range": {
+      "observed": {
+        "max": 53132444.0,
+        "min": 53132444.0
+      },
+      "passed": true,
+      "required": {
+        "max": 100000000,
+        "min": 20000000
+      },
+      "source": "accepted_rollup"
+    },
+    "prediction_error_relative_improvement_floor": {
+      "observed": 0.44680411501719725,
+      "passed": true,
+      "required_min": 0.3,
+      "source": "accepted_rollup"
+    },
+    "raw_action_accuracy_floor": {
+      "observed": 0.875,
+      "passed": true,
+      "required_min": 0.85,
+      "source": "accepted_rollup"
+    },
+    "real_sandbox_prompt_only_margin": {
+      "observed": 0.7333333333333334,
+      "passed": true,
+      "required_min": 0.5,
+      "source": "accepted_rollup"
+    },
+    "real_sandbox_success_floor": {
+      "observed": 1.0,
+      "passed": true,
+      "required_min": 1.0,
+      "source": "accepted_rollup"
+    },
+    "rollup_matrix_passed": {
+      "observed": true,
+      "passed": true,
+      "required": true,
+      "source": "accepted_rollup"
+    },
+    "rollup_pass_rate": {
+      "observed": 1.0,
+      "passed": true,
+      "required_min": 1.0,
+      "source": "accepted_rollup"
+    },
+    "rollup_profile_pass_rate": {
+      "observed": 1.0,
+      "passed": true,
+      "required_min": 1.0,
+      "source": "accepted_rollup"
+    },
+    "rollup_zero_numeric_action_drop_floor": {
+      "observed": 0.5,
+      "passed": true,
+      "required_min": 0.5,
+      "source": "accepted_rollup"
+    },
+    "rollup_zero_numeric_world_drop_floor": {
+      "observed": 5.960314689856117,
+      "passed": true,
+      "required_min": 1.0,
+      "source": "accepted_rollup"
+    },
+    "safety_gated_action_accuracy_floor": {
+      "observed": 0.75,
+      "passed": true,
+      "required_min": 0.7,
+      "source": "accepted_rollup"
+    },
+    "sensory_all_rows_passed": {
+      "observed": 9,
+      "passed": true,
+      "required": 9,
+      "source": "sensory_ablation_matrix"
+    },
+    "sensory_matrix_passed": {
+      "observed": true,
+      "passed": true,
+      "required": true,
+      "source": "sensory_ablation_matrix"
+    },
+    "sensory_profile_coverage": {
+      "missing": [],
+      "observed": [
+        "default",
+        "hard",
+        "wide_ood"
+      ],
+      "passed": true,
+      "required": [
+        "default",
+        "hard",
+        "wide_ood"
+      ],
+      "source": "sensory_ablation_matrix"
+    },
+    "sensory_row_count": {
+      "observed": 9.0,
+      "passed": true,
+      "required_min": 9.0,
+      "source": "sensory_ablation_matrix"
+    },
+    "sensory_seed_coverage": {
+      "missing": [],
+      "observed": [
+        13,
+        17,
+        23
+      ],
+      "passed": true,
+      "required": [
+        13,
+        17,
+        23
+      ],
+      "source": "sensory_ablation_matrix"
+    },
+    "sensory_zero_numeric_action_drop_floor": {
+      "observed": 0.5,
+      "passed": true,
+      "required_min": 0.5,
+      "source": "sensory_ablation_matrix"
+    },
+    "sensory_zero_numeric_present": {
+      "observed": true,
+      "passed": true,
+      "required": true,
+      "source": "sensory_ablation_matrix"
+    },
+    "sensory_zero_numeric_world_drop_floor": {
+      "observed": 5.960314689856117,
+      "passed": true,
+      "required_min": 1.0,
+      "source": "sensory_ablation_matrix"
+    },
+    "world_model_relative_improvement_floor": {
+      "observed": 0.4384331049179119,
+      "passed": true,
+      "required_min": 0.3,
+      "source": "accepted_rollup"
+    }
+  },
+  "claim_boundary": "Supports bounded ReflexCore V0 evidence for a 20-100M local computer-native sensory-motor core over terminal/process/filesystem/time observations with typed motor heads and allowlisted RUN_COMMAND. It does not support GUI control, vision, unrestricted shell generation, robotics, production autonomy, consciousness, AGI, or a full LLM replacement claim.",
+  "config": {
+    "accepted_rollup_json": "docs/reflexcore_evidence/reflexcore_numeric_action_aux025_fullprofile_ablation_rollup_20260620.json",
+    "max_parameter_count": 100000000,
+    "min_closed_loop_margin": 0.3,
+    "min_closed_loop_success_rate": 0.6,
+    "min_next_state_relative_improvement": 0.3,
+    "min_offline_action_margin": 0.2,
+    "min_parameter_count": 20000000,
+    "min_pass_rate": 1.0,
+    "min_prediction_error_relative_improvement": 0.3,
+    "min_profile_pass_rate": 1.0,
+    "min_raw_action_accuracy": 0.85,
+    "min_real_sandbox_margin": 0.5,
+    "min_real_sandbox_success_rate": 1.0,
+    "min_safety_gated_action_accuracy": 0.7,
+    "min_sensory_action_drop": 0.5,
+    "min_sensory_rows": 9,
+    "min_sensory_world_drop": 1.0,
+    "negative_control_jsons": [
+      "docs/reflexcore_evidence/reflexcore_numeric_action_aux_fullprofile_diagnostic_20260620.json"
+    ],
+    "output_json": "docs/reflexcore_evidence/reflexcore_numeric_action_aux025_mechanism_dossier_20260621.json",
+    "required_ablation_modes": [
+      "zero_numeric"
+    ],
+    "required_profiles": [
+      "default",
+      "hard",
+      "wide_ood"
+    ],
+    "required_seeds": [
+      13,
+      17,
+      23
+    ],
+    "sensory_ablation_json": "docs/reflexcore_evidence/reflexcore_numeric_action_aux025_formal_sensory_ablation_matrix_20260620.json"
+  },
+  "observed_summary": {
+    "closed_loop_success_rate_min": 0.6666666666666666,
+    "next_state_relative_improvement_min": 0.4384331049179119,
+    "parameter_count_max": 53132444,
+    "parameter_count_min": 53132444,
+    "pass_rate": 1.0,
+    "prediction_error_relative_improvement_min": 0.44680411501719725,
+    "profile_pass_rate": 1.0,
+    "prompt_only_closed_loop_success_rate_max": 0.25,
+    "prompt_only_offline_action_accuracy_max": 0.5625,
+    "prompt_only_real_sandbox_success_rate_max": 0.26666666666666666,
+    "raw_action_accuracy_min": 0.875,
+    "real_sandbox_success_rate_min": 1.0,
+    "run_count": 9,
+    "safety_gated_action_accuracy_min": 0.75,
+    "sensory_modes": {
+      "zero_numeric": {
+        "action_accuracy_drop": {
+          "max": 0.75,
+          "mean": 0.6805555555555556,
+          "min": 0.5
+        },
+        "next_state_relative_improvement_drop": {
+          "max": 8.48783470829742,
+          "mean": 6.813355066338356,
+          "min": 5.960314689856117
+        },
+        "passed": true
+      }
+    },
+    "sensory_passed_rows": 9,
+    "sensory_rows": 9
+  },
+  "passed": true,
+  "source_artifacts": {
+    "accepted_rollup_json": "docs/reflexcore_evidence/reflexcore_numeric_action_aux025_fullprofile_ablation_rollup_20260620.json",
+    "negative_control_jsons": [
+      "docs/reflexcore_evidence/reflexcore_numeric_action_aux_fullprofile_diagnostic_20260620.json"
+    ],
+    "sensory_ablation_json": "docs/reflexcore_evidence/reflexcore_numeric_action_aux025_formal_sensory_ablation_matrix_20260620.json"
+  },
+  "unsupported_claims": [
+    "GUI or visual desktop operation",
+    "unrestricted shell generation",
+    "production autonomous software engineering",
+    "robotics or physical-world control",
+    "consciousness, AGI, or human-like cognition",
+    "full replacement of large language models"
+  ],
+  "verdict": "bounded_reflexcore_v0_mechanism_evidence_ready"
+}

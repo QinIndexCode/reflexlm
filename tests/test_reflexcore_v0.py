@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 from pathlib import Path
 import sys
 import time
@@ -85,6 +86,10 @@ from reflexlm.core.real_sandbox_capability_matrix import (
 from reflexlm.core.sensory_ablation_matrix import (
     ReflexCoreSensoryAblationMatrixConfig,
     run_reflexcore_sensory_ablation_matrix,
+)
+from reflexlm.core.mechanism_dossier import (
+    ReflexCoreMechanismDossierConfig,
+    build_reflexcore_mechanism_dossier,
 )
 from reflexlm.core.prediction_error_report import (
     ReflexCorePredictionErrorReportConfig,
@@ -3240,6 +3245,166 @@ def test_reflexcore_sensory_ablation_matrix_reports_threshold_failure(
     mode = report["rows"][0]["modes"]["zero_hash"]
     assert mode["action_accuracy_drop_passed"] is False
     assert report["summary"]["modes"]["zero_hash"]["passed"] is False
+
+
+def _write_json(path: Path, payload: dict[str, object]) -> Path:
+    path.write_text(json.dumps(payload), encoding="utf-8")
+    return path
+
+
+def _reflexcore_dossier_rollup_summary(
+    **overrides: object,
+) -> dict[str, object]:
+    summary: dict[str, object] = {
+        "runs": 9,
+        "matrix_passed": True,
+        "profile_pass_rate": 1.0,
+        "pass_rate": 1.0,
+        "parameter_count_min": 53_132_444,
+        "parameter_count_max": 53_132_444,
+        "raw_action_accuracy_min": 0.875,
+        "safety_gated_action_accuracy_min": 0.75,
+        "prompt_only_offline_action_accuracy_max": 0.5625,
+        "closed_loop_success_rate_min": 2 / 3,
+        "prompt_only_closed_loop_success_rate_max": 0.25,
+        "real_sandbox_success_rate_min": 1.0,
+        "prompt_only_real_sandbox_success_rate_max": 0.26666666666666666,
+        "next_state_relative_improvement_min": 0.438,
+        "prediction_error_relative_improvement_min": 0.447,
+        "zero_numeric_action_drop_min": 0.5,
+        "zero_numeric_world_drop_min": 5.96,
+    }
+    summary.update(overrides)
+    return summary
+
+
+def _reflexcore_dossier_sensory_payload(
+    *,
+    profiles: tuple[str, ...] = ("default", "hard", "wide_ood"),
+) -> dict[str, object]:
+    rows: list[dict[str, object]] = []
+    for seed in (13, 17, 23):
+        for profile in profiles:
+            rows.append({"seed": seed, "profile": profile, "passed": True})
+    return {
+        "passed": True,
+        "rows": rows,
+        "summary": {
+            "row_count": len(rows),
+            "passed_rows": len(rows),
+            "passed": True,
+            "modes": {
+                "zero_numeric": {
+                    "passed": True,
+                    "action_accuracy_drop": {
+                        "min": 0.5,
+                        "mean": 0.68,
+                        "max": 0.75,
+                    },
+                    "next_state_relative_improvement_drop": {
+                        "min": 5.96,
+                        "mean": 6.81,
+                        "max": 8.48,
+                    },
+                }
+            },
+        },
+    }
+
+
+def test_reflexcore_mechanism_dossier_accepts_full_evidence_bundle(
+    tmp_path: Path,
+) -> None:
+    accepted_path = _write_json(
+        tmp_path / "accepted.json",
+        {"summary": _reflexcore_dossier_rollup_summary()},
+    )
+    sensory_path = _write_json(
+        tmp_path / "sensory.json",
+        _reflexcore_dossier_sensory_payload(),
+    )
+    negative_path = _write_json(
+        tmp_path / "negative.json",
+        {
+            "summary": _reflexcore_dossier_rollup_summary(
+                matrix_passed=False,
+                real_sandbox_success_rate_min=0.933,
+            )
+        },
+    )
+
+    report = build_reflexcore_mechanism_dossier(
+        ReflexCoreMechanismDossierConfig(
+            accepted_rollup_json=accepted_path,
+            sensory_ablation_json=sensory_path,
+            output_json=tmp_path / "dossier.json",
+            negative_control_jsons=(negative_path,),
+        )
+    )
+
+    assert report["passed"] is True
+    assert report["verdict"] == "bounded_reflexcore_v0_mechanism_evidence_ready"
+    assert (tmp_path / "dossier.json").exists()
+    assert report["checks"]["parameter_count_in_local_range"]["passed"] is True
+    assert report["checks"]["sensory_profile_coverage"]["passed"] is True
+    assert report["checks"]["negative_controls_rejected"]["passed"] is True
+    assert "unrestricted shell generation" in report["unsupported_claims"]
+
+
+def test_reflexcore_mechanism_dossier_rejects_undersized_model(
+    tmp_path: Path,
+) -> None:
+    accepted_path = _write_json(
+        tmp_path / "accepted.json",
+        {
+            "summary": _reflexcore_dossier_rollup_summary(
+                parameter_count_min=4_900_000,
+                parameter_count_max=4_900_000,
+            )
+        },
+    )
+    sensory_path = _write_json(
+        tmp_path / "sensory.json",
+        _reflexcore_dossier_sensory_payload(),
+    )
+
+    report = build_reflexcore_mechanism_dossier(
+        ReflexCoreMechanismDossierConfig(
+            accepted_rollup_json=accepted_path,
+            sensory_ablation_json=sensory_path,
+        )
+    )
+
+    assert report["passed"] is False
+    assert report["checks"]["parameter_count_in_local_range"]["passed"] is False
+    assert report["checks"]["parameter_count_in_local_range"]["observed"]["max"] == (
+        pytest.approx(4_900_000)
+    )
+
+
+def test_reflexcore_mechanism_dossier_rejects_unrejected_negative_control(
+    tmp_path: Path,
+) -> None:
+    accepted_payload = {"summary": _reflexcore_dossier_rollup_summary()}
+    accepted_path = _write_json(tmp_path / "accepted.json", accepted_payload)
+    sensory_path = _write_json(
+        tmp_path / "sensory.json",
+        _reflexcore_dossier_sensory_payload(),
+    )
+    negative_path = _write_json(tmp_path / "negative.json", accepted_payload)
+
+    report = build_reflexcore_mechanism_dossier(
+        ReflexCoreMechanismDossierConfig(
+            accepted_rollup_json=accepted_path,
+            sensory_ablation_json=sensory_path,
+            negative_control_jsons=(negative_path,),
+        )
+    )
+
+    assert report["passed"] is False
+    negative_gate = report["checks"]["negative_controls_rejected"]
+    assert negative_gate["passed"] is False
+    assert negative_gate["observed"][0]["accepted_by_primary_rollup_gate"] is True
 
 
 def test_reflexcore_profile_matrix_rejects_negative_prediction_error_gate(

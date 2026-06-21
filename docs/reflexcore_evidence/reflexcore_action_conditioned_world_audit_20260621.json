@@ -1,0 +1,70 @@
+{
+  "artifact_family": "reflexcore_v0_action_conditioned_world_audit",
+  "checks": {
+    "default_next_state_copies_current_observation": {
+      "observed": {
+        "max_abs_error": 0.0
+      },
+      "passed": true,
+      "required": "default next_state equals current observation before learned delta",
+      "source": "next_state_head_initialization"
+    },
+    "explicit_action_changes_next_state": {
+      "observed": {
+        "max_abs_delta": 3.999873161315918
+      },
+      "passed": true,
+      "required_min": 1.0,
+      "source": "next_state"
+    },
+    "explicit_action_changes_prediction_error": {
+      "observed": {
+        "max_abs_delta": 0.9820075631141663
+      },
+      "passed": true,
+      "required_min": 0.5,
+      "source": "prediction_error"
+    },
+    "prediction_error_conditioning_is_state_action": {
+      "observed": "state_action",
+      "passed": true,
+      "required": "state_action",
+      "source": "model_config"
+    }
+  },
+  "claim_boundary": "Audits the ReflexCore V0 action-conditioned next-state and prediction-error paths under a controlled probe. It verifies that typed motor action input can alter world-model outputs for the same observation; it does not claim GUI, free-shell, robotics, or production autonomy.",
+  "config": {
+    "action_signal": 4.0,
+    "input_dim": 8,
+    "min_next_state_delta": 1.0,
+    "min_prediction_error_delta": 0.5,
+    "output_json": "docs\\reflexcore_evidence\\reflexcore_action_conditioned_world_audit_20260621.json",
+    "vocab_size": 512
+  },
+  "observed_summary": {
+    "block_next_state": [
+      3.999873161315918,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "block_prediction_error": 0.9999938011169434,
+    "wait_next_state": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "wait_prediction_error": 0.01798621006309986
+  },
+  "passed": true,
+  "verdict": "bounded_reflexcore_v0_action_conditioned_world_ready"
+}

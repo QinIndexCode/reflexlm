@@ -32,6 +32,7 @@ class ReflexCoreMechanismDossierConfig:
     accepted_rollup_json: Path
     sensory_ablation_json: Path
     output_json: Path | None = None
+    action_conditioned_world_audit_json: Path | None = None
     architecture_audit_json: Path | None = None
     homeostatic_motor_audit_json: Path | None = None
     runtime_evidence_audit_json: Path | None = None
@@ -68,6 +69,11 @@ def build_reflexcore_mechanism_dossier(
         if config.architecture_audit_json is not None
         else None
     )
+    action_conditioned_world_audit = (
+        _read_json(config.action_conditioned_world_audit_json)
+        if config.action_conditioned_world_audit_json is not None
+        else None
+    )
     homeostatic_motor_audit = (
         _read_json(config.homeostatic_motor_audit_json)
         if config.homeostatic_motor_audit_json is not None
@@ -87,6 +93,9 @@ def build_reflexcore_mechanism_dossier(
     checks: dict[str, object] = {}
     checks["architecture_audit_passed"] = _architecture_audit_check(
         architecture_audit,
+    )
+    checks["action_conditioned_world_audit_passed"] = (
+        _action_conditioned_world_audit_check(action_conditioned_world_audit)
     )
     checks["homeostatic_motor_audit_passed"] = _homeostatic_motor_audit_check(
         homeostatic_motor_audit,
@@ -119,6 +128,11 @@ def build_reflexcore_mechanism_dossier(
             "architecture_audit_json": (
                 _path_label(config.architecture_audit_json)
                 if config.architecture_audit_json
+                else None
+            ),
+            "action_conditioned_world_audit_json": (
+                _path_label(config.action_conditioned_world_audit_json)
+                if config.action_conditioned_world_audit_json
                 else None
             ),
             "runtime_evidence_audit_json": (
@@ -420,6 +434,32 @@ def _architecture_audit_check(
     }
 
 
+def _action_conditioned_world_audit_check(
+    action_conditioned_world_audit: dict[str, object] | None,
+) -> dict[str, object]:
+    if action_conditioned_world_audit is None:
+        return {
+            "passed": True,
+            "observed": None,
+            "required": "optional action-conditioned world audit not provided",
+            "source": "action_conditioned_world_audit",
+        }
+    return {
+        "passed": action_conditioned_world_audit.get("passed") is True,
+        "observed": {
+            "artifact_family": action_conditioned_world_audit.get("artifact_family"),
+            "verdict": action_conditioned_world_audit.get("verdict"),
+            "passed": action_conditioned_world_audit.get("passed"),
+            "observed_summary": action_conditioned_world_audit.get(
+                "observed_summary"
+            ),
+            "checks": action_conditioned_world_audit.get("checks"),
+        },
+        "required": "action-conditioned world audit must pass when provided",
+        "source": "action_conditioned_world_audit",
+    }
+
+
 def _runtime_evidence_audit_check(
     runtime_evidence_audit: dict[str, object] | None,
 ) -> dict[str, object]:
@@ -520,6 +560,11 @@ def _validate_config(config: ReflexCoreMechanismDossierConfig) -> None:
         raise FileNotFoundError(
             f"architecture_audit_json does not exist: {config.architecture_audit_json}"
         )
+    if config.action_conditioned_world_audit_json is not None and not config.action_conditioned_world_audit_json.exists():
+        raise FileNotFoundError(
+            "action_conditioned_world_audit_json does not exist: "
+            f"{config.action_conditioned_world_audit_json}"
+        )
     if config.runtime_evidence_audit_json is not None and not config.runtime_evidence_audit_json.exists():
         raise FileNotFoundError(
             "runtime_evidence_audit_json does not exist: "
@@ -560,6 +605,11 @@ def _json_config(config: ReflexCoreMechanismDossierConfig) -> dict[str, object]:
         if config.architecture_audit_json
         else None
     )
+    payload["action_conditioned_world_audit_json"] = (
+        _path_label(config.action_conditioned_world_audit_json)
+        if config.action_conditioned_world_audit_json
+        else None
+    )
     payload["runtime_evidence_audit_json"] = (
         _path_label(config.runtime_evidence_audit_json)
         if config.runtime_evidence_audit_json
@@ -586,6 +636,11 @@ def _source_artifact_integrity(
         "architecture_audit_json": (
             _artifact_metadata(config.architecture_audit_json)
             if config.architecture_audit_json
+            else None
+        ),
+        "action_conditioned_world_audit_json": (
+            _artifact_metadata(config.action_conditioned_world_audit_json)
+            if config.action_conditioned_world_audit_json
             else None
         ),
         "runtime_evidence_audit_json": (
@@ -631,6 +686,10 @@ def _verify_source_artifact_integrity(
             source_integrity.get("architecture_audit_json"),
             base_dir,
         ),
+        "action_conditioned_world_audit_json": _verify_artifact_metadata(
+            source_integrity.get("action_conditioned_world_audit_json"),
+            base_dir,
+        ),
         "runtime_evidence_audit_json": _verify_artifact_metadata(
             source_integrity.get("runtime_evidence_audit_json"),
             base_dir,
@@ -659,6 +718,8 @@ def _verify_source_artifact_integrity(
     ]
     if observed["architecture_audit_json"] is not None:
         required.append(observed["architecture_audit_json"])
+    if observed["action_conditioned_world_audit_json"] is not None:
+        required.append(observed["action_conditioned_world_audit_json"])
     if observed["runtime_evidence_audit_json"] is not None:
         required.append(observed["runtime_evidence_audit_json"])
     if observed["homeostatic_motor_audit_json"] is not None:

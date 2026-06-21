@@ -2010,7 +2010,11 @@ audit-reflexcore-runtime-evidence `
 audit-reflexcore-homeostatic-motor `
   --output-json docs/reflexcore_evidence/reflexcore_homeostatic_motor_audit_20260621.json
 
+audit-reflexcore-action-conditioned-world `
+  --output-json docs/reflexcore_evidence/reflexcore_action_conditioned_world_audit_20260621.json
+
 build-reflexcore-mechanism-dossier `
+  --action-conditioned-world-audit-json docs/reflexcore_evidence/reflexcore_action_conditioned_world_audit_20260621.json `
   --architecture-audit-json docs/reflexcore_evidence/reflexcore_local_pe_calibrated_architecture_audit_20260621.json `
   --homeostatic-motor-audit-json docs/reflexcore_evidence/reflexcore_homeostatic_motor_audit_20260621.json `
   --runtime-evidence-audit-json docs/reflexcore_evidence/reflexcore_numeric_action_aux025_runtime_evidence_audit_20260621.json `
@@ -2054,6 +2058,14 @@ Dossier result:
   prediction-error plus salience refreshes idle state, observed prediction-error
   feedback refreshes idle state, low-error idle state remains `WAIT`, and active
   process state masks prediction-error refresh
+- action-conditioned world audit artifact:
+  `docs/reflexcore_evidence/reflexcore_action_conditioned_world_audit_20260621.json`
+- action-conditioned world verdict:
+  `bounded_reflexcore_v0_action_conditioned_world_ready`
+- action-conditioned world checks: default next-state starts as copy-current
+  baseline, explicit motor action changes next-state by 3.9999, explicit motor
+  action changes prediction-error by 0.9820, and prediction-error conditioning is
+  `state_action`
 - required parameter range: 20M-100M; observed: 53,132,444
 - offline prompt-only margin: 0.3125
 - closed-loop prompt-only margin: 0.417
@@ -2068,7 +2080,7 @@ Dossier result:
 - source artifact integrity: recorded size and SHA-256 for architecture audit,
   accepted rollup, sensory ablation matrix, and negative-control JSON
 - reproducibility fingerprint:
-  `4bd9734ceb0137872db6b3b25bc66f45e6f01b0be053647962859852423eca35`
+  `c32c51c355d96e3b88dbab5a1f9ab328cec36b5823b4913db7c72422985e042e`
 - verifier verdict: `bounded_reflexcore_v0_mechanism_dossier_verified`
 
 This combined gate is now the preferred audit artifact for the accepted V0

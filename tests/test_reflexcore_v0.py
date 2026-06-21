@@ -91,6 +91,10 @@ from reflexlm.core.architecture_audit import (
     ReflexCoreArchitectureAuditConfig,
     audit_reflexcore_architecture,
 )
+from reflexlm.core.action_conditioned_world_audit import (
+    ReflexCoreActionConditionedWorldAuditConfig,
+    audit_reflexcore_action_conditioned_world,
+)
 from reflexlm.core.runtime_evidence_audit import (
     ReflexCoreRuntimeEvidenceAuditConfig,
     audit_reflexcore_runtime_evidence,
@@ -3604,6 +3608,63 @@ def test_reflexcore_homeostatic_motor_audit_accepts_bounded_modulation(
         "passed"
     ] is True
     assert (tmp_path / "homeostatic_audit.json").exists()
+
+
+def test_reflexcore_action_conditioned_world_audit_accepts_action_delta(
+    tmp_path: Path,
+) -> None:
+    report = audit_reflexcore_action_conditioned_world(
+        ReflexCoreActionConditionedWorldAuditConfig(
+            output_json=tmp_path / "action_world_audit.json"
+        )
+    )
+
+    assert report["passed"] is True
+    assert (
+        report["verdict"]
+        == "bounded_reflexcore_v0_action_conditioned_world_ready"
+    )
+    assert report["checks"]["default_next_state_copies_current_observation"][
+        "passed"
+    ] is True
+    assert report["checks"]["explicit_action_changes_next_state"]["passed"] is True
+    assert report["checks"]["explicit_action_changes_prediction_error"]["passed"] is True
+    assert (tmp_path / "action_world_audit.json").exists()
+
+
+def test_reflexcore_mechanism_dossier_rejects_failed_action_world_audit(
+    tmp_path: Path,
+) -> None:
+    accepted_path = _write_json(
+        tmp_path / "accepted.json",
+        {"summary": _reflexcore_dossier_rollup_summary()},
+    )
+    sensory_path = _write_json(
+        tmp_path / "sensory.json",
+        _reflexcore_dossier_sensory_payload(),
+    )
+    action_world_path = _write_json(
+        tmp_path / "action_world_audit.json",
+        {
+            "artifact_family": "reflexcore_v0_action_conditioned_world_audit",
+            "passed": False,
+            "verdict": "repair_reflexcore_v0_action_conditioned_world",
+            "checks": {},
+        },
+    )
+
+    report = build_reflexcore_mechanism_dossier(
+        ReflexCoreMechanismDossierConfig(
+            accepted_rollup_json=accepted_path,
+            sensory_ablation_json=sensory_path,
+            action_conditioned_world_audit_json=action_world_path,
+        )
+    )
+
+    assert report["passed"] is False
+    assert report["checks"]["action_conditioned_world_audit_passed"][
+        "passed"
+    ] is False
 
 
 def test_reflexcore_mechanism_dossier_rejects_failed_homeostatic_motor_audit(

@@ -1,6 +1,72 @@
 {
   "artifact_family": "reflexcore_v0_mechanism_dossier",
   "checks": {
+    "action_conditioned_world_audit_passed": {
+      "observed": {
+        "artifact_family": "reflexcore_v0_action_conditioned_world_audit",
+        "checks": {
+          "default_next_state_copies_current_observation": {
+            "observed": {
+              "max_abs_error": 0.0
+            },
+            "passed": true,
+            "required": "default next_state equals current observation before learned delta",
+            "source": "next_state_head_initialization"
+          },
+          "explicit_action_changes_next_state": {
+            "observed": {
+              "max_abs_delta": 3.999873161315918
+            },
+            "passed": true,
+            "required_min": 1.0,
+            "source": "next_state"
+          },
+          "explicit_action_changes_prediction_error": {
+            "observed": {
+              "max_abs_delta": 0.9820075631141663
+            },
+            "passed": true,
+            "required_min": 0.5,
+            "source": "prediction_error"
+          },
+          "prediction_error_conditioning_is_state_action": {
+            "observed": "state_action",
+            "passed": true,
+            "required": "state_action",
+            "source": "model_config"
+          }
+        },
+        "observed_summary": {
+          "block_next_state": [
+            3.999873161315918,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "block_prediction_error": 0.9999938011169434,
+          "wait_next_state": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "wait_prediction_error": 0.01798621006309986
+        },
+        "passed": true,
+        "verdict": "bounded_reflexcore_v0_action_conditioned_world_ready"
+      },
+      "passed": true,
+      "required": "action-conditioned world audit must pass when provided",
+      "source": "action_conditioned_world_audit"
+    },
     "architecture_audit_passed": {
       "observed": {
         "artifact_family": "reflexcore_v0_architecture_audit",
@@ -319,6 +385,7 @@
   "claim_boundary": "Supports bounded ReflexCore V0 evidence for a 20-100M local computer-native sensory-motor core over terminal/process/filesystem/time observations with typed motor heads and allowlisted RUN_COMMAND. It does not support GUI control, vision, unrestricted shell generation, robotics, production autonomy, consciousness, AGI, or a full LLM replacement claim.",
   "config": {
     "accepted_rollup_json": "docs/reflexcore_evidence/reflexcore_numeric_action_aux025_fullprofile_ablation_rollup_20260620.json",
+    "action_conditioned_world_audit_json": "docs/reflexcore_evidence/reflexcore_action_conditioned_world_audit_20260621.json",
     "architecture_audit_json": "docs/reflexcore_evidence/reflexcore_local_pe_calibrated_architecture_audit_20260621.json",
     "homeostatic_motor_audit_json": "docs/reflexcore_evidence/reflexcore_homeostatic_motor_audit_20260621.json",
     "max_parameter_count": 100000000,
@@ -404,15 +471,20 @@
     },
     "generator": {
       "path": "mechanism_dossier.py",
-      "sha256": "e4f445a9293f8751e8f4f5416125c100027780286a3241c12f3863ef589026c7"
+      "sha256": "22094a3d920d3800614f8d8c07a20632305c763cf3c76f6a28a7c2a5ddcb7c69"
     },
-    "sha256": "4bd9734ceb0137872db6b3b25bc66f45e6f01b0be053647962859852423eca35"
+    "sha256": "c32c51c355d96e3b88dbab5a1f9ab328cec36b5823b4913db7c72422985e042e"
   },
   "source_artifact_integrity": {
     "accepted_rollup_json": {
       "path": "docs/reflexcore_evidence/reflexcore_numeric_action_aux025_fullprofile_ablation_rollup_20260620.json",
       "sha256": "eaddebfe6f3e09b162c43553c8b17b3fce002fc1841dce759cabfcfb69013c57",
       "size_bytes": 14367
+    },
+    "action_conditioned_world_audit_json": {
+      "path": "docs/reflexcore_evidence/reflexcore_action_conditioned_world_audit_20260621.json",
+      "sha256": "72ae0347c01cff3d0ca087277e6bfd344932daa798d4e9dc00083a8d509ce4a1",
+      "size_bytes": 2065
     },
     "architecture_audit_json": {
       "path": "docs/reflexcore_evidence/reflexcore_local_pe_calibrated_architecture_audit_20260621.json",
@@ -444,6 +516,7 @@
   },
   "source_artifacts": {
     "accepted_rollup_json": "docs/reflexcore_evidence/reflexcore_numeric_action_aux025_fullprofile_ablation_rollup_20260620.json",
+    "action_conditioned_world_audit_json": "docs/reflexcore_evidence/reflexcore_action_conditioned_world_audit_20260621.json",
     "architecture_audit_json": "docs/reflexcore_evidence/reflexcore_local_pe_calibrated_architecture_audit_20260621.json",
     "homeostatic_motor_audit_json": "docs/reflexcore_evidence/reflexcore_homeostatic_motor_audit_20260621.json",
     "negative_control_jsons": [

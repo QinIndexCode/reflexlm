@@ -3450,6 +3450,13 @@ def test_reflexcore_mechanism_dossier_accepts_full_evidence_bundle(
     assert report["checks"]["architecture_audit_passed"]["passed"] is True
     assert report["checks"]["sensory_profile_coverage"]["passed"] is True
     assert report["checks"]["negative_controls_rejected"]["passed"] is True
+    integrity = report["source_artifact_integrity"]
+    assert integrity["accepted_rollup_json"]["path"] == "accepted.json"
+    assert len(integrity["accepted_rollup_json"]["sha256"]) == 64
+    assert integrity["accepted_rollup_json"]["size_bytes"] > 0
+    assert len(integrity["sensory_ablation_json"]["sha256"]) == 64
+    assert len(integrity["architecture_audit_json"]["sha256"]) == 64
+    assert len(integrity["negative_control_jsons"][0]["sha256"]) == 64
     assert "unrestricted shell generation" in report["unsupported_claims"]
 
 

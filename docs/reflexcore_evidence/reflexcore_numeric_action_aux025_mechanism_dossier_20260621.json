@@ -262,6 +262,30 @@
     "sensory_rows": 9
   },
   "passed": true,
+  "source_artifact_integrity": {
+    "accepted_rollup_json": {
+      "path": "docs/reflexcore_evidence/reflexcore_numeric_action_aux025_fullprofile_ablation_rollup_20260620.json",
+      "sha256": "eaddebfe6f3e09b162c43553c8b17b3fce002fc1841dce759cabfcfb69013c57",
+      "size_bytes": 14367
+    },
+    "architecture_audit_json": {
+      "path": "docs/reflexcore_evidence/reflexcore_local_pe_calibrated_architecture_audit_20260621.json",
+      "sha256": "b6643029c0515e7063e8f5ff9f04569eab0a68f76596a6b9dab8261c68ef19a4",
+      "size_bytes": 7002
+    },
+    "negative_control_jsons": [
+      {
+        "path": "docs/reflexcore_evidence/reflexcore_numeric_action_aux_fullprofile_diagnostic_20260620.json",
+        "sha256": "894a93c9d737d90a40446ac9e1f2a20304a7e4ff00fb501d0e45160db9cf6c8a",
+        "size_bytes": 13813
+      }
+    ],
+    "sensory_ablation_json": {
+      "path": "docs/reflexcore_evidence/reflexcore_numeric_action_aux025_formal_sensory_ablation_matrix_20260620.json",
+      "sha256": "3c7a527d751cb55f879136d2059764ed9e2fc090f59f856d422a8c4e1913b84a",
+      "size_bytes": 10347
+    }
+  },
   "source_artifacts": {
     "accepted_rollup_json": "docs/reflexcore_evidence/reflexcore_numeric_action_aux025_fullprofile_ablation_rollup_20260620.json",
     "architecture_audit_json": "docs/reflexcore_evidence/reflexcore_local_pe_calibrated_architecture_audit_20260621.json",

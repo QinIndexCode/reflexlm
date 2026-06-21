@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import hashlib
 import json
 import math
 from dataclasses import asdict, dataclass
@@ -106,6 +107,7 @@ def build_reflexcore_mechanism_dossier(
                 _path_label(path) for path in config.negative_control_jsons
             ],
         },
+        "source_artifact_integrity": _source_artifact_integrity(config),
         "observed_summary": _observed_summary(rollup_summary, sensory_summary),
         "checks": checks,
         "claim_boundary": CLAIM_BOUNDARY,
@@ -432,6 +434,39 @@ def _json_config(config: ReflexCoreMechanismDossierConfig) -> dict[str, object]:
     payload["required_seeds"] = list(config.required_seeds)
     payload["required_profiles"] = list(config.required_profiles)
     return payload
+
+
+def _source_artifact_integrity(
+    config: ReflexCoreMechanismDossierConfig,
+) -> dict[str, object]:
+    return {
+        "architecture_audit_json": (
+            _artifact_metadata(config.architecture_audit_json)
+            if config.architecture_audit_json
+            else None
+        ),
+        "accepted_rollup_json": _artifact_metadata(config.accepted_rollup_json),
+        "sensory_ablation_json": _artifact_metadata(config.sensory_ablation_json),
+        "negative_control_jsons": [
+            _artifact_metadata(path) for path in config.negative_control_jsons
+        ],
+    }
+
+
+def _artifact_metadata(path: Path) -> dict[str, object]:
+    return {
+        "path": _path_label(path),
+        "size_bytes": path.stat().st_size,
+        "sha256": _file_sha256(path),
+    }
+
+
+def _file_sha256(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        for chunk in iter(lambda: handle.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
 
 
 def _path_label(path: Path) -> str:

@@ -3,6 +3,7 @@ from __future__ import annotations
 import hashlib
 import json
 import math
+import platform
 from dataclasses import asdict, dataclass
 from pathlib import Path
 from typing import Any
@@ -86,6 +87,7 @@ def build_reflexcore_mechanism_dossier(
         isinstance(check, dict) and check.get("passed") is True
         for check in checks.values()
     )
+    source_integrity = _source_artifact_integrity(config)
     report: dict[str, object] = {
         "artifact_family": "reflexcore_v0_mechanism_dossier",
         "passed": passed,
@@ -107,7 +109,11 @@ def build_reflexcore_mechanism_dossier(
                 _path_label(path) for path in config.negative_control_jsons
             ],
         },
-        "source_artifact_integrity": _source_artifact_integrity(config),
+        "source_artifact_integrity": source_integrity,
+        "reproducibility_fingerprint": _reproducibility_fingerprint(
+            config,
+            source_integrity,
+        ),
         "observed_summary": _observed_summary(rollup_summary, sensory_summary),
         "checks": checks,
         "claim_boundary": CLAIM_BOUNDARY,
@@ -467,6 +473,38 @@ def _file_sha256(path: Path) -> str:
         for chunk in iter(lambda: handle.read(1024 * 1024), b""):
             digest.update(chunk)
     return digest.hexdigest()
+
+
+def _reproducibility_fingerprint(
+    config: ReflexCoreMechanismDossierConfig,
+    source_integrity: dict[str, object],
+) -> dict[str, object]:
+    generator = {
+        "path": Path(__file__).name,
+        "sha256": _file_sha256(Path(__file__)),
+    }
+    environment = {
+        "python_version": platform.python_version(),
+        "platform_system": platform.system(),
+    }
+    payload = {
+        "config": _json_config(config),
+        "environment": environment,
+        "generator": generator,
+        "source_artifact_integrity": source_integrity,
+    }
+    encoded = json.dumps(payload, sort_keys=True, separators=(",", ":")).encode("utf-8")
+    return {
+        "sha256": hashlib.sha256(encoded).hexdigest(),
+        "generator": generator,
+        "environment": environment,
+        "canonical_fields": [
+            "config",
+            "environment",
+            "generator",
+            "source_artifact_integrity",
+        ],
+    }
 
 
 def _path_label(path: Path) -> str:

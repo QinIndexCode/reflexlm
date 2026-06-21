@@ -3457,7 +3457,47 @@ def test_reflexcore_mechanism_dossier_accepts_full_evidence_bundle(
     assert len(integrity["sensory_ablation_json"]["sha256"]) == 64
     assert len(integrity["architecture_audit_json"]["sha256"]) == 64
     assert len(integrity["negative_control_jsons"][0]["sha256"]) == 64
+    fingerprint = report["reproducibility_fingerprint"]
+    assert len(fingerprint["sha256"]) == 64
+    assert fingerprint["generator"]["path"] == "mechanism_dossier.py"
+    assert len(fingerprint["generator"]["sha256"]) == 64
+    assert "python_version" in fingerprint["environment"]
     assert "unrestricted shell generation" in report["unsupported_claims"]
+
+
+def test_reflexcore_mechanism_dossier_fingerprint_tracks_source_changes(
+    tmp_path: Path,
+) -> None:
+    accepted_path = _write_json(
+        tmp_path / "accepted.json",
+        {"summary": _reflexcore_dossier_rollup_summary()},
+    )
+    sensory_path = _write_json(
+        tmp_path / "sensory.json",
+        _reflexcore_dossier_sensory_payload(),
+    )
+    config = ReflexCoreMechanismDossierConfig(
+        accepted_rollup_json=accepted_path,
+        sensory_ablation_json=sensory_path,
+    )
+    first_report = build_reflexcore_mechanism_dossier(config)
+
+    _write_json(
+        accepted_path,
+        {
+            "summary": _reflexcore_dossier_rollup_summary(
+                raw_action_accuracy_min=0.96,
+            )
+        },
+    )
+    second_report = build_reflexcore_mechanism_dossier(config)
+
+    assert first_report["passed"] is True
+    assert second_report["passed"] is True
+    assert (
+        first_report["reproducibility_fingerprint"]["sha256"]
+        != second_report["reproducibility_fingerprint"]["sha256"]
+    )
 
 
 def test_reflexcore_mechanism_dossier_rejects_undersized_model(
